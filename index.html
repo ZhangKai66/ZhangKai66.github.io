@@ -154,6 +154,95 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-my-second-blog-article" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/17/my-second-blog-article/">my second blog article</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/17/my-second-blog-article/" class="archive-article-date">
+  	<time datetime="2020-07-17T00:48:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="基本类型和引用类型"><a href="#基本类型和引用类型" class="headerlink" title="基本类型和引用类型"></a>基本类型和引用类型</h3><p>变量可能包括两种不同数据类型的值：基本和引用 </p>
+<p>引用类型的值 javascript不允许直接操作对象的内存空间 实际是在操作对象的引用，因此 引用类型的值是按引用访问的。(当为对象添加属性时，操作的是实际的对象)</p>
+<p>只有引用类型的值可以动态的添加属性 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> object();</span><br><span class="line">person.name = <span class="string">"Nicholas"</span>;<span class="comment">//"Nicholas"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"judson"</span>;</span><br><span class="line">judson.name = <span class="string">"kai"</span><span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="复制变量值"><a href="#复制变量值" class="headerlink" title="复制变量值"></a>复制变量值</h4><p>一个变量向另一个变量复制基本类型值和引用类型值 也不一样</p>
+<p><strong>基本类型</strong>的复制：在变量对象上创建一个新值，并复制给新变量分配的位置上 两个变量的值完全独立，互不影响。</p>
+<p><strong>引用类型</strong>的复制：复制的其实是指针，复制结束之后，两个指针指向同一个对象，因此，改变其中一个变量，可能会影响另一个</p>
+<h4 id="传递参数"><a href="#传递参数" class="headerlink" title="传递参数"></a>传递参数</h4><p>JS中所有函数的参数都是按值传递的</p>
+<h4 id="检测对象类型"><a href="#检测对象类型" class="headerlink" title="检测对象类型"></a>检测对象类型</h4><p>typeof检测基本数据类型的工具 但是如果是对象，就会显示object</p>
+<p>如果想要具体知道是什么类型的对象，我们可以使用<strong><em>instanceof</em></strong>操作符</p>
+<h3 id="作用域和执行环境"><a href="#作用域和执行环境" class="headerlink" title="作用域和执行环境"></a>作用域和执行环境</h3><h4 id="执行环境-execution-context"><a href="#执行环境-execution-context" class="headerlink" title="执行环境 execution context"></a>执行环境 execution context</h4><p>==<strong><em>执行环境</em></strong>==定义了变量或函数有权访问的其他数据，决定了它们各自的行为 </p>
+<p>每个执行环境中都有一个相关联的<strong><em>变量对象 variable object</em></strong>环境中定义的所有==<strong><em>变量和函数</em></strong>==都在这个对象中。</p>
+<p><strong><em>全局执行环境</em></strong>：最外围的执行环境 在web浏览器中 全局执行环境被认为是window对象 直到应用程序退出 全局执行环境才会被销毁</p>
+<p>每个函数都有自己的执行环境 </p>
+<h4 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h4><p>当代码在一个环境中执行时，会创建==<strong>变量对象</strong>==的一个作用域链</p>
+<p>==内部访问外部==</p>
+<p>都是<strong>内部环境</strong>可以通过作用域链访问所有外部环境，但是外部环境不能访问内部环境中的任何变量和函数，这些环境之间的联系是线性的、有序的。</p>
+<p>####延长作用域链</p>
+<p>try-catch中的catch块 </p>
+<p>with语句 p93</p>
+<h3 id="JS没有块级作用域"><a href="#JS没有块级作用域" class="headerlink" title="JS没有块级作用域"></a>JS没有块级作用域</h3><p>在if条件语句内部定义的变量声明会将变量添加到当前循环外部的执行环境中  就是在 if 或者 for循环外部也能调用 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">  doSomething(i);</span><br><span class="line">&#125;</span><br><span class="line">alert(i)<span class="comment">//10 在循环外部i也能访问到</span></span><br></pre></td></tr></table></figure>
+
+<p>JS==没有块级作用域== 但是有==函数作用域==  在函数内部定义的变量 在整个函数内部的任何位置都是可见的</p>
+<h3 id="垃圾清理"><a href="#垃圾清理" class="headerlink" title="垃圾清理"></a>垃圾清理</h3><p>1.标记清理</p>
+<p>2.引用计数 =&gt;有缺陷 循环引用 造成内存浪费</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/17/my-second-blog-article/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-我的第一篇博客文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
