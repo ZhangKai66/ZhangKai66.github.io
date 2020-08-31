@@ -154,6 +154,94 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/31/git/">Git.md</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/31/git/" class="archive-article-date">
+  	<time datetime="2020-08-31T08:09:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#Git<br>###版本控制软件<br>集中化版本控制：svn<br>分布式版本控制系统：git</p>
+<p>###分布式版本特点<br>联网运行，支持多人协作，性能优秀，用户体验良好<br>###分布式原理<br>客户端也是服务器的完整备份<br>支持断网本地提交<br>服务器故障或损坏后，可使用任何一个客户端进行恢复</p>
+<p>##svn和git比较</p>
+<p>###SVN特点<br><strong>差异比较</strong><br>记录文件的变化 差异<br>优点：节省磁盘空间<br>缺点：耗时、效率低</p>
+<p>###Git特点<br><strong>记录快照</strong><br>1.直接记录快照，而非差异比较<br>2.近乎所有操作都是本地执行</p>
+<p>Git快照是在原有文件版本的基础上重新生成一份新的文件，类似于备份，如果没有修改，直接保留一个链接指向之前存储的文件。<br>缺点：占用磁盘较大<br>优点：版本切换非常快、以空间换时间</p>
+<p>###Git中的三个区域<br>工作区  暂存区  版本库</p>
+<p>###Git中的三个状态<br>已修改 modified<br>已暂存 staged<br>已提交 committed</p>
+<p>##Git代码</p>
+<p>###常用代码</p>
+<p>查看config命令<br><code>git help config</code><br>在终端内查看帮助手册<br><code>git config -h</code><br>在现有目录初始化仓库<br><code>git init</code><br>添加文件到暂存区<br><code>git add +文件名</code><br>查看文件状态<br><code>git status (-s)</code><br>提交到本地仓库<br><code>git commit -m +提交提示</code><br>显示提交的所有记录<br><code>git log</code><br>###其他代码<br>撤销所有修改 (危险度较高 不建议使用)<br><code>git checkout +文件名</code><br>从暂存区中移除对应的文件<br><code>git reset HEAD +文件名</code><br>跳过暂存区 直接提交到git仓库<br><code>git commit -a -m +提示 也可以-am</code><br>同时移除工作区和仓库<br><code>git rm -f+文件名</code><br>只移除仓库区但保留工作区文件<br><code>git rm --cached +文件名</code><br>展示仓库的所有提交状态<br><code>git log</code><br>查询提交项目历史简写<br><code>git reflog</code><br>回退到某个版本 commitID是log中唯一标识<br><code>git reset --hard commitID</code></p>
+<p>###需要忽略的文件 无需纳入git管理<br>添加到.gitignore文件中 =简化版正则<br>gitignore代码格式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//忽略所有.a文件</span></span><br><span class="line">*.a <span class="comment">//*零个或多个任意字符</span></span><br><span class="line"><span class="comment">//跟踪所有lib.a 即使在前面忽略了.a文件 ！取反</span></span><br><span class="line">!lib.a</span><br><span class="line"><span class="comment">//只忽略当前目录下的TODO文件，不忽略子目录下的TODO</span></span><br><span class="line">/TODO <span class="comment">//斜线不递归的意思</span></span><br><span class="line"><span class="comment">//忽略任何目录下名为build的文件夹</span></span><br><span class="line">build/</span><br><span class="line"><span class="comment">//忽略doc/notes.txt但不忽略doc/server/arch.txt</span></span><br><span class="line">doc<span class="comment">/*.txt</span></span><br><span class="line"><span class="comment">//忽略doc/目录及其所有子目录下的.pdf文件 </span></span><br><span class="line"><span class="comment">//**表示匹配任意中间目录 doc文件夹内的所有叫*.pdf的文件</span></span><br><span class="line"><span class="comment">doc/**/</span>*.pdf</span><br></pre></td></tr></table></figure>
+
+<p>##git远程<br>###代码<br>查看分支列表<br><code>git branch</code><br>创建新分支(只创建不切换)<br><code>git  branch +分支名称</code><br>切换分支开发 切换之前一定要提交add和commit<br><code>git checkout +分支名称</code><br>分支的快速创建和切换(既创建也切换)<br><code>git checkout -b +分支名称</code><br>合并到主分支 将子分支代码复制到主分支<br><code>git checkout master</code><br><code>git merge login</code><br>删除分支<br><code>git branch -d +分支名称</code><br>强制删除分支<br><code>git branch -D +分支名称</code><br>修改分支名<br><code>git branch -m 原分支名 新分支名</code><br>将本地分支推送到远程仓库(第一次推送需要加-u 以后的推送不需要加) 仓库里的分支<br><code>git push -u 远程仓库别名 本地分支名称:远程分支名称</code><br><code>git push -u origin payment：pay</code><br>查看本地分支<br><code>git branch</code><br>查看远程分支<br><code>git branch -r</code><br>查看所有分支<br><code>git branch -a</code><br>拉取远程最新代码 pull之前一定要先将自己代码复制一遍，防止被覆盖<br><code>git pull</code><br>删除远程分支<br><code>git push 远程仓库名称 --delete 远程分支名称</code><br><code>git push origin --delete pay</code><br>从远程仓库中将对应的远程分支下载到本地仓库<br><code>git checkout 远程分支的名称</code><br>从远程仓库中将对应的远程分支下载到本地仓库 并且重命名<br><code>git checkout -b 本地分支名称 远程仓库名称/远程分支的名称</code><br>示例：<br><code>git checkout -b payment origin/pay</code></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">git代码</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/31/git/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-my-second-blog-article" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -475,6 +563,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">git代码</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
