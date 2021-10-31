@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Virtual DOM理解</title>
+    <link href="/2021/10/31/Virtual-DOM%E7%90%86%E8%A7%A3/"/>
+    <url>/2021/10/31/Virtual-DOM%E7%90%86%E8%A7%A3/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Virtual-DOM"><a href="#Virtual-DOM" class="headerlink" title="Virtual DOM"></a>Virtual DOM</h1><blockquote><p>用原生的JavaScript对象去描述一个DOM节点</p></blockquote><h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>vue2底层</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>音乐分享</title>
     <link href="/2021/10/31/%E9%9F%B3%E4%B9%90%E5%88%86%E4%BA%AB/"/>
     <url>/2021/10/31/%E9%9F%B3%E4%B9%90%E5%88%86%E4%BA%AB/</url>
@@ -27,7 +46,7 @@
     <link href="/2021/10/31/AllToDo/"/>
     <url>/2021/10/31/AllToDo/</url>
     
-    <content type="html"><![CDATA[<h1 id="所有的TODO"><a href="#所有的TODO" class="headerlink" title="所有的TODO"></a>所有的TODO</h1><blockquote><p>每次修改完记得提交到github</p></blockquote><h3 id="blog配置相关"><a href="#blog配置相关" class="headerlink" title="blog配置相关"></a>blog配置相关</h3><ol><li>添加代码提交规范 commitlint插件 + husky插件</li></ol><h3 id="blog内容相关"><a href="#blog内容相关" class="headerlink" title="blog内容相关"></a>blog内容相关</h3><ol><li>【网络】get和post传值的区别</li><li>【vue2】promise</li></ol>]]></content>
+    <content type="html"><![CDATA[<h1 id="所有的TODO"><a href="#所有的TODO" class="headerlink" title="所有的TODO"></a>所有的TODO</h1><blockquote><p>每次修改完记得提交到github</p></blockquote><h3 id="blog配置相关"><a href="#blog配置相关" class="headerlink" title="blog配置相关"></a>blog配置相关</h3><ol><li>添加代码提交规范 commitlint插件 + husky插件  10.31</li></ol><h3 id="blog内容相关"><a href="#blog内容相关" class="headerlink" title="blog内容相关"></a>blog内容相关</h3><ol><li>【网络】get和post传值的区别  10.31</li><li>【vue2】promise原理理解（实现代码）  10.31</li><li>【vue2底层】vue2底层学习笔记  10.31</li><li>【js】call方法作用及使用方式  10.31</li></ol>]]></content>
     
     
     
