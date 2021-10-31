@@ -5,8 +5,8 @@
   
   <entry>
     <title>AllToDo</title>
-    <link href="/ZhangKai66/2021/10/31/AllToDo/"/>
-    <url>/ZhangKai66/2021/10/31/AllToDo/</url>
+    <link href="/2021/10/31/AllToDo/"/>
+    <url>/2021/10/31/AllToDo/</url>
     
     <content type="html"><![CDATA[<h1 id="所有的TODO"><a href="#所有的TODO" class="headerlink" title="所有的TODO"></a>所有的TODO</h1><blockquote><p>每次修改完记得提交到github</p></blockquote><h3 id="blog配置相关"><a href="#blog配置相关" class="headerlink" title="blog配置相关"></a>blog配置相关</h3><ol><li>添加代码提交规范 commitlint插件 + husky插件</li></ol><h3 id="blog内容相关"><a href="#blog内容相关" class="headerlink" title="blog内容相关"></a>blog内容相关</h3><ol><li>【网络】get和post传值的区别</li><li>【vue2】promise</li></ol>]]></content>
     
@@ -24,8 +24,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="/ZhangKai66/2021/10/31/hello-world/"/>
-    <url>/ZhangKai66/2021/10/31/hello-world/</url>
+    <link href="/2021/10/31/hello-world/"/>
+    <url>/2021/10/31/hello-world/</url>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
     
