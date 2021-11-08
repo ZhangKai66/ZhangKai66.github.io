@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>async和await</title>
+    <link href="/2021/11/08/async%E5%92%8Cawait/"/>
+    <url>/2021/11/08/async%E5%92%8Cawait/</url>
+    
+    <content type="html"><![CDATA[<h1 id="async-await要点"><a href="#async-await要点" class="headerlink" title="async await要点"></a>async await要点</h1><ol><li>await 后面可以追加 promise 对象，获取 resolve 的值</li><li>await 必须包裹在 async 函数里面</li><li>async 函数执行返回的也是一个 promise 对象</li><li>try-catch 截获 promise 中 reject 的值</li></ol>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>javascript</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Virtual DOM理解</title>
     <link href="/2021/10/31/Virtual-DOM%E7%90%86%E8%A7%A3/"/>
     <url>/2021/10/31/Virtual-DOM%E7%90%86%E8%A7%A3/</url>
