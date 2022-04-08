@@ -16,20 +16,20 @@
   <meta name="description" content="记录学习前端的历程">
   <meta name="author" content="Kai Zhang">
   <meta name="keywords" content="前端,frontend">
-  <meta name="description" content="所有的TODO 每次修改完记得提交到github  什么都容易遗忘 基础都得夯实html css js 移动端 webApi jquery node echarts vue react 微信小程序   当前最重要任务  看面试题看面试题书 将重要的写成博客 blog配置相关 添加代码提交规范 commitlint插件 + husky插件  10.31  blog内容相关 【网络】get和post传">
+  <meta name="description" content="js基础 — js字符串方法 round floor ceil parseInt parseFloat区别round 四舍五入，返回参数+0.5后，向下取整floor 返回小于等于参数的最大整数ceil  返回大于等于参数的最小整数parseInt 解析一个字符串，并返回一个整数 返回舍去参数的小数部分后的整数parseFloat  解析一个字符串，并返回一个浮点数  整理字符串和数组常用方法字符">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AllToDo">
-<meta property="og:url" content="https://zhangkai66.github.io.git/2021/10/31/AllToDo/index.html">
+<meta property="og:title" content="JS字符串方法">
+<meta property="og:url" content="https://zhangkai66.github.io.git/2022/02/23/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="ZhangKai&#39;s Blog">
-<meta property="og:description" content="所有的TODO 每次修改完记得提交到github  什么都容易遗忘 基础都得夯实html css js 移动端 webApi jquery node echarts vue react 微信小程序   当前最重要任务  看面试题看面试题书 将重要的写成博客 blog配置相关 添加代码提交规范 commitlint插件 + husky插件  10.31  blog内容相关 【网络】get和post传">
+<meta property="og:description" content="js基础 — js字符串方法 round floor ceil parseInt parseFloat区别round 四舍五入，返回参数+0.5后，向下取整floor 返回小于等于参数的最大整数ceil  返回大于等于参数的最小整数parseInt 解析一个字符串，并返回一个整数 返回舍去参数的小数部分后的整数parseFloat  解析一个字符串，并返回一个浮点数  整理字符串和数组常用方法字符">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-31T12:53:42.000Z">
-<meta property="article:modified_time" content="2022-03-17T15:16:05.698Z">
+<meta property="article:published_time" content="2022-02-23T14:24:34.000Z">
+<meta property="article:modified_time" content="2022-03-27T10:09:26.704Z">
 <meta property="article:author" content="Kai Zhang">
-<meta property="article:tag" content="ToDo">
+<meta property="article:tag" content="js">
 <meta name="twitter:card" content="summary_large_image">
   
-  <title>AllToDo - ZhangKai&#39;s Blog</title>
+  <title>JS字符串方法 - ZhangKai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -175,7 +175,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="AllToDo">
+            <span class="h2" id="subtitle" title="JS字符串方法">
               
             </span>
 
@@ -185,8 +185,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-10-31 20:53" pubdate>
-        October 31, 2021 pm
+      <time datetime="2022-02-23 22:24" pubdate>
+        February 23, 2022 pm
       </time>
     </span>
   
@@ -196,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      638 字
+      730 字
     </span>
   
 
@@ -234,37 +234,41 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">AllToDo</h1>
+            <h1 style="display: none">JS字符串方法</h1>
             
             <div class="markdown-body">
-              <h1 id="所有的TODO"><a href="#所有的TODO" class="headerlink" title="所有的TODO"></a>所有的TODO</h1><blockquote>
-<p>每次修改完记得提交到github</p>
-</blockquote>
-<p>什么都容易遗忘 基础都得夯实<br>html css js 移动端 webApi jquery node echarts vue react 微信小程序  </p>
-<p>当前最重要任务  <strong>看面试题</strong><br>看面试题书 将重要的写成博客</p>
-<h3 id="blog配置相关"><a href="#blog配置相关" class="headerlink" title="blog配置相关"></a>blog配置相关</h3><ol>
-<li>添加代码提交规范 commitlint插件 + husky插件  10.31</li>
+              <h2 id="js基础-—-js字符串方法"><a href="#js基础-—-js字符串方法" class="headerlink" title="js基础 — js字符串方法"></a>js基础 — js字符串方法</h2><ol>
+<li>round floor ceil parseInt parseFloat区别<br>round 四舍五入，返回参数+0.5后，向下取整<br>floor 返回小于等于参数的最大整数<br>ceil  返回大于等于参数的最小整数<br>parseInt 解析一个字符串，并返回一个整数 返回舍去参数的小数部分后的整数<br>parseFloat  解析一个字符串，并返回一个浮点数</li>
 </ol>
-<h3 id="blog内容相关"><a href="#blog内容相关" class="headerlink" title="blog内容相关"></a>blog内容相关</h3><ol>
-<li>【网络】get和post传值的区别  10.31</li>
-<li>【vue2】promise原理理解（实现代码）  10.31</li>
-<li>【vue2底层】vue2底层学习笔记  10.31</li>
-<li>【js】call方法作用及使用方式  10.31</li>
-<li>【vue】模块化规范-require和import区别 11.8</li>
-<li>【js】常用ES6技巧</li>
-<li>【js】常用深浅拷贝记录</li>
-<li>【基础】递归方法的实现</li>
-<li>【js】手写new函数 bind（面试题已写） call apply 12.14</li>
-<li>【css】@mixin</li>
-<li>【css】用纯html+css3实现轮播图</li>
-<li>【css】grid布局  1.1</li>
-<li>【echarts】至少要用过一些</li>
-</ol>
-<h3 id="可提升方面"><a href="#可提升方面" class="headerlink" title="可提升方面"></a>可提升方面</h3><ol>
-<li>js优化能力： 封装成类   封装成类的能力太弱</li>
-</ol>
-<h3 id="当前任务"><a href="#当前任务" class="headerlink" title="当前任务"></a>当前任务</h3><h4 id="完成一个简易版qq-socket-io-vue-express-mysql"><a href="#完成一个简易版qq-socket-io-vue-express-mysql" class="headerlink" title="完成一个简易版qq   socket.io+vue+express+mysql"></a>完成一个简易版qq   socket.io+vue+express+mysql</h4><p>两个页面 私聊 + 群聊<br>vue create 一个项目出来 完成</p>
-<h4 id="qq项目"><a href="#qq项目" class="headerlink" title="qq项目"></a>qq项目</h4><p>qq前端项目   vue3-qq  注册  登录  聊天  三个页面<br>qq后端express 用express-generator   封装successModel  errorModel 返回请求成功或失败的返回值  参考blog-express  导出module.exports  引入require</p>
+<h2 id="整理字符串和数组常用方法"><a href="#整理字符串和数组常用方法" class="headerlink" title="整理字符串和数组常用方法"></a>整理字符串和数组常用方法</h2><h3 id="字符串方法"><a href="#字符串方法" class="headerlink" title="字符串方法"></a>字符串方法</h3><h4 id="查找字符串的方法"><a href="#查找字符串的方法" class="headerlink" title="查找字符串的方法"></a>查找字符串的方法</h4><ul>
+<li><p>indexOf() 返回字符串中指定文本首次出现的索引index 没找到返回 -1 第二个参数为检索起始位置  不可以设置正则表达式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">str.indexOf(<span class="hljs-string">&quot;china&quot;</span>,<span class="hljs-number">18</span>)<br></code></pre></td></tr></table></figure></li>
+<li><p>lastIndexOf() 返回字符串中指定文本最后一次出现的索引 index 没找到返回 -1 同上</p>
+</li>
+<li><p>search()  方法返回字符串中指定文本第一次出现的位置 无法设置第二个参数  可以设置正则表达式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">str.search(<span class="hljs-string">&quot;China&quot;</span>)   =&gt; <span class="hljs-number">17</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="提取字符串的方法"><a href="#提取字符串的方法" class="headerlink" title="提取字符串的方法"></a>提取字符串的方法</h4><ul>
+<li><p>slice(start, end) 提取字符串的某个部分并在新字符串中返回被提取的部分。</p>
+<ul>
+<li>如果参数是负数，则从字符串的结尾开始计数</li>
+<li>如果省略第二个参数，则该方法将裁剪字符串的剩余部分</li>
+<li>从结尾计数，也是裁剪字符串的剩余部分</li>
+</ul>
+</li>
+<li><p>substring(start, end) 类似于slice() 不过不能接受负的索引</p>
+</li>
+<li><p>substr(start, length) 类似于slice() 第二个参数规定被提取部分的长度</p>
+</li>
+</ul>
+<h4 id="替换字符串内容"><a href="#替换字符串内容" class="headerlink" title="替换字符串内容"></a>替换字符串内容</h4><ul>
+<li>replace() <ul>
+<li>replace()方法不会改变调用它的字符串 它返回的是新字符串</li>
+<li>replace()只替换首个匹配</li>
+<li><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/js/js_string_methods.asp">https://www.w3school.com.cn/js/js_string_methods.asp</a></li>
+</ul>
+</li>
+</ul>
 
             </div>
             <hr>
@@ -275,7 +279,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/ToDo/">ToDo</a>
+                      <a class="hover-with-bg" href="/tags/js/">js</a>
                     
                   </div>
                 
@@ -292,9 +296,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/10/31/%E9%9F%B3%E4%B9%90%E5%88%86%E4%BA%AB/">
+                      <a href="/2022/03/27/JS%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">音乐分享</span>
+                        <span class="hidden-mobile">JS数组方法</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -302,8 +306,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/10/31/hello-world/">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2022/02/19/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%AE%97%E6%B3%95%E9%A2%98/">
+                        <span class="hidden-mobile">华为机试算法题.md</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
