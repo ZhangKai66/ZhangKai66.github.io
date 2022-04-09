@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>前端面试高频题.md</title>
+    <link href="/2022/04/09/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%AB%98%E9%A2%91%E9%A2%98-md/"/>
+    <url>/2022/04/09/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%AB%98%E9%A2%91%E9%A2%98-md/</url>
+    
+    <content type="html"><![CDATA[<h2 id="手写系列"><a href="#手写系列" class="headerlink" title="手写系列"></a>手写系列</h2><h3 id="题目一：实现深度clone"><a href="#题目一：实现深度clone" class="headerlink" title="题目一：实现深度clone"></a>题目一：实现深度clone</h3><h3 id="题目二：实现节流和防抖"><a href="#题目二：实现节流和防抖" class="headerlink" title="题目二：实现节流和防抖"></a>题目二：实现节流和防抖</h3><h3 id="题目三：实现bind、call、apply函数"><a href="#题目三：实现bind、call、apply函数" class="headerlink" title="题目三：实现bind、call、apply函数"></a>题目三：实现bind、call、apply函数</h3><h3 id="题目四：实现简单的Promise"><a href="#题目四：实现简单的Promise" class="headerlink" title="题目四：实现简单的Promise"></a>题目四：实现简单的Promise</h3><h3 id="题目五：实现new函数"><a href="#题目五：实现new函数" class="headerlink" title="题目五：实现new函数"></a>题目五：实现new函数</h3>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>高频题</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>前端面试题运行环境相关.md</title>
     <link href="/2022/04/08/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E7%9B%B8%E5%85%B3-md/"/>
     <url>/2022/04/08/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E7%9B%B8%E5%85%B3-md/</url>

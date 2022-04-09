@@ -16,21 +16,38 @@
   <meta name="description" content="记录学习前端的历程">
   <meta name="author" content="Kai Zhang">
   <meta name="keywords" content="前端,frontend">
-  <meta name="description" content="记录学习前端的历程">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Tags">
-<meta property="og:url" content="https://zhangkai66.github.io.git/tags/index.html">
+  <meta name="description" content="手写系列题目一：实现深度clone题目二：实现节流和防抖题目三：实现bind、call、apply函数题目四：实现简单的Promise题目五：实现new函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端面试高频题.md">
+<meta property="og:url" content="https://zhangkai66.github.io.git/2022/04/09/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%AB%98%E9%A2%91%E9%A2%98-md/index.html">
 <meta property="og:site_name" content="ZhangKai&#39;s Blog">
-<meta property="og:description" content="记录学习前端的历程">
+<meta property="og:description" content="手写系列题目一：实现深度clone题目二：实现节流和防抖题目三：实现bind、call、apply函数题目四：实现简单的Promise题目五：实现new函数">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-09T00:20:22.000Z">
+<meta property="article:modified_time" content="2022-04-09T00:25:50.582Z">
 <meta property="article:author" content="Kai Zhang">
-<meta property="article:tag" content="前端,frontend">
+<meta property="article:tag" content="高频题">
 <meta name="twitter:card" content="summary_large_image">
   
-  <title>Tags - ZhangKai&#39;s Blog</title>
+  <title>前端面试高频题.md - ZhangKai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -57,7 +74,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -158,17 +175,47 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Tag">
+            <span class="h2" id="subtitle" title="前端面试高频题.md">
               
             </span>
 
             
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-09 08:20" pubdate>
+        April 9, 2022 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      78 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      1 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
           </div>
 
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
           
         </div>
       </div>
@@ -177,24 +224,81 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      
 
-<div class="text-center tagcloud">
-  <a href="/tags/ES6/" style="font-size: 15px; color: #bbe">ES6</a> <a href="/tags/HTML-CSS/" style="font-size: 15px; color: #bbe">HTML&CSS</a> <a href="/tags/ToDo/" style="font-size: 15px; color: #bbe">ToDo</a> <a href="/tags/Vue/" style="font-size: 15px; color: #bbe">Vue</a> <a href="/tags/browser/" style="font-size: 15px; color: #bbe">browser</a> <a href="/tags/javascript/" style="font-size: 15px; color: #bbe">javascript</a> <a href="/tags/js/" style="font-size: 30px; color: #337ab7">js</a> <a href="/tags/music/" style="font-size: 15px; color: #bbe">music</a> <a href="/tags/socket/" style="font-size: 15px; color: #bbe">socket</a> <a href="/tags/vue2%E5%BA%95%E5%B1%82/" style="font-size: 15px; color: #bbe">vue2底层</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 15px; color: #bbe">面试题</a> <a href="/tags/%E9%AB%98%E9%A2%91%E9%A2%98/" style="font-size: 15px; color: #bbe">高频题</a>
-</div>
-
-              </div>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">前端面试高频题.md</h1>
+            
+            <div class="markdown-body">
+              <h2 id="手写系列"><a href="#手写系列" class="headerlink" title="手写系列"></a>手写系列</h2><h3 id="题目一：实现深度clone"><a href="#题目一：实现深度clone" class="headerlink" title="题目一：实现深度clone"></a>题目一：实现深度clone</h3><h3 id="题目二：实现节流和防抖"><a href="#题目二：实现节流和防抖" class="headerlink" title="题目二：实现节流和防抖"></a>题目二：实现节流和防抖</h3><h3 id="题目三：实现bind、call、apply函数"><a href="#题目三：实现bind、call、apply函数" class="headerlink" title="题目三：实现bind、call、apply函数"></a>题目三：实现bind、call、apply函数</h3><h3 id="题目四：实现简单的Promise"><a href="#题目四：实现简单的Promise" class="headerlink" title="题目四：实现简单的Promise"></a>题目四：实现简单的Promise</h3><h3 id="题目五：实现new函数"><a href="#题目五：实现new函数" class="headerlink" title="题目五：实现new函数"></a>题目五：实现new函数</h3>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%AB%98%E9%A2%91%E9%A2%98/">高频题</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/08/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E7%9B%B8%E5%85%B3-md/">
+                        <span class="hidden-mobile">前端面试题运行环境相关.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -277,6 +381,19 @@
   
 
 
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
 
 
 
