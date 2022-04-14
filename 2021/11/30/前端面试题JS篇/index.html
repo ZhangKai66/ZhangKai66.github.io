@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://zhangkai66.github.io.git/2021/11/public/img/prototype.png">
 <meta property="article:published_time" content="2021-11-30T12:22:56.000Z">
-<meta property="article:modified_time" content="2022-04-14T14:55:09.963Z">
+<meta property="article:modified_time" content="2022-04-14T15:29:30.957Z">
 <meta property="article:author" content="Kai Zhang">
 <meta property="article:tag" content="面试题">
 <meta name="twitter:card" content="summary_large_image">
@@ -198,7 +198,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.7k 字
+      4k 字
     </span>
   
 
@@ -312,6 +312,12 @@
 </ul>
 </li>
 </ul>
+<h3 id="dom事件与event-loop关系"><a href="#dom事件与event-loop关系" class="headerlink" title="dom事件与event loop关系"></a>dom事件与event loop关系</h3><ol>
+<li>js是单线程的</li>
+<li>异步都是基于event loop的</li>
+<li>dom事件也使用回调，也是基于event loop</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&#x27;#btn&#x27;</span>).on(<span class="hljs-string">&quot;click&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123; <span class="hljs-comment">// 注意这里的click是立即执行的，但是function会被立刻放到webapi的库中，</span><br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;btn clicked&#x27;</span>); <span class="hljs-comment">// 当用户点击click时，function会被放入到callback queue中</span><br>&#125;)<br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
