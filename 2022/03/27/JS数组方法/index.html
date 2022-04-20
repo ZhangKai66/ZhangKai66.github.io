@@ -16,15 +16,15 @@
   <meta name="description" content="记录学习前端的历程">
   <meta name="author" content="Kai Zhang">
   <meta name="keywords" content="前端,frontend">
-  <meta name="description" content="JS常用数组方法">
+  <meta name="description" content="JS常用数组方法基本属性 特点：能存储 有序节点 可以在已知的两个元素中间插入新的元素  创建数组的两种方法：var arr &#x3D; [];var arr &#x3D; new Array(); &#x2F;&#x2F;用的居然是小括号 一般不用这个方法  获取元素：arr[0];获取下标为0的元素替换元素：arr[3] &#x3D; “fruit” 如果之前没有下标为3的元素 则在3位置处添加新的元素  length 数组长度  数组内部">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS数组方法">
 <meta property="og:url" content="https://zhangkai66.github.io.git/2022/03/27/JS%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="ZhangKai&#39;s Blog">
-<meta property="og:description" content="JS常用数组方法">
+<meta property="og:description" content="JS常用数组方法基本属性 特点：能存储 有序节点 可以在已知的两个元素中间插入新的元素  创建数组的两种方法：var arr &#x3D; [];var arr &#x3D; new Array(); &#x2F;&#x2F;用的居然是小括号 一般不用这个方法  获取元素：arr[0];获取下标为0的元素替换元素：arr[3] &#x3D; “fruit” 如果之前没有下标为3的元素 则在3位置处添加新的元素  length 数组长度  数组内部">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-27T10:10:46.000Z">
-<meta property="article:modified_time" content="2022-03-27T10:11:29.852Z">
+<meta property="article:modified_time" content="2022-04-20T15:23:36.128Z">
 <meta property="article:author" content="Kai Zhang">
 <meta property="article:tag" content="js">
 <meta name="twitter:card" content="summary_large_image">
@@ -196,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      8 字
+      2.4k 字
     </span>
   
 
@@ -205,7 +205,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1 分钟
+      8 分钟
     </span>
   
 
@@ -237,7 +237,82 @@
             <h1 style="display: none">JS数组方法</h1>
             
             <div class="markdown-body">
-              <h2 id="JS常用数组方法"><a href="#JS常用数组方法" class="headerlink" title="JS常用数组方法"></a>JS常用数组方法</h2>
+              <h2 id="JS常用数组方法"><a href="#JS常用数组方法" class="headerlink" title="JS常用数组方法"></a>JS常用数组方法</h2><h3 id="基本属性"><a href="#基本属性" class="headerlink" title="基本属性"></a>基本属性</h3><ol>
+<li><p>特点：能存储 有序节点 可以在已知的两个元素中间插入新的元素</p>
+</li>
+<li><p>创建数组的两种方法：<br>var arr = [];<br>var arr = new Array(); //用的居然是小括号 一般不用这个方法</p>
+</li>
+<li><p>获取元素：arr[0];获取下标为0的元素<br>替换元素：arr[3] = “fruit” 如果之前没有下标为3的元素 则在3位置处添加新的元素</p>
+</li>
+<li><p>length 数组长度</p>
+</li>
+<li><p>数组内部可以存储所有类型元素  包括数组和对象<br>var arr = [{name:”john”,age:19},12,”hello”];<br>console.log(arr[0].name);//显示为john</p>
+</li>
+<li><p>queue（队列）方法：pop/push  shift/unshift<br>push在队列末端插入新元素   shift在队列前端取出第一个元素并返回他，后续元素向前移动一格<br>unshift：在队列前端插入新元素 push和unshift都可以一次添加多个元素</p>
+</li>
+<li><p>stack（栈）方法：push/pop<br>push pop都是在末端插入或取出元素 只能是一个元素</p>
+</li>
+<li><p>数组同时支持先进先出(lifo)和后进先出(fifo)   是双端队列</p>
+</li>
+<li><p>从本质上讲  数组也是一个对象   复制数组也是复制的引用</p>
+</li>
+</ol>
+<p>最后  强调 数组必须是用于  有序数据  的特殊结构 如果不按照有序数组来操作 那么就不会享受到数组的优化</p>
+<h3 id="数组方法"><a href="#数组方法" class="headerlink" title="数组方法"></a>数组方法</h3><ol>
+<li><p>插入提取方法</p>
+<ul>
+<li>arr.push 从尾部插入</li>
+<li>arr.pop 从尾部提取</li>
+<li>arr.shift 从头部提取</li>
+<li>arr.unshift  从头部插入</li>
+</ul>
+</li>
+<li><p>splice方法 ：可以实现 添加 删除 插入元素等操作</p>
+<ul>
+<li>插入或删除的起始下标：1就是替换第二个元素</li>
+<li>删除的个数：0表示添加</li>
+<li>添加或者要更换的元素</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>splice(1,1) <em>删除</em>：从下标为1的位置删掉1个元素 splice返回的就是被删除掉的元素<br>splice(0,3,”let’s”,”dance”) <em>替换</em>：从下标为0的位置删掉3个元素 并用let’s dance替换在被删掉的区域<br>splice(1,0,”hello”,”world”) <em>添加</em>：从下标为1的位置向后添加2个元素 添加在下标为1和2的位置</p>
+</blockquote>
+<ol start="3">
+<li><p>slice方法：切片功能 slice(a,b) 切出从a下标到b下标之前的的元素 左闭右开（左边包括 右边不包括）</p>
+<p> arr.slice()不带参数调用的话 就是创建一份新的arr副本<br> 其中b是可选的，不写的话就是从a切到末尾。<br> arr.slice()返回的是切出来的值组成的[a,b)<br> 对 <em>原数组</em> 是没有影响的</p>
+</li>
+<li><p>concat方法：<br>链接方法：arr.concat(a,b)将a和b连接到arr数组的最后。 如果a也是数组 则会提取出数组中的数值 添加到arr后面 ，如果不是数组，其他元素都会以本来的形式插入到数组arr中。</p>
+</li>
+<li><p>arr.foreach()方法：可以为数组中每一个元素运行方法</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">[<span class="hljs-string">&quot;Bilbo&quot;</span>, <span class="hljs-string">&quot;Gandalf&quot;</span>, <span class="hljs-string">&quot;Nazgul&quot;</span>].forEach(<span class="hljs-function">(<span class="hljs-params">item, index, array</span>) =&gt;</span> &#123;<br>  alert(<span class="hljs-string">`<span class="hljs-subst">$&#123;item&#125;</span> is at index <span class="hljs-subst">$&#123;index&#125;</span> in <span class="hljs-subst">$&#123;array&#125;</span>`</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<ol start="6">
+<li><p>arr.indexOf(item,from) / arr.lastIndexOf(item,from) /arr.includes(item,from) 返回item元素在数组中的下标<br>from指从哪一个下标位置开始查询</p>
+</li>
+<li><p>转换数组 arr.map() 对数组内所有元素调用某个方法 返回该方法返回值组成的新数组</p>
+</li>
+</ol>
+<p>格式:<code>let res = arr.map(function(item,index,array)&#123;&#125;)</code><br>示例：<code>let length = [&quot;heloo&quot;,&quot;jack&quot;,&quot;tom&quot;].map(item =&gt; item.length);</code></p>
+<ol start="8">
+<li><p>arr.sort() 对数组进行原位排序  排序之后的结果返回到这个数组本身 等于是修改了原数组 默认是按字符串排序</p>
+</li>
+<li><p>利用sort函数 对数字进行排序操作</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [ <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">15</span> ];<br><br>arr.sort(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a, b</span>) </span>&#123; <span class="hljs-keyword">return</span> a - b; &#125;); 只需要比较函数返回正数或者负数就可以完成数组的排序<br><br>alert(arr);  <span class="hljs-comment">// 1, 2, 15</span><br>  <span class="hljs-comment">// 还有更简洁的：箭头函数</span><br>arr.sort(<span class="hljs-function">(<span class="hljs-params">a,b</span>) =&gt;</span> <span class="hljs-keyword">return</span> a-b;);<span class="hljs-comment">//原答案return都没有写</span><br></code></pre></td></tr></table></figure></li>
+<li><p>arr.reverse()<br>用于颠倒数组中的元素顺序</p>
+</li>
+<li><p>分割字符串<br>let names = ‘Bilbo, Gandalf, Nazgul’;<br>let arr = names.split(‘, ‘);<br>for (let name of arr) {<br>alert( <code>A message to $&#123;name&#125;.</code> ); // A message to Bilbo（和其他名字）<br>}</p>
+</li>
+<li><p>黏合字符串 与上面分割字符串正好相反：arr.join()<br>let arr = [‘Bilbo’, ‘Gandalf’, ‘Nazgul’];<br>let str = arr.join(‘;’); // 使用分号 ; 将数组粘合成字符串<br>alert( str ); // Bilbo;Gandalf;Nazgul</p>
+</li>
+<li><p>arr.reduce()方法：该函数一个接一个地应用于arr数组的所有元素 并将前一次结果作为参数传给下一次调用 其中accumulator是用来储存<em>上一次计算结果</em>的 可以用作类似求和的需求<br>let value = arr.reduce(function(accumulator, item, index, array)<br>示例：<br>let arr = [1, 2, 3, 4, 5];<br>let result = arr.reduce((sum, current) =&gt; sum + current, 0);<br>alert(result); // 15</p>
+</li>
+<li><p>array.isArray() 是数组的话返回true 反之返回false</p>
+</li>
+</ol>
+
             </div>
             <hr>
             <div>
