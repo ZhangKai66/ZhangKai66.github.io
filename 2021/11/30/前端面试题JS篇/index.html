@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://zhangkai66.github.io.git/img/prototype.png">
 <meta property="article:published_time" content="2021-11-30T12:22:56.000Z">
-<meta property="article:modified_time" content="2022-04-20T15:12:29.359Z">
+<meta property="article:modified_time" content="2022-05-04T16:25:53.636Z">
 <meta property="article:author" content="Kai Zhang">
 <meta property="article:tag" content="面试题">
 <meta name="twitter:card" content="summary_large_image">
@@ -198,7 +198,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4k 字
+      4.2k 字
     </span>
   
 
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12 分钟
+      13 分钟
     </span>
   
 
@@ -270,11 +270,14 @@
 <h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><h4 id="闭包的表现"><a href="#闭包的表现" class="headerlink" title="闭包的表现"></a>闭包的表现</h4><ol>
 <li>函数作为参数被传递<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">create</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> a = <span class="hljs-number">100</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(a)<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> fn = create()<br><span class="hljs-keyword">const</span> a = <span class="hljs-number">200</span><br>fn() <span class="hljs-comment">// log值为100</span><br></code></pre></td></tr></table></figure></li>
 <li>函数作为返回值被返回<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">print</span>(<span class="hljs-params">fn</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> a = <span class="hljs-number">200</span><br>  fn()<br>&#125;<br><span class="hljs-keyword">const</span> a = <span class="hljs-number">100</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(a)<br>&#125;<br>print(fn) <span class="hljs-comment">// 打印值仍为100</span><br></code></pre></td></tr></table></figure>
+<h4 id="闭包的作用"><a href="#闭包的作用" class="headerlink" title="闭包的作用"></a>闭包的作用</h4></li>
+</ol>
+<ul>
+<li>封装变量（在function中定义私有变量，return一个function，变量即不会被拿到或修改）</li>
+</ul>
 <blockquote>
 <p>所有（闭包）自由变量的查找  是在函数<strong>定义</strong>的地方，向上级作用域查找 不是在执行的地方</p>
 </blockquote>
-</li>
-</ol>
 <h4 id="this的使用场景"><a href="#this的使用场景" class="headerlink" title="this的使用场景"></a>this的使用场景</h4><ol>
 <li>作为普通函数  window</li>
 <li>使用call bind apply （三个的区别 call可直接换this指向 bind是有返回值 返回值再调用）</li>
@@ -318,6 +321,33 @@
 <li>dom事件也使用回调，也是基于event loop</li>
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&#x27;#btn&#x27;</span>).on(<span class="hljs-string">&quot;click&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123; <span class="hljs-comment">// 注意这里的click是立即执行的，但是function会被立刻放到webapi的库中，</span><br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;btn clicked&#x27;</span>); <span class="hljs-comment">// 当用户点击click时，function会被放入到callback queue中</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h3 id="宏任务微任务"><a href="#宏任务微任务" class="headerlink" title="宏任务微任务"></a>宏任务微任务</h3><ul>
+<li>宏任务<ul>
+<li>setTimeout</li>
+<li>setImmediate</li>
+<li>setInterval</li>
+<li>requestAnimationFrame</li>
+<li>I/O</li>
+<li>UI rendering</li>
+</ul>
+</li>
+<li>微任务<ul>
+<li>process.nextTick</li>
+<li>promise (then)</li>
+<li>object.observe</li>
+<li>mutationObserve</li>
+</ul>
+</li>
+</ul>
+<h3 id="一面面试题"><a href="#一面面试题" class="headerlink" title="一面面试题"></a>一面面试题</h3><ol>
+<li>做过哪些项目 项目的亮点是什么</li>
+<li>defer和async的区别</li>
+<li>生命周期有哪些和各自特点</li>
+<li>原型链是什么</li>
+<li>闭包的使用，在哪用过，为啥要用</li>
+<li>event loop</li>
+</ol>
 
             </div>
             <hr>
