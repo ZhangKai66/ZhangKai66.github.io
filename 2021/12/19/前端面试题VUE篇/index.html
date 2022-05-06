@@ -24,7 +24,7 @@
 <meta property="og:description" content="Vue相关Vue 的最大的优势是什么 数据可以双向绑定  mvvm 组件化开发 单页面应用，减少后台请求 第三方库比较好用  mvvm 和 mvc 区别是什么 mvvm(model view viewmodel)   viewModel是核心可以将model-&gt;view  by数据绑定 ；可以将view-&gt;model  bydom事件监听  即 双向绑定  mvc(model view">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-12-19T15:15:04.000Z">
-<meta property="article:modified_time" content="2022-04-20T15:11:26.782Z">
+<meta property="article:modified_time" content="2022-05-06T15:53:19.364Z">
 <meta property="article:author" content="Kai Zhang">
 <meta property="article:tag" content="Vue, 面试题">
 <meta name="twitter:card" content="summary_large_image">
@@ -196,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.7k 字
+      3.9k 字
     </span>
   
 
@@ -205,7 +205,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8 分钟
+      12 分钟
     </span>
   
 
@@ -250,7 +250,8 @@
 <ul>
 <li>mvc(model view controller)<br>c-&gt;vm vm是从c中抽离业务逻辑 相当于是在c基础上封装了一层</li>
 </ul>
-<h3 id="Vue-数据双向绑定的原理是什么"><a href="#Vue-数据双向绑定的原理是什么" class="headerlink" title="Vue 数据双向绑定的原理是什么"></a>Vue 数据双向绑定的原理是什么</h3><p>数据劫持结合发布者-订阅者模式<br>Object.defineProperty()<br>待补充</p>
+<h3 id="Vue-数据双向绑定的原理是什么"><a href="#Vue-数据双向绑定的原理是什么" class="headerlink" title="Vue 数据双向绑定的原理是什么"></a>Vue 数据双向绑定的原理是什么</h3><p>数据劫持结合发布者-订阅者模式<br>数据劫持 Observer<br>Dep 收集订阅者</p>
+<p>Object.defineProperty()<br>待补充</p>
 <h3 id="Object-defineProperty-和-Proxy-的区别"><a href="#Object-defineProperty-和-Proxy-的区别" class="headerlink" title="Object.defineProperty 和 Proxy 的区别"></a>Object.defineProperty 和 Proxy 的区别</h3><ul>
 <li>proxy</li>
 </ul>
@@ -297,19 +298,30 @@
 <li>$route 是路由信息对象，包括一些路由信息参数如。path, params, hash, query, fullPath, matched, name</li>
 <li>$router 是VueRouter的实例，相当于一个全局的路由器对象，包含很多属性和子对象，如history对象，this.$router.push（）返回上一个history也是使用$router.go(-1)</li>
 </ul>
-<h3 id="Vue-Router的动态路由，怎么获取传过来的动态参数-☆"><a href="#Vue-Router的动态路由，怎么获取传过来的动态参数-☆" class="headerlink" title="Vue-Router的动态路由，怎么获取传过来的动态参数 ☆"></a>Vue-Router的动态路由，怎么获取传过来的动态参数 ☆</h3><p>场景：User 组件，对于所有 ID 各不相同的用户，都要使用这个组件来渲染<br>动态路径参数，使用“冒号”开头，一个路径参数，使用冒号标记，当匹配<br>到一个路由时，参数会被设置到 this.$router.params 中，并且可以在每个组件<br>中使用。</p>
-<h3 id="Vue-Router-的钩子函数都有哪些"><a href="#Vue-Router-的钩子函数都有哪些" class="headerlink" title="Vue-Router 的钩子函数都有哪些"></a>Vue-Router 的钩子函数都有哪些</h3><p>主要分为三类</p>
+<h3 id="vue-router官网记录"><a href="#vue-router官网记录" class="headerlink" title="vue router官网记录"></a>vue router官网记录</h3><p>router文件中必须要有routes，路由数组：存放多个不同路由(放的是路由信息)，对应上面的$route</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> routes = [<br>   &#123;<br>      <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/about&quot;</span>,<br>      <span class="hljs-attr">component</span>: AboutComponent<br>   &#125;<br>]<br></code></pre></td></tr></table></figure>
+<p>router实例是VueRouter这个插件的实例，routes路由信息是传给router实例的配置参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> VueRouter(&#123;<br>   <span class="hljs-attr">routes</span>: routes<br>&#125;)<br></code></pre></td></tr></table></figure>
+<p>创建并挂在根实例，记得要通过router配置参数注入路由</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;<br>   router<br>&#125;).$mount(<span class="hljs-string">&#x27;#app&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p>通过注入路由器，我们可以在任何组件内通过 this.$router 访问路由器，也可以通过 this.$route 访问当前路由</p>
+<p>routes的meta字段是路由元信息<br>一个路由匹配到的所有路由记录会暴露为 $route 对象 (还有在导航守卫中的路由对象) 的 $route.matched 数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">router.beforeEach(<span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span>, next</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span> (to.matched.some(<span class="hljs-function"><span class="hljs-params">record</span> =&gt;</span> record.meta.requiresAuth)) &#123;&#125; <br>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>https://v3.router.vuejs.org/zh/guide/advanced/data-fetching.html#%E5%AF%BC%E8%88%AA%E5%AE%8C%E6%88%90%E5%90%8E%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE</code></p>
+<h3 id="Vue-Router的动态路由，怎么获取传过来的动态参数-☆"><a href="#Vue-Router的动态路由，怎么获取传过来的动态参数-☆" class="headerlink" title="Vue-Router的动态路由，怎么获取传过来的动态参数 ☆"></a>Vue-Router的动态路由，怎么获取传过来的动态参数 ☆</h3><p>场景：User 组件，对于所有 ID 各不相同的用户，都要使用这个组件来渲染<br>动态路径参数，使用“冒号”开头，一个路径参数，使用冒号标记，当匹配<br>到一个路由时，参数会被设置到 this.$router.params 中，并且可以在每个组件<br>中使用。<br>like this: <code>&#123; path: &#39;/user/:id&#39;, component: User &#125;</code><br>在匹配到该路由之后，动态参数会被设置到this.$route.params<br><code>template: &#39;&lt;div&gt;User &#123;&#123; $route.params.id &#125;&#125;&lt;/div&gt;&#39;</code><br>也可以是多个参数<br>like this: <code>/user/:username/post/:post_id</code> 与路由一一对应</p>
+<h3 id="Vue-Router-的钩子函数都有哪些"><a href="#Vue-Router-的钩子函数都有哪些" class="headerlink" title="Vue-Router 的钩子函数都有哪些"></a>Vue-Router 的钩子函数都有哪些</h3><p>即 路由守卫 记住，在任务导航守卫中都要触发next函数<br>主要分为三类</p>
 <ol>
-<li>全局钩子beforeEach(to,from,next:function)</li>
-<li>路由独享钩子 beforeEnter</li>
+<li>全局钩子beforeEach(to,from,next:function) beforeResolve afterEach</li>
+<li>路由独享钩子 beforeEnter  // 在routes数组中给某个特定的route单独设置路由狗子，参数一致</li>
 <li>组件内钩子<ul>
-<li>beforeRouterEnter</li>
-<li>beforeRouterUpdate</li>
-<li>beforeRouterLeave</li>
+<li>beforeRouterEnter // 不！能！获取组件实例 <code>this</code></li>
+<li>beforeRouterUpdate // 在当前路由改变，但是该组件被复用时调用 对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和 /foo/2 之间跳转的时候</li>
+<li>beforeRouterLeave // 导航离开该组件的对应路由时调用 可以访问组件实例 <code>this</code> （禁止用户在还未保存修改前突然离开）</li>
+<li>用处：一般用的是beforeEach，可以判断用户身份，未登录则导航到Login页面<h3 id="路由传值的方式有哪几种"><a href="#路由传值的方式有哪几种" class="headerlink" title="路由传值的方式有哪几种"></a>路由传值的方式有哪几种</h3></li>
 </ul>
 </li>
 </ol>
-<h3 id="路由传值的方式有哪几种"><a href="#路由传值的方式有哪几种" class="headerlink" title="路由传值的方式有哪几种"></a>路由传值的方式有哪几种</h3><p>155page</p>
+<p>155page</p>
 <h3 id="vue组件的定时器怎么销毁"><a href="#vue组件的定时器怎么销毁" class="headerlink" title="vue组件的定时器怎么销毁"></a>vue组件的定时器怎么销毁</h3><ul>
 <li>如果页面上有很多个定时器，在data选项中添加一个timer对象，给每个定时器去一个名字一一映射在对象timer中，然后在beforeDestory函数中for循环clearInterval掉</li>
 <li>如果只有一个定时器，可以用<code>this.$once(&#39;hook:beforeDestory&#39;,()=&gt;&#123; clearInterval(timer) &#125;)</code></li>
