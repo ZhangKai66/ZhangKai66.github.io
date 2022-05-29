@@ -16,20 +16,20 @@
   <meta name="description" content="记录学习前端的历程">
   <meta name="author" content="Kai Zhang">
   <meta name="keywords" content="前端,frontend">
-  <meta name="description" content="解题思路 计算某字母key出现在指定字符串str中的次数 12345var str &#x3D; readline().toLowerCase();var key &#x3D; readline().toLowerCase();var count &#x3D; 0;count &#x3D; str.split(key).length - 1;print(count) 动态规划  dp0-1 钱包问题  （动态规划 &#x3D;》 将大问题转变成小">
+  <meta name="description" content="OD 一面面试题 做过哪些项目 项目的亮点是什么 defer和async的区别 生命周期有哪些和各自特点 原型链是什么 闭包的使用，在哪用过，为啥要用 event loop  OD 二面面试题 前端性能优化相关 前端安全相关做过哪些，xss csrf分别是怎么防护的 搜索页面是怎么保证在秒级拿到数据的，（不拘泥于前端），模糊查找，前缀模糊查找和后缀模糊查找哪个性能更好（后缀：面试官说的） 算法数据">
 <meta property="og:type" content="article">
-<meta property="og:title" content="华为机试算法题.md">
-<meta property="og:url" content="https://zhangkai66.github.io.git/2022/02/19/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E7%AE%97%E6%B3%95%E9%A2%98/index.html">
+<meta property="og:title" content="面试题记录">
+<meta property="og:url" content="https://zhangkai66.github.io.git/2022/05/27/%E9%9D%A2%E8%AF%95%E9%A2%98%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="ZhangKai&#39;s Blog">
-<meta property="og:description" content="解题思路 计算某字母key出现在指定字符串str中的次数 12345var str &#x3D; readline().toLowerCase();var key &#x3D; readline().toLowerCase();var count &#x3D; 0;count &#x3D; str.split(key).length - 1;print(count) 动态规划  dp0-1 钱包问题  （动态规划 &#x3D;》 将大问题转变成小">
+<meta property="og:description" content="OD 一面面试题 做过哪些项目 项目的亮点是什么 defer和async的区别 生命周期有哪些和各自特点 原型链是什么 闭包的使用，在哪用过，为啥要用 event loop  OD 二面面试题 前端性能优化相关 前端安全相关做过哪些，xss csrf分别是怎么防护的 搜索页面是怎么保证在秒级拿到数据的，（不拘泥于前端），模糊查找，前缀模糊查找和后缀模糊查找哪个性能更好（后缀：面试官说的） 算法数据">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-02-19T02:21:49.000Z">
-<meta property="article:modified_time" content="2022-05-11T14:55:18.556Z">
+<meta property="article:published_time" content="2022-05-27T09:07:07.000Z">
+<meta property="article:modified_time" content="2022-05-28T09:45:21.610Z">
 <meta property="article:author" content="Kai Zhang">
 <meta property="article:tag" content="前端,frontend">
 <meta name="twitter:card" content="summary_large_image">
   
-  <title>华为机试算法题.md - ZhangKai&#39;s Blog</title>
+  <title>面试题记录 - ZhangKai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -175,7 +175,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="华为机试算法题.md">
+            <span class="h2" id="subtitle" title="面试题记录">
               
             </span>
 
@@ -185,8 +185,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-02-19 10:21" pubdate>
-        February 19, 2022 am
+      <time datetime="2022-05-27 17:07" pubdate>
+        May 27, 2022 pm
       </time>
     </span>
   
@@ -196,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      467 字
+      483 字
     </span>
   
 
@@ -205,7 +205,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1 分钟
+      2 分钟
     </span>
   
 
@@ -234,18 +234,43 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">华为机试算法题.md</h1>
+            <h1 style="display: none">面试题记录</h1>
             
             <div class="markdown-body">
-              <h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><ul>
-<li><p>计算某字母key出现在指定字符串str中的次数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> str = readline().toLowerCase();<br><span class="hljs-keyword">var</span> key = readline().toLowerCase();<br><span class="hljs-keyword">var</span> count = <span class="hljs-number">0</span>;<br>count = str.split(key).length - <span class="hljs-number">1</span>;<br>print(count)<br></code></pre></td></tr></table></figure></li>
-<li><p>动态规划  dp0-1 钱包问题  （动态规划 =》 将大问题转变成小问题的和 类似dfs）</p>
-<h2 id="现有四个物品，小拓扑背包总容量为8，怎么偷得最大价值的物品"><a href="#现有四个物品，小拓扑背包总容量为8，怎么偷得最大价值的物品" class="headerlink" title="现有四个物品，小拓扑背包总容量为8，怎么偷得最大价值的物品"></a>现有四个物品，小拓扑背包总容量为8，怎么偷得最大价值的物品</h2><p>物品编号   1  2  3  4<br>物品重量   2  3  4  5</p>
-<h2 id="物品价值-3-4-5-6"><a href="#物品价值-3-4-5-6" class="headerlink" title="物品价值   3  4  5  6"></a>物品价值   3  4  5  6</h2><p>解：记f(k,w)  背包容量为w，有k件物品可以偷，所能偷到的最大价值</p>
-<p>状态转移方程<br>f(k,w) = f(k-1,w)  when wk&gt;w  当第k个物品的重量大于背包容量 等于k-1物品里 偷总重量不超过w的的最大价值<br>f(k,w) = max{ f(k-1,w-wk)+vk,f(k-1,w) }  when wk&lt;=w 当k物品不重于背包容量的话，可以选择偷和不偷  偷的话 最大价值转变成 从k-1个物品里偷重量不超w-k物品的重量  不偷的话 转变成 从k-1个物品里偷w重量的最大价值</p>
-</li>
-</ul>
+              <h3 id="OD-一面面试题"><a href="#OD-一面面试题" class="headerlink" title="OD 一面面试题"></a>OD 一面面试题</h3><ol>
+<li>做过哪些项目 项目的亮点是什么</li>
+<li>defer和async的区别</li>
+<li>生命周期有哪些和各自特点</li>
+<li>原型链是什么</li>
+<li>闭包的使用，在哪用过，为啥要用</li>
+<li>event loop</li>
+</ol>
+<h3 id="OD-二面面试题"><a href="#OD-二面面试题" class="headerlink" title="OD 二面面试题"></a>OD 二面面试题</h3><ol>
+<li>前端性能优化相关</li>
+<li>前端安全相关做过哪些，xss csrf分别是怎么防护的</li>
+<li>搜索页面是怎么保证在秒级拿到数据的，（不拘泥于前端），模糊查找，前缀模糊查找和后缀模糊查找哪个性能更好（后缀：面试官说的）</li>
+<li>算法数据结构了解哪些？哈希表是啥？怎么插入，删除数据，优点是啥</li>
+<li>react和vue区别是什么？一般技术选型是怎么选的</li>
+<li>有没有做过一个独立需求的落地？怎么选择技术或者框架的</li>
+<li>svg的文件结构，为什么比icon更快</li>
+</ol>
+<h3 id="天润-一面面试题"><a href="#天润-一面面试题" class="headerlink" title="天润 一面面试题"></a>天润 一面面试题</h3><ol>
+<li>新增的ES6语法</li>
+<li>新增的数组方法</li>
+<li>节流防抖代码实现</li>
+<li>vue组件中是怎么通信的</li>
+<li>vue双向数据绑定</li>
+<li>vuex的数据流向</li>
+<li>vue能监听数组数据的变化吗，用什么方法可以触发可监听到的变化 $set</li>
+</ol>
+<h3 id="OD一面"><a href="#OD一面" class="headerlink" title="OD一面"></a>OD一面</h3><ol>
+<li>webpack分包代码怎么配置</li>
+<li>能不能在data里面使用计算属性</li>
+<li>除了代码层面的还有哪些性能优化的方式</li>
+<li>问组件之间优先选择哪种通信方式 为什么</li>
+<li>问箭头函数有什么优点 </li>
+<li>问data compute watch之间有什么依赖关系</li>
+</ol>
 
             </div>
             <hr>
@@ -266,9 +291,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/23/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95/">
+                      <a href="/2022/05/27/vue3-ts-vite%E5%BC%80%E5%8F%91%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JS字符串方法</span>
+                        <span class="hidden-mobile">vue3+ts+vite开发音乐播放器</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -276,8 +301,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/12/26/socket%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B/">
-                        <span class="hidden-mobile">socket简单上手</span>
+                      <a href="/2022/05/27/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">
+                        <span class="hidden-mobile">每日一题</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
