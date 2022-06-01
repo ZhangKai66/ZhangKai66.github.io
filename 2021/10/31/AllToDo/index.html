@@ -24,7 +24,7 @@
 <meta property="og:description" content="所有的TODO 每次修改完记得提交到github  什么都容易遗忘 基础都得夯实html css js 移动端 webApi jquery node echarts vue react 微信小程序   当前最重要任务  看面试题看面试题书 将重要的写成博客 blog配置相关 添加代码提交规范 commitlint插件 + husky插件  10.31  blog内容相关 【网络】get和post传">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-31T12:53:42.000Z">
-<meta property="article:modified_time" content="2022-03-17T15:16:05.698Z">
+<meta property="article:modified_time" content="2022-06-01T14:18:58.404Z">
 <meta property="article:author" content="Kai Zhang">
 <meta property="article:tag" content="ToDo">
 <meta name="twitter:card" content="summary_large_image">
@@ -78,7 +78,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Ker</strong>
+      <strong>Jamarcus</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -170,7 +170,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/beach.jpeg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -236,6 +236,12 @@
             <!-- SEO header -->
             <h1 style="display: none">AllToDo</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：17 minutes ago
+                
+              </p>
+            
             <div class="markdown-body">
               <h1 id="所有的TODO"><a href="#所有的TODO" class="headerlink" title="所有的TODO"></a>所有的TODO</h1><blockquote>
 <p>每次修改完记得提交到github</p>
@@ -270,6 +276,13 @@
             <hr>
             <div>
               <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/TODO/">TODO</a>
+                    
+                  </div>
                 
                 
                   <div class="post-meta">
@@ -313,6 +326,35 @@
               
             </div>
 
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"SENRU08HPXafOGhG2XAwDq4Q-gzGzoHsz","appKey":"SmBXysKuOGYdFfLXpPenWmvh","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
             
           </article>
         </div>

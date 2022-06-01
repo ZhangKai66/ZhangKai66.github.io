@@ -24,7 +24,7 @@
 <meta property="og:description" content="JS常用数组方法基本属性 特点：能存储 有序节点 可以在已知的两个元素中间插入新的元素  创建数组的两种方法：var arr &#x3D; [];var arr &#x3D; new Array(); &#x2F;&#x2F;用的居然是小括号 一般不用这个方法  获取元素：arr[0];获取下标为0的元素替换元素：arr[3] &#x3D; “fruit” 如果之前没有下标为3的元素 则在3位置处添加新的元素  length 数组长度  数组内部">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-27T10:10:46.000Z">
-<meta property="article:modified_time" content="2022-04-20T15:23:36.128Z">
+<meta property="article:modified_time" content="2022-06-01T14:17:50.468Z">
 <meta property="article:author" content="Kai Zhang">
 <meta property="article:tag" content="js">
 <meta name="twitter:card" content="summary_large_image">
@@ -78,7 +78,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Ker</strong>
+      <strong>Jamarcus</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -170,7 +170,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/beach.jpeg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -235,6 +235,12 @@
           <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">JS数组方法</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：18 minutes ago
+                
+              </p>
             
             <div class="markdown-body">
               <h2 id="JS常用数组方法"><a href="#JS常用数组方法" class="headerlink" title="JS常用数组方法"></a>JS常用数组方法</h2><h3 id="基本属性"><a href="#基本属性" class="headerlink" title="基本属性"></a>基本属性</h3><ol>
@@ -318,6 +324,13 @@
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/javascript/">javascript</a>
+                    
+                  </div>
+                
                 
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
@@ -360,6 +373,35 @@
               
             </div>
 
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"SENRU08HPXafOGhG2XAwDq4Q-gzGzoHsz","appKey":"SmBXysKuOGYdFfLXpPenWmvh","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
             
           </article>
         </div>
