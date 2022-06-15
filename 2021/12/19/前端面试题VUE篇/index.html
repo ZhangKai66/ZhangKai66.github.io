@@ -24,7 +24,7 @@
 <meta property="og:description" content="Vue相关Vue 的最大的优势是什么 数据可以双向绑定  mvvm 组件化开发 单页面应用，减少后台请求 第三方库比较好用  mvvm 和 mvc 区别是什么 mvvm(model view viewmodel)   viewModel是核心可以将model-&gt;view  by数据绑定 ；可以将view-&gt;model  bydom事件监听  即 双向绑定  mvc(model view">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-12-19T15:15:04.000Z">
-<meta property="article:modified_time" content="2022-06-01T15:54:41.224Z">
+<meta property="article:modified_time" content="2022-06-15T15:22:10.813Z">
 <meta property="article:author" content="Kai Zhang">
 <meta property="article:tag" content="Vue, 面试">
 <meta name="twitter:card" content="summary_large_image">
@@ -238,7 +238,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：13 days ago
+                  本文最后更新于：a few seconds ago
                 
               </p>
             
@@ -278,7 +278,6 @@
 <li>errorCaptured   捕获到子孙组件的错误时调用</li>
 </ol>
 <p>了解各部分是干啥的</p>
-<h3 id="封装过-Vue-的组件吗"><a href="#封装过-Vue-的组件吗" class="headerlink" title="封装过 Vue 的组件吗"></a>封装过 Vue 的组件吗</h3><p>☆</p>
 <h3 id="组件之间是如何传值的"><a href="#组件之间是如何传值的" class="headerlink" title="组件之间是如何传值的"></a>组件之间是如何传值的</h3><p>父子组件: props $emit<br>祖孙组件: provide inject<br>兄弟组件: eventbus<br>其他方式: vuex</p>
 <h3 id="data为啥必须是函数"><a href="#data为啥必须是函数" class="headerlink" title="data为啥必须是函数"></a>data为啥必须是函数</h3><p>确保vue的各个实例之间的数据不会相互影响 – TODO:可优化说辞</p>
 <p>1.一个组件被复用多次的话，也就会创建多个实例。本质上，这些实例用的都是同一个构造函数。 2.如果data是对象的话，对象属于引用类型，会影响到所有的实例。所以为了保证组件不同的实例之间data不冲突，data必须是一个函数。</p>
@@ -293,6 +292,7 @@
 <li>self</li>
 <li>capture</li>
 </ul>
+<h3 id="封装过-Vue-的组件吗"><a href="#封装过-Vue-的组件吗" class="headerlink" title="封装过 Vue 的组件吗"></a>封装过 Vue 的组件吗</h3><p>☆</p>
 <h3 id="Vue踩过的坑"><a href="#Vue踩过的坑" class="headerlink" title="Vue踩过的坑"></a>Vue踩过的坑</h3><ul>
 <li>给data中的对象直接添加属性并赋值 无效果<br>解决方法：Vue.set(object, attribute, value)新增的属性也是响应式的</li>
 <li>在created中操作dom报错，无法获取到dom<br>解决方法：Vue.nextTick()</li>
