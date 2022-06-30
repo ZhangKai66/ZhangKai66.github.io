@@ -24,7 +24,7 @@
 <meta property="og:description" content="Vue相关Vue 的最大的优势是什么 数据可以双向绑定  mvvm 组件化开发 单页面应用，减少后台请求 第三方库比较好用  mvvm 和 mvc 区别是什么 mvvm(model view viewmodel)   viewModel是核心可以将model-&gt;view  by数据绑定 ；可以将view-&gt;model  bydom事件监听  即 双向绑定  mvc(model view">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-12-19T15:15:04.000Z">
-<meta property="article:modified_time" content="2022-06-15T15:22:10.813Z">
+<meta property="article:modified_time" content="2022-06-25T03:37:22.919Z">
 <meta property="article:author" content="Kai Zhang">
 <meta property="article:tag" content="Vue, 面试">
 <meta name="twitter:card" content="summary_large_image">
@@ -238,7 +238,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：a day ago
+                  本文最后更新于：5 days ago
                 
               </p>
             
@@ -375,7 +375,7 @@
 <blockquote>
 <p>解决第二种</p>
 </blockquote>
-<p>this.arr.splce(newLength)</p>
+<p>this.arr.splice(newLength)</p>
 <h3 id="怎么重置Vue中的data"><a href="#怎么重置Vue中的data" class="headerlink" title="怎么重置Vue中的data"></a>怎么重置Vue中的data</h3><p>Object.assign(target, source) 方法用于将所有可枚举属性的值从一个或多个源对<br>象复制到目标对象。它将返回目标对象。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">Object</span>.assign(<span class="hljs-built_in">this</span>.$data, <span class="hljs-built_in">this</span>.$options.data(<span class="hljs-built_in">this</span>))<br></code></pre></td></tr></table></figure>
 

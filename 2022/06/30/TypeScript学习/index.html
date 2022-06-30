@@ -16,20 +16,20 @@
   <meta name="description" content="记录学习前端的历程">
   <meta name="author" content="Kai Zhang">
   <meta name="keywords" content="前端,frontend">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="类型注解123456&#x2F;&#x2F; 函数的返回值也可以指定类型function greeter(person: Person): string &amp;#123;&amp;#125;let b: &quot;male&quot; | &quot;female&quot; &#x2F;&#x2F;限制b的值只可以取male或femalelet a: boolean | string&#x2F;&#x2F; 联合类型let c: any  接口12345inter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://zhangkai66.github.io.git/2021/10/31/hello-world/index.html">
+<meta property="og:title" content="TypeScript学习">
+<meta property="og:url" content="https://zhangkai66.github.io.git/2022/06/30/TypeScript%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="ZhangKai&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="类型注解123456&#x2F;&#x2F; 函数的返回值也可以指定类型function greeter(person: Person): string &amp;#123;&amp;#125;let b: &quot;male&quot; | &quot;female&quot; &#x2F;&#x2F;限制b的值只可以取male或femalelet a: boolean | string&#x2F;&#x2F; 联合类型let c: any  接口12345inter">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-31T12:23:23.538Z">
-<meta property="article:modified_time" content="2022-06-01T14:14:29.356Z">
+<meta property="article:published_time" content="2022-06-30T14:36:29.000Z">
+<meta property="article:modified_time" content="2022-06-30T14:55:17.366Z">
 <meta property="article:author" content="Kai Zhang">
-<meta property="article:tag" content="前端,frontend">
+<meta property="article:tag" content="TypeScript">
 <meta name="twitter:card" content="summary_large_image">
   
-  <title>Hello World - ZhangKai&#39;s Blog</title>
+  <title>TypeScript学习 - ZhangKai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -175,7 +175,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Hello World">
+            <span class="h2" id="subtitle" title="TypeScript学习">
               
             </span>
 
@@ -185,8 +185,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-10-31 20:23" pubdate>
-        October 31, 2021 pm
+      <time datetime="2022-06-30 22:36" pubdate>
+        June 30, 2022 pm
       </time>
     </span>
   
@@ -196,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      605 字
+      554 字
     </span>
   
 
@@ -234,37 +234,39 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none">TypeScript学习</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：a month ago
+                  本文最后更新于：27 minutes ago
                 
               </p>
             
             <div class="markdown-body">
-              <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><p>How to publish a new article by hexo</p>
-<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+              <h3 id="类型注解"><a href="#类型注解" class="headerlink" title="类型注解"></a>类型注解</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 函数的返回值也可以指定类型</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greeter</span>(<span class="hljs-params">person: Person</span>): <span class="hljs-title">string</span> </span>&#123;&#125;<br><span class="hljs-keyword">let</span> b: <span class="hljs-string">&quot;male&quot;</span> | <span class="hljs-string">&quot;female&quot;</span> <span class="hljs-comment">//限制b的值只可以取male或female</span><br><span class="hljs-keyword">let</span> a: <span class="hljs-built_in">boolean</span> | <span class="hljs-built_in">string</span><span class="hljs-comment">// 联合类型</span><br><span class="hljs-keyword">let</span> c: <span class="hljs-built_in">any</span><br><br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> Person &#123;<br>  <span class="hljs-attr">firstName</span>: <span class="hljs-built_in">string</span>,<br>  <span class="hljs-attr">secondName</span>: <span class="hljs-built_in">string</span>,<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greeter</span>(<span class="hljs-params">person: Person</span>): <span class="hljs-title">string</span> </span>&#123;&#125;<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<h3 id="How-to-use-Fluid"><a href="#How-to-use-Fluid" class="headerlink" title="How to use Fluid"></a>How to use Fluid</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js">&#123;% note success %&#125;<br>文字 或者 <span class="hljs-string">`markdown`</span> 均可 便签<br>&#123;% endnote %&#125;<br><br>&#123;% label primary @text %&#125;  label<br><br>&#123;% cb text, checked?, incline? %&#125;  checkbox<br><br>&#123;% btn url, text, title %&#125; button<br><br><br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> </span>&#123;<br>  <span class="hljs-attr">fullName</span>: <span class="hljs-built_in">string</span>,<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> firstName,<span class="hljs-keyword">public</span> middleInitial, <span class="hljs-keyword">public</span> lastName</span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.fullName = firstName+ <span class="hljs-string">&quot; &quot;</span> + middleInitial + <span class="hljs-string">&quot; &quot;</span> + lastName;<br>  &#125;<br>&#125;<br><span class="hljs-keyword">let</span> user = <span class="hljs-keyword">new</span> Student(<span class="hljs-string">&quot;Jane&quot;</span>,<span class="hljs-string">&quot;Micky&quot;</span>,<span class="hljs-string">&quot;User&quot;</span>)<br></code></pre></td></tr></table></figure>
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/TypeScript/">TypeScript</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/TypeScript/">TypeScript</a>
+                    
+                  </div>
                 
               </div>
               
@@ -279,15 +281,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/10/31/AllToDo/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">AllToDo</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/06/14/vue3%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B/">
+                        <span class="hidden-mobile">vue3简单上手</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
