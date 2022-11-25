@@ -16,20 +16,20 @@
   <meta name="description" content="记录学习前端的历程">
   <meta name="author" content="Kai Zhang">
   <meta name="keywords" content="前端,frontend">
-  <meta name="description" content="OD 一面面试题 做过哪些项目 项目的亮点是什么 defer和async的区别 生命周期有哪些和各自特点 原型链是什么 闭包的使用，在哪用过，为啥要用 event loop  OD 二面面试题 前端性能优化相关 前端安全相关做过哪些，xss csrf分别是怎么防护的 搜索页面是怎么保证在秒级拿到数据的，（不拘泥于前端），模糊查找，前缀模糊查找和后缀模糊查找哪个性能更好（后缀：面试官说的） 算法数据">
+  <meta name="description" content="子组件添加v-bind&#x3D;”$attrs”即可将父组件中未通过props传递的属性全部注入绑定到子组件中 12345678910111213&#x2F;&#x2F; 父组件&lt;m-menu  :data&#x3D;&quot;data1&quot;  background-color&#x3D;&quot;red&quot;  :defaultActive&#x3D;&quot;2&quot;  a&#x3D;&quot;ccc&quot;&gt;&amp;l">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端面试题记录">
-<meta property="og:url" content="https://zhangkai66.github.io.git/2022/05/27/%E9%9D%A2%E8%AF%95%E9%A2%98%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:title" content="vue3封装组件库学习记录">
+<meta property="og:url" content="https://zhangkai66.github.io.git/2022/11/08/vue3%E5%B0%81%E8%A3%85%E7%BB%84%E4%BB%B6%E5%BA%93%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="ZhangKai&#39;s Blog">
-<meta property="og:description" content="OD 一面面试题 做过哪些项目 项目的亮点是什么 defer和async的区别 生命周期有哪些和各自特点 原型链是什么 闭包的使用，在哪用过，为啥要用 event loop  OD 二面面试题 前端性能优化相关 前端安全相关做过哪些，xss csrf分别是怎么防护的 搜索页面是怎么保证在秒级拿到数据的，（不拘泥于前端），模糊查找，前缀模糊查找和后缀模糊查找哪个性能更好（后缀：面试官说的） 算法数据">
+<meta property="og:description" content="子组件添加v-bind&#x3D;”$attrs”即可将父组件中未通过props传递的属性全部注入绑定到子组件中 12345678910111213&#x2F;&#x2F; 父组件&lt;m-menu  :data&#x3D;&quot;data1&quot;  background-color&#x3D;&quot;red&quot;  :defaultActive&#x3D;&quot;2&quot;  a&#x3D;&quot;ccc&quot;&gt;&amp;l">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-05-27T09:07:07.000Z">
-<meta property="article:modified_time" content="2022-06-01T15:55:36.963Z">
+<meta property="article:published_time" content="2022-11-08T03:47:37.000Z">
+<meta property="article:modified_time" content="2022-11-18T02:43:15.426Z">
 <meta property="article:author" content="Kai Zhang">
-<meta property="article:tag" content="前端,frontend">
+<meta property="article:tag" content="vue3,封装组件">
 <meta name="twitter:card" content="summary_large_image">
   
-  <title>前端面试题记录 - ZhangKai&#39;s Blog</title>
+  <title>vue3封装组件库学习记录 - ZhangKai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -175,7 +175,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="前端面试题记录">
+            <span class="h2" id="subtitle" title="vue3封装组件库学习记录">
               
             </span>
 
@@ -185,8 +185,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-05-27 17:07" pubdate>
-        May 27, 2022 pm
+      <time datetime="2022-11-08 11:47" pubdate>
+        November 8, 2022 am
       </time>
     </span>
   
@@ -196,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      483 字
+      1.1k 字
     </span>
   
 
@@ -205,7 +205,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2 分钟
+      3 分钟
     </span>
   
 
@@ -234,48 +234,30 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">前端面试题记录</h1>
+            <h1 style="display: none">vue3封装组件库学习记录</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：6 months ago
+                  本文最后更新于：7 days ago
                 
               </p>
             
             <div class="markdown-body">
-              <h3 id="OD-一面面试题"><a href="#OD-一面面试题" class="headerlink" title="OD 一面面试题"></a>OD 一面面试题</h3><ol>
-<li>做过哪些项目 项目的亮点是什么</li>
-<li>defer和async的区别</li>
-<li>生命周期有哪些和各自特点</li>
-<li>原型链是什么</li>
-<li>闭包的使用，在哪用过，为啥要用</li>
-<li>event loop</li>
-</ol>
-<h3 id="OD-二面面试题"><a href="#OD-二面面试题" class="headerlink" title="OD 二面面试题"></a>OD 二面面试题</h3><ol>
-<li>前端性能优化相关</li>
-<li>前端安全相关做过哪些，xss csrf分别是怎么防护的</li>
-<li>搜索页面是怎么保证在秒级拿到数据的，（不拘泥于前端），模糊查找，前缀模糊查找和后缀模糊查找哪个性能更好（后缀：面试官说的）</li>
-<li>算法数据结构了解哪些？哈希表是啥？怎么插入，删除数据，优点是啥</li>
-<li>react和vue区别是什么？一般技术选型是怎么选的</li>
-<li>有没有做过一个独立需求的落地？怎么选择技术或者框架的</li>
-<li>svg的文件结构，为什么比icon更快</li>
-</ol>
-<h3 id="天润-一面面试题"><a href="#天润-一面面试题" class="headerlink" title="天润 一面面试题"></a>天润 一面面试题</h3><ol>
-<li>新增的ES6语法</li>
-<li>新增的数组方法</li>
-<li>节流防抖代码实现</li>
-<li>vue组件中是怎么通信的</li>
-<li>vue双向数据绑定</li>
-<li>vuex的数据流向</li>
-<li>vue能监听数组数据的变化吗，用什么方法可以触发可监听到的变化 $set</li>
-</ol>
-<h3 id="OD一面"><a href="#OD一面" class="headerlink" title="OD一面"></a>OD一面</h3><ol>
-<li>webpack分包代码怎么配置</li>
-<li>能不能在data里面使用计算属性</li>
-<li>除了代码层面的还有哪些性能优化的方式</li>
-<li>问组件之间优先选择哪种通信方式 为什么</li>
-<li>问箭头函数有什么优点 </li>
-<li>问data compute watch之间有什么依赖关系</li>
+              <ol>
+<li><p>子组件添加v-bind=”$attrs”即可将父组件中未通过props传递的属性全部注入绑定到子组件中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs vue">// 父组件<br>&lt;m-menu<br>  :data=&quot;data1&quot;<br>  background-color=&quot;red&quot;<br>  :defaultActive=&quot;2&quot;<br>  a=&quot;ccc&quot;<br>&gt;&lt;/m-menu&gt;<br>// 子组件<br>&lt;el-menu<br> :default-active=&quot;defaultActive&quot;<br> :router=&quot;router&quot;<br> v-bind=&quot;$attrs&quot;<br>&gt;<br></code></pre></td></tr></table></figure></li>
+<li><p>无限层级菜单：使用tsx实现（因为vue模板不太适合递归渲染生成）</p>
+</li>
+<li><p>可以增加自定义键名，将后台返回的数据的键名以props的方式传递给子组件以更自由地接收数据</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> data = [&#123;<br>  <span class="hljs-attr">a</span>:<span class="hljs-string">&#x27;a&#x27;</span>,<br>  <span class="hljs-attr">b</span>:<span class="hljs-string">&#x27;b&#x27;</span>,<br>  <span class="hljs-attr">c</span>:<span class="hljs-string">&#x27;c&#x27;</span><br>&#125;];<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">m-sub-comp</span> <span class="hljs-attr">:name</span>=<span class="hljs-string">&quot;a&quot;</span> <span class="hljs-attr">:icon</span>=<span class="hljs-string">&quot;b&quot;</span> <span class="hljs-attr">:children</span>=<span class="hljs-string">&quot;c&quot;</span> /&gt;</span></span><br></code></pre></td></tr></table></figure>
+<p>子组件中可以直接用props.name等进行其他操作</p>
+</li>
+<li><p>城市选择组件，点击对应字母跳转至该字母开头的城市区域（滚动条定位的过程）可以使用<code>el.scrollIntoView()</code>方法</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 先给每个字母对应城市区域添加id</span><br><span class="hljs-keyword">let</span> el = <span class="hljs-built_in">document</span>.getElementById();<br><span class="hljs-keyword">if</span>(el) el.scrollIntoView();<br></code></pre></td></tr></table></figure></li>
+<li><p>父组件给子组件绑定显示或隐藏的值<br>父组件中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;m-son :v-model=&quot;visible&quot; /&gt;<br></code></pre></td></tr></table></figure>
+<p>子组件中： 两次监听，一次监听父组件props的值以修改子组件的显示隐藏值，第二次监听子组件显示隐藏值 以分发事件给父组件，父组件以v-model的形式接收</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs ts">watch(<br>  <span class="hljs-function">() =&gt;</span> props.visible,<br>  <span class="hljs-function">(<span class="hljs-params">newVal</span>) =&gt;</span> &#123;<br>    dialogVisible.value = newVal;<br>  &#125;<br>);<br>watch(<br>  <span class="hljs-function">() =&gt;</span> dialogVisible.value,<br>  <span class="hljs-function">(<span class="hljs-params">val</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">// console.log(&#x27;&#x27;)</span><br>    emits(<span class="hljs-string">&quot;update:visible&quot;</span>, val);<br>  &#125;<br>);<br></code></pre></td></tr></table></figure></li>
 </ol>
 
             </div>
@@ -283,13 +265,13 @@
             <div>
               <div class="post-metas mb-3">
                 
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                      <a class="hover-with-bg" href="/tags/vue3-%E5%B0%81%E8%A3%85%E7%BB%84%E4%BB%B6/">vue3,封装组件</a>
                     
                   </div>
-                
                 
               </div>
               
@@ -304,9 +286,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/05/27/vue3-ts-vite%E5%BC%80%E5%8F%91%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/">
+                      <a href="/2022/11/09/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%8F%8C%E8%B6%8A100%E9%81%93%E9%9D%A2%E8%AF%95%E7%9C%9F%E9%A2%98/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">vue3+ts+vite开发音乐播放器</span>
+                        <span class="hidden-mobile">前端面试双越100道面试真题</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -314,8 +296,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/11/%E7%94%A8js%E5%AE%9E%E7%8E%B0%E5%B8%B8%E8%A7%81%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="hidden-mobile">用js实现常见的数据结构</span>
+                      <a href="/2022/06/30/TypeScript%E5%AD%A6%E4%B9%A0/">
+                        <span class="hidden-mobile">TypeScript学习</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

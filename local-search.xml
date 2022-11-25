@@ -4,6 +4,69 @@
   
   
   <entry>
+    <title>JS高级玩法学习</title>
+    <link href="/2022/11/10/JS%E9%AB%98%E7%BA%A7%E7%8E%A9%E6%B3%95%E5%AD%A6%E4%B9%A0/"/>
+    <url>/2022/11/10/JS%E9%AB%98%E7%BA%A7%E7%8E%A9%E6%B3%95%E5%AD%A6%E4%B9%A0/</url>
+    
+    <content type="html"><![CDATA[<h3 id="属性描述符"><a href="#属性描述符" class="headerlink" title="属性描述符"></a>属性描述符</h3><ol><li>configurable 是否可配置</li><li>enumerable 是否可枚举 forin keys中是否显示</li><li>value 值</li><li>writable 是否可修改</li><li>get</li><li>set</li></ol>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>JavaScript</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>前端面试双越100道面试真题</title>
+    <link href="/2022/11/09/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%8F%8C%E8%B6%8A100%E9%81%93%E9%9D%A2%E8%AF%95%E7%9C%9F%E9%A2%98/"/>
+    <url>/2022/11/09/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%8F%8C%E8%B6%8A100%E9%81%93%E9%9D%A2%E8%AF%95%E7%9C%9F%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>面试题</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>面试题</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>vue3封装组件库学习记录</title>
+    <link href="/2022/11/08/vue3%E5%B0%81%E8%A3%85%E7%BB%84%E4%BB%B6%E5%BA%93%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    <url>/2022/11/08/vue3%E5%B0%81%E8%A3%85%E7%BB%84%E4%BB%B6%E5%BA%93%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<ol><li><p>子组件添加v-bind=”$attrs”即可将父组件中未通过props传递的属性全部注入绑定到子组件中</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs vue">// 父组件<br>&lt;m-menu<br>  :data=&quot;data1&quot;<br>  background-color=&quot;red&quot;<br>  :defaultActive=&quot;2&quot;<br>  a=&quot;ccc&quot;<br>&gt;&lt;/m-menu&gt;<br>// 子组件<br>&lt;el-menu<br> :default-active=&quot;defaultActive&quot;<br> :router=&quot;router&quot;<br> v-bind=&quot;$attrs&quot;<br>&gt;<br></code></pre></td></tr></table></figure></li><li><p>无限层级菜单：使用tsx实现（因为vue模板不太适合递归渲染生成）</p></li><li><p>可以增加自定义键名，将后台返回的数据的键名以props的方式传递给子组件以更自由地接收数据</p><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> data = [&#123;<br>  <span class="hljs-attr">a</span>:<span class="hljs-string">&#x27;a&#x27;</span>,<br>  <span class="hljs-attr">b</span>:<span class="hljs-string">&#x27;b&#x27;</span>,<br>  <span class="hljs-attr">c</span>:<span class="hljs-string">&#x27;c&#x27;</span><br>&#125;];<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">m-sub-comp</span> <span class="hljs-attr">:name</span>=<span class="hljs-string">&quot;a&quot;</span> <span class="hljs-attr">:icon</span>=<span class="hljs-string">&quot;b&quot;</span> <span class="hljs-attr">:children</span>=<span class="hljs-string">&quot;c&quot;</span> /&gt;</span></span><br></code></pre></td></tr></table></figure><p>子组件中可以直接用props.name等进行其他操作</p></li><li><p>城市选择组件，点击对应字母跳转至该字母开头的城市区域（滚动条定位的过程）可以使用<code>el.scrollIntoView()</code>方法</p><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 先给每个字母对应城市区域添加id</span><br><span class="hljs-keyword">let</span> el = <span class="hljs-built_in">document</span>.getElementById();<br><span class="hljs-keyword">if</span>(el) el.scrollIntoView();<br></code></pre></td></tr></table></figure></li><li><p>父组件给子组件绑定显示或隐藏的值<br>父组件中：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;m-son :v-model=&quot;visible&quot; /&gt;<br></code></pre></td></tr></table></figure><p>子组件中： 两次监听，一次监听父组件props的值以修改子组件的显示隐藏值，第二次监听子组件显示隐藏值 以分发事件给父组件，父组件以v-model的形式接收</p><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs ts">watch(<br>  <span class="hljs-function">() =&gt;</span> props.visible,<br>  <span class="hljs-function">(<span class="hljs-params">newVal</span>) =&gt;</span> &#123;<br>    dialogVisible.value = newVal;<br>  &#125;<br>);<br>watch(<br>  <span class="hljs-function">() =&gt;</span> dialogVisible.value,<br>  <span class="hljs-function">(<span class="hljs-params">val</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">// console.log(&#x27;&#x27;)</span><br>    emits(<span class="hljs-string">&quot;update:visible&quot;</span>, val);<br>  &#125;<br>);<br></code></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>vue3,封装组件</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>TypeScript学习</title>
     <link href="/2022/06/30/TypeScript%E5%AD%A6%E4%B9%A0/"/>
     <url>/2022/06/30/TypeScript%E5%AD%A6%E4%B9%A0/</url>
