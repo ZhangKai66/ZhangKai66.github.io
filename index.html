@@ -193,26 +193,28 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/11/10/JS%E9%AB%98%E7%BA%A7%E7%8E%A9%E6%B3%95%E5%AD%A6%E4%B9%A0/" target="_self">
-          JS高级玩法学习
+        <a href="/2022/12/01/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83%E6%95%B4%E7%90%86/" target="_self">
+          前端代码格式规范整理
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2022/11/10/JS%E9%AB%98%E7%BA%A7%E7%8E%A9%E6%B3%95%E5%AD%A6%E4%B9%A0/" target="_self">
+        <a href="/2022/12/01/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83%E6%95%B4%E7%90%86/" target="_self">
           
           
             
           
-          属性描述符
-configurable 是否可配置
-enumerable 是否可枚举 forin keys中是否显示
-value 值
-writable 是否可修改
-get
-set
+          前端编程格式规范
+代码格式规范
+git 提交规范
 
+代码格式规范通过ESLint + Prettier + VSCode 配置，达到了在保存代码时，自动规范化代码格式的目的
+git 提交规范通过husky 来监测 Git hooks 钩子, 并用以下插件完成配置
 
+约定式提交规范
+commitizen：git 提交规范化工具
+commitlint：用于检查提交信息
+pre-commit： git 
         </a>
       </p>
 
@@ -220,8 +222,8 @@ set
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-10 10:38" pubdate>
-              2022-11-10
+            <time datetime="2022-12-01 10:44" pubdate>
+              2022-12-01
             </time>
           </div>
         
@@ -230,7 +232,7 @@ set
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/JavaScript/">JavaScript</a>
+              <a href="/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96/">格式化</a>
             
           </div>
         
@@ -305,9 +307,7 @@ set
           
             
           
-          
-子组件添加v-bind=”$attrs”即可将父组件中未通过props传递的属性全部注入绑定到子组件中
-12345678910111213// 父组件&lt;m-menu  :data=&quot;data1&quot;  background-color=&quot;red&quot;  :defaultActive=&quot;2&quot;  a=&quot;ccc&quot;&gt;&l
+          1.子组件添加v-bind=”$attrs”即可将父组件中未通过props传递的属性全部注入绑定到子组件中12345678910111213// 父组件&lt;m-menu  :data=&quot;data1&quot;  background-color=&quot;red&quot;  :defaultActive=&quot;2&quot;  a=&quot;ccc&quot;&gt;&l
         </a>
       </p>
 
