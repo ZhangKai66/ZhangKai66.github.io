@@ -1,0 +1,521 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/ultraman.png">
+  <link rel="icon" href="/img/ultraman.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="记录学习前端的历程">
+  <meta name="author" content="Kai Zhang">
+  <meta name="keywords" content="前端,frontend">
+  <meta name="description" content="登录功能的设计与实现登录操作的实现 封装 axios 模块 封装 接口请求 模块 封装登录请求动作 保存服务端返回的 token 登录鉴权  封装 axios 模块配置环境变量封装 axios 模块axios模块至少需要具备一种能力：根据当前模式的不同，设定不同的 BaseUrl，因为企业级项目在开发状态和生产状态 baseUrl是不同的。可以使用 @vue&#x2F;cli 所提供的环境变量来去进行实现.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="后台管理系统登录功能的实现">
+<meta property="og:url" content="https://zhangkai66.github.io.git/2022/12/14/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD%E7%9A%84%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:site_name" content="ZhangKai&#39;s Blog">
+<meta property="og:description" content="登录功能的设计与实现登录操作的实现 封装 axios 模块 封装 接口请求 模块 封装登录请求动作 保存服务端返回的 token 登录鉴权  封装 axios 模块配置环境变量封装 axios 模块axios模块至少需要具备一种能力：根据当前模式的不同，设定不同的 BaseUrl，因为企业级项目在开发状态和生产状态 baseUrl是不同的。可以使用 @vue&#x2F;cli 所提供的环境变量来去进行实现.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-12-14T13:54:21.000Z">
+<meta property="article:modified_time" content="2022-12-14T14:37:29.174Z">
+<meta property="article:author" content="Kai Zhang">
+<meta property="article:tag" content="登录">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>后台管理系统登录功能的实现 - ZhangKai&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zhangkai66.github.io.git","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Jamarcus</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/beach.jpeg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="后台管理系统登录功能的实现">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-12-14 21:54" pubdate>
+        December 14, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.7k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      11 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">后台管理系统登录功能的实现</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：a few seconds ago
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="登录功能的设计与实现"><a href="#登录功能的设计与实现" class="headerlink" title="登录功能的设计与实现"></a>登录功能的设计与实现</h2><h3 id="登录操作的实现"><a href="#登录操作的实现" class="headerlink" title="登录操作的实现"></a>登录操作的实现</h3><ol>
+<li>封装 axios 模块</li>
+<li>封装 接口请求 模块</li>
+<li>封装登录请求动作</li>
+<li>保存服务端返回的 token</li>
+<li>登录鉴权</li>
+</ol>
+<h3 id="封装-axios-模块"><a href="#封装-axios-模块" class="headerlink" title="封装 axios 模块"></a>封装 axios 模块</h3><h4 id="配置环境变量封装-axios-模块"><a href="#配置环境变量封装-axios-模块" class="headerlink" title="配置环境变量封装 axios 模块"></a>配置环境变量封装 axios 模块</h4><p>axios模块至少需要具备一种能力：根据当前模式的不同，设定不同的 BaseUrl，因为企业级项目在开发状态和生产状态 baseUrl是不同的。<br>可以使用 @vue/cli 所提供的<strong>环境变量</strong>来去进行实现.</p>
+<p>我们可以再项目根目录创建两个文件</p>
+<ol>
+<li><p>.env.development</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"># 标志<br>ENV = <span class="hljs-string">&#x27;development&#x27;</span><br><br># base api<br>VUE_APP_BASE_API = <span class="hljs-string">&#x27;/api&#x27;</span><br></code></pre></td></tr></table></figure></li>
+<li><p>.env.production</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"># 标志<br>ENV = <span class="hljs-string">&#x27;production&#x27;</span><br><br># base api<br>VUE_APP_BASE_API = <span class="hljs-string">&#x27;/prod-api&#x27;</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>接着在utils文件夹下添加request.js文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;axios&#x27;</span><br><br><span class="hljs-keyword">const</span> service = axios.create(&#123;<br>  <span class="hljs-attr">baseURL</span>: process.env.VUE_APP_BASE_API,<br>  <span class="hljs-attr">timeout</span>: <span class="hljs-number">5000</span><br>&#125;)<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> service<br></code></pre></td></tr></table></figure>
+<h3 id="封装请求动作"><a href="#封装请求动作" class="headerlink" title="封装请求动作"></a>封装请求动作</h3><ol>
+<li>封装接口请求模块</li>
+<li>封装登录请求动作</li>
+</ol>
+<h4 id="封装接口请求模块"><a href="#封装接口请求模块" class="headerlink" title="封装接口请求模块"></a>封装接口请求模块</h4><p>创建/api/sys.js文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> request <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/utils/request&#x27;</span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 登录</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> login = <span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> &#123;<br>  <span class="hljs-keyword">return</span> request(&#123;<br>    <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;/sys/login&#x27;</span>,<br>    <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,<br>    data<br>  &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="封装登录请求动作"><a href="#封装登录请求动作" class="headerlink" title="封装登录请求动作"></a>封装登录请求动作</h4><p>该动作我们期望把它封装到 vuex 的 action 中<a target="_blank" rel="noopener" href="https://www.cnblogs.com/sweetpitaya/p/16871664.html">为什么</a><br>在 store 下创建 modules 文件夹，创建 user.js 模块，用于处理所有和 <strong>用户相关</strong> 的内容<br>代码实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; login &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/api/sys&#x27;</span><br><span class="hljs-keyword">import</span> md5 <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;md5&#x27;</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-attr">namespaced</span>: <span class="hljs-literal">true</span>,<span class="hljs-comment">//namespaced为true的作用是告诉vuex，该模块所有的state 、getters、mutations、actions里面的东西调用时都需要加上命名空间，这个命名空间就是该模块被import时命名的名字,调用时：this.$store.state.map.zoom（map是命名空间）;</span><br>  <span class="hljs-attr">state</span>: <span class="hljs-function">() =&gt;</span> (&#123;&#125;),<br>  <span class="hljs-attr">mutations</span>: &#123;&#125;,<br>  <span class="hljs-attr">actions</span>: &#123;<br>    <span class="hljs-function"><span class="hljs-title">login</span>(<span class="hljs-params">context, userInfo</span>)</span> &#123;<br>      <span class="hljs-keyword">const</span> &#123; username, password &#125; = userInfo<br>      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>        login(&#123;<br>          username,<br>          <span class="hljs-attr">password</span>: md5(password)<br>        &#125;)<br>          .then(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> &#123;<br>            resolve(data)<br>          &#125;)<br>          .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> &#123;<br>            reject(err)<br>          &#125;)<br>      &#125;)<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.mulingyuer.com/archives/360/">namespaced命名空间</a></p>
+<p>调用时：(此处user/就是命名空间)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">store.dispatch(<span class="hljs-string">&#x27;user/login&#x27;</span>, loginForm.value)<br>     .then(<span class="hljs-function">() =&gt;</span> &#123;<br>        loading.value = <span class="hljs-literal">false</span><br>        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> 登录后操作</span><br>      &#125;)<br></code></pre></td></tr></table></figure>
+
+<p>此时，请求发送会报错，因为请求会被自动键入到当前前端所在的服务中，即此时请求路径为当前前端地址加上<code>/api/sys/login</code>,因此我们在此处需要使用<a target="_blank" rel="noopener" href="https://webpack.docschina.org/configuration/dev-server/">webpack DevServer</a>代理将当前的url代理到具体的后台服务地址</p>
+<p>在vue.config.js中，加入以下代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">module</span>.exports = &#123;<br>  <span class="hljs-attr">devServer</span>: &#123;<br>    <span class="hljs-comment">// 配置反向代理</span><br>    <span class="hljs-attr">proxy</span>: &#123;<br>      <span class="hljs-comment">// 当地址中有/api的时候会触发代理机制</span><br>      <span class="hljs-string">&#x27;/api&#x27;</span>: &#123;<br>        <span class="hljs-comment">// 要代理的服务器地址  这里不用写 api</span><br>        <span class="hljs-attr">target</span>: <span class="hljs-string">&#x27;https://api.xxx.com/&#x27;</span>,<br>        <span class="hljs-attr">changeOrigin</span>: <span class="hljs-literal">true</span> <span class="hljs-comment">// 是否跨域</span><br>      &#125;<br>    &#125;<br>  &#125;,<br>  ...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>重启服务即可获得数据</p>
+<h4 id="本地缓存处理方案"><a href="#本地缓存处理方案" class="headerlink" title="本地缓存处理方案"></a>本地缓存处理方案</h4><p>通常情况下，在获取到 token 之后，我们会把 token 进行缓存，而缓存的方式将会分为两种</p>
+<ol>
+<li>localStorage （保存在 LocalStorage 是为了方便实现 自动登录功能）</li>
+<li>vuex （保存在 vuex 中是为了后面在其他位置进行使用）</li>
+</ol>
+<h5 id="封装localstorage方法"><a href="#封装localstorage方法" class="headerlink" title="封装localstorage方法"></a>封装localstorage方法</h5><p>创建utils/storage.js文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 存储数据</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> setItem = <span class="hljs-function">(<span class="hljs-params">key, value</span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// 将数组、对象类型的数据转化为 JSON 字符串进行存储</span><br>  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> value === <span class="hljs-string">&#x27;object&#x27;</span>) &#123;<br>    value = <span class="hljs-built_in">JSON</span>.stringify(value)<br>  &#125;<br>  <span class="hljs-built_in">window</span>.localStorage.setItem(key, value)<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 获取数据</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> getItem = <span class="hljs-function"><span class="hljs-params">key</span> =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> data = <span class="hljs-built_in">window</span>.localStorage.getItem(key)<br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">JSON</span>.parse(data)<br>  &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>    <span class="hljs-keyword">return</span> data<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 删除数据</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> removeItem = <span class="hljs-function"><span class="hljs-params">key</span> =&gt;</span> &#123;<br>  <span class="hljs-built_in">window</span>.localStorage.removeItem(key)<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 删除所有数据</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> removeAllItem = <span class="hljs-function"><span class="hljs-params">key</span> =&gt;</span> &#123;<br>  <span class="hljs-built_in">window</span>.localStorage.clear()<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>在user模块中，处理token保存</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 存</span><br><span class="hljs-attr">state</span>: <span class="hljs-function">() =&gt;</span> (&#123;<br>  <span class="hljs-attr">token</span>: getItem(TOKEN) || <span class="hljs-string">&#x27;&#x27;</span><br>&#125;),<br><span class="hljs-attr">mutations</span>: &#123;<br>  <span class="hljs-function"><span class="hljs-title">setToken</span>(<span class="hljs-params">state, token</span>)</span> &#123;<br>    state.token = token<br>    setItem(TOKEN, token)<br>  &#125;<br>&#125;,<br><span class="hljs-comment">// 取</span><br><span class="hljs-built_in">this</span>.commit(<span class="hljs-string">&#x27;user/setToken&#x27;</span>, data.data.data.token)<br></code></pre></td></tr></table></figure>
+
+<h4 id="登录后操作"><a href="#登录后操作" class="headerlink" title="登录后操作"></a>登录后操作</h4><p><strong>登录鉴权</strong></p>
+<blockquote>
+<p>当用户未登陆时，不允许进入除 login 之外的其他页面。<br>用户登录后，token 未过期之前，不允许进入 login 页面</p>
+</blockquote>
+<p>在main.js平级 创建permission文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> router <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./router&#x27;</span><br><span class="hljs-keyword">import</span> store <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./store&#x27;</span><br><br><span class="hljs-comment">// 白名单</span><br><span class="hljs-keyword">const</span> whiteList = [<span class="hljs-string">&#x27;/login&#x27;</span>]<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 路由前置守卫</span><br><span class="hljs-comment"> */</span><br>router.beforeEach(<span class="hljs-keyword">async</span> (to, <span class="hljs-keyword">from</span>, next) =&gt; &#123;<br>  <span class="hljs-comment">// 存在 token ，进入主页</span><br>  <span class="hljs-comment">// if (store.state.user.token) &#123;</span><br>  <span class="hljs-comment">// 快捷访问</span><br>  <span class="hljs-keyword">if</span> (store.getters.token) &#123;<br>    <span class="hljs-keyword">if</span> (to.path === <span class="hljs-string">&#x27;/login&#x27;</span>) &#123;<br>      next(<span class="hljs-string">&#x27;/&#x27;</span>)<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      next()<br>    &#125;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">// 没有token的情况下，可以进入白名单</span><br>    <span class="hljs-keyword">if</span> (whiteList.indexOf(to.path) &gt; -<span class="hljs-number">1</span>) &#123;<br>      next()<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      next(<span class="hljs-string">&#x27;/login&#x27;</span>)<br>    &#125;<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>以上即是后台管理系统-登录功能的思路及实现</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%99%BB%E5%BD%95/">登录</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/12/13/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86svg%E7%9A%84%E5%AE%9E%E7%8E%B0/">
+                        <span class="hidden-mobile">后台管理系统中统一管理svg的实现</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"SENRU08HPXafOGhG2XAwDq4Q-gzGzoHsz","appKey":"SmBXysKuOGYdFfLXpPenWmvh","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/ZhangKai66" target="_blank" rel="nofollow noopener"><span>Github</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

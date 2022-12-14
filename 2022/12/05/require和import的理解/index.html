@@ -16,21 +16,38 @@
   <meta name="description" content="记录学习前端的历程">
   <meta name="author" content="Kai Zhang">
   <meta name="keywords" content="前端,frontend">
-  <meta name="description" content="记录学习前端的历程">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Archives">
-<meta property="og:url" content="https://zhangkai66.github.io.git/archives/page/3/index.html">
+  <meta name="description" content="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;huancheng&#x2F;p&#x2F;10312822.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="require和import的理解">
+<meta property="og:url" content="https://zhangkai66.github.io.git/2022/12/05/require%E5%92%8Cimport%E7%9A%84%E7%90%86%E8%A7%A3/index.html">
 <meta property="og:site_name" content="ZhangKai&#39;s Blog">
-<meta property="og:description" content="记录学习前端的历程">
+<meta property="og:description" content="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;huancheng&#x2F;p&#x2F;10312822.html">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-12-05T01:45:17.000Z">
+<meta property="article:modified_time" content="2022-12-05T01:48:23.747Z">
 <meta property="article:author" content="Kai Zhang">
-<meta property="article:tag" content="前端,frontend">
+<meta property="article:tag" content="import">
 <meta name="twitter:card" content="summary_large_image">
   
-  <title>Archives - ZhangKai&#39;s Blog</title>
+  <title>require和import的理解 - ZhangKai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -57,7 +74,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -153,14 +170,48 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/beach.jpeg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Archive">
+            <span class="h2" id="subtitle" title="require和import的理解">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-12-05 09:45" pubdate>
+        December 5, 2022 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      49 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      1 分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -173,100 +224,123 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">30 posts in total.</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/2021/12/26/socket%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">socket简单上手</span>
-      <time style="float: right;">12-26</time>
-    </a>
-  
-    
-    <a href="/2021/12/19/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98HTML-CSS/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">前端面试题HTML&amp;CSS</span>
-      <time style="float: right;">12-19</time>
-    </a>
-  
-    
-    <a href="/2021/12/19/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98VUE%E7%AF%87/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">前端面试题VUE篇</span>
-      <time style="float: right;">12-19</time>
-    </a>
-  
-    
-    <a href="/2021/11/30/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98JS%E7%AF%87/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">前端面试题JS篇</span>
-      <time style="float: right;">11-30</time>
-    </a>
-  
-    
-    <a href="/2021/11/25/ES6%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">ES6常用技巧</span>
-      <time style="float: right;">11-25</time>
-    </a>
-  
-    
-    <a href="/2021/11/08/async%E5%92%8Cawait/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">async和await</span>
-      <time style="float: right;">11-08</time>
-    </a>
-  
-    
-    <a href="/2021/10/31/Virtual-DOM%E7%90%86%E8%A7%A3/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Virtual DOM理解</span>
-      <time style="float: right;">10-31</time>
-    </a>
-  
-    
-    <a href="/2021/10/31/%E9%9F%B3%E4%B9%90%E5%88%86%E4%BA%AB/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">音乐分享</span>
-      <time style="float: right;">10-31</time>
-    </a>
-  
-    
-    <a href="/2021/10/31/AllToDo/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">AllToDo</span>
-      <time style="float: right;">10-31</time>
-    </a>
-  
-    
-    <a href="/2021/10/31/hello-world/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Hello World</span>
-      <time style="float: right;">10-31</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">require和import的理解</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：10 days ago
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/huancheng/p/10312822.html">https://www.cnblogs.com/huancheng/p/10312822.html</a></p>
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/archives/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/#board">2</a><span class="page-number current">3</span>
-    </span>
-  </nav>
-
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/import/">import</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/12/13/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86svg%E7%9A%84%E5%AE%9E%E7%8E%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">后台管理系统中统一管理svg的实现</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/12/05/webpack%E5%AE%98%E7%BD%91%E5%AD%A6%E4%B9%A0/">
+                        <span class="hidden-mobile">webpack官网学习</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"SENRU08HPXafOGhG2XAwDq4Q-gzGzoHsz","appKey":"SmBXysKuOGYdFfLXpPenWmvh","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -349,6 +423,19 @@
   
 
 
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
 
 
 
