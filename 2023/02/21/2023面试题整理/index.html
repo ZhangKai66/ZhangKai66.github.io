@@ -24,7 +24,7 @@
 <meta property="og:description" content="面试题整理js 手写题手写深拷贝1234567891011121314151617181920212223242526272829303132function deepClone(obj &#x3D; &amp;#123;&amp;#125;) &amp;#123;  &#x2F;&#x2F; 是null或者不是对象和数组 直接返回  if (typeof obj !&#x3D;&#x3D; &quot;object&quot; || obj &#x3D;&#x3D; null) &amp;#12">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-02-21T08:31:32.000Z">
-<meta property="article:modified_time" content="2023-03-23T02:34:30.876Z">
+<meta property="article:modified_time" content="2023-04-08T13:29:41.801Z">
 <meta property="article:author" content="Kai Zhang">
 <meta property="article:tag" content="面试题">
 <meta name="twitter:card" content="summary_large_image">
@@ -196,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      49k 字
+      52k 字
     </span>
   
 
@@ -205,7 +205,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      153 分钟
+      163 分钟
     </span>
   
 
@@ -290,6 +290,12 @@
 <h3 id="获取-url-参数"><a href="#获取-url-参数" class="headerlink" title="获取 url 参数"></a>获取 url 参数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseParam</span>(<span class="hljs-params">url</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> paramsStr = <span class="hljs-regexp">/.+\?(.+)$/</span>.exec(url)[<span class="hljs-number">1</span>]; <span class="hljs-comment">// 将 ? 后面的字符串取出来</span><br>  <span class="hljs-keyword">const</span> paramsArr = paramsStr.split(<span class="hljs-string">&#x27;&amp;&#x27;</span>); <span class="hljs-comment">// 将字符串以 &amp; 分割后存到数组中</span><br>  <span class="hljs-keyword">let</span> paramsObj = &#123;&#125;;<br>  <span class="hljs-comment">// 将 params 存到对象中</span><br>  paramsArr.forEach(<span class="hljs-function"><span class="hljs-params">param</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/=/</span>.test(param)) &#123; <span class="hljs-comment">// 处理有 value 的参数</span><br>      <span class="hljs-keyword">let</span> [key, val] = param.split(<span class="hljs-string">&#x27;=&#x27;</span>); <span class="hljs-comment">// 分割 key 和 value</span><br>      val = <span class="hljs-built_in">decodeURIComponent</span>(val); <span class="hljs-comment">// 解码</span><br>      val = <span class="hljs-regexp">/^\d+$/</span>.test(val) ? <span class="hljs-built_in">parseFloat</span>(val) : val; <span class="hljs-comment">// 判断是否转为数字</span><br>      <span class="hljs-keyword">if</span> (paramsObj.hasOwnProperty(key)) &#123; <span class="hljs-comment">// 如果对象有 key，则添加一个值</span><br>        paramsObj[key] = [].concat(paramsObj[key], val);<br>      &#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">// 如果对象没有这个 key，创建 key 并设置值</span><br>        paramsObj[key] = val;<br>      &#125;<br>    &#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">// 处理没有 value 的参数</span><br>      paramsObj[param] = <span class="hljs-literal">true</span>;<br>    &#125;<br>  &#125;)<br>  <span class="hljs-keyword">return</span> paramsObj;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="html-amp-css-相关"><a href="#html-amp-css-相关" class="headerlink" title="html&amp;css 相关"></a>html&amp;css 相关</h2><h3 id="src和href的区别"><a href="#src和href的区别" class="headerlink" title="src和href的区别"></a>src和href的区别</h3><p>src和href都是用来引用外部的资源<br><code>&lt;a link href=&quot;xxx&quot; /&gt; &lt;script src=&quot;xxx.js /&gt;&quot;</code><br>src用于替换当前元素,href用于在当前文档和引用资源之确立联系</p>
 <p>src在浏览器中被解析到时会暂停其他资源的下载和处理，并且把该资源加载编译完成。<br>href在文档中进行添加时，浏览器会识别到这个文档，并命名为css文件，就会下载合并资源，同时也不会停止对当前文档的处理。</p>
+<h3 id="css中link和-import的区别"><a href="#css中link和-import的区别" class="headerlink" title="css中link和@import的区别"></a>css中link和@import的区别</h3><ol>
+<li>link是XHTML标签，除了加载CSS外，还可以定义RSS等事务。 @import属于CSS范畴，只能加载CSS</li>
+<li>link引用CSS在页面加载时同时加载，@import会阻塞后续css的加载。</li>
+<li>link是XHTML标签，没有兼容性，@import是在CSS2.1中提出的，低版浏览器不支持</li>
+<li>link支持使用Javascript控制DOM来改变样式；@import不支持。</li>
+</ol>
 <h3 id="html5新特性"><a href="#html5新特性" class="headerlink" title="html5新特性"></a>html5新特性</h3><ol>
 <li>语义化标签   header footer nav</li>
 <li>表单新属性  color date datetime number url search</li>
@@ -325,9 +331,9 @@
 
 <h3 id="iframe-有那些优点和缺点？"><a href="#iframe-有那些优点和缺点？" class="headerlink" title="iframe 有那些优点和缺点？"></a>iframe 有那些优点和缺点？</h3><p>iframe 元素会创建包含另外一个文档的内联框架（即行内框架）。<br>优点：</p>
 <ul>
-<li>用来加载速度较慢的内容（如广告）</li>
-<li>可以使脚本可以并行下载</li>
-<li>可以实现跨子域通信<br>缺点：</li>
+<li>解决加载缓慢的第三方内容如图标和广告等的加载问题</li>
+<li>增加代码的可重用</li>
+<li>并行加载脚本<br>缺点：</li>
 <li>iframe 会阻塞主页面的 onload 事件</li>
 <li>无法被一些搜索引擎索识别</li>
 <li>会产生很多页面，不容易管理</li>
@@ -698,14 +704,14 @@
 <h3 id="web-存储"><a href="#web-存储" class="headerlink" title="web 存储"></a>web 存储</h3><ol>
 <li>cookie<ol>
 <li>特点<ol>
-<li>本身用于浏览器和server通讯</li>
+<li>本身用于浏览器和server端的信息传递，以小文本文件形式保存登录凭证等</li>
 <li>可用<code>document.cookie = &#39;xxx&#39;</code>来修改</li>
 </ol>
 </li>
 <li>缺点<ol>
 <li>存储大小限制为4KB</li>
 <li>http请求需要发送到服务端，增加请求数量</li>
-<li>只能用document.cookie修改</li>
+<li>只能用document.cookie修改，需要自己封装处理cookie的方法</li>
 </ol>
 </li>
 </ol>
@@ -726,11 +732,13 @@
 </ol>
 </li>
 </ol>
+<h4 id="cookie的详细理解"><a href="#cookie的详细理解" class="headerlink" title="cookie的详细理解"></a>cookie的详细理解</h4><h5 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h5><p>可以用document.cookie查看，格式是由键值对构成的字符串以分号空格分割<br>注意只能获取非httponly下的<br>expires  过期时间<br>HttpOnly  设置能否用js访问，一旦携带这个属性，客户端无法通过js访问这个cookie<br>secure  只有在https情况下才能发送至服务器端</p>
+<p>服务端可以设置cookie 的所有选项</p>
 <h3 id="http-缓存（强制缓存-协商缓存）"><a href="#http-缓存（强制缓存-协商缓存）" class="headerlink" title="http 缓存（强制缓存 | 协商缓存）"></a>http 缓存（强制缓存 | 协商缓存）</h3><h4 id="为什么需要缓存？"><a href="#为什么需要缓存？" class="headerlink" title="为什么需要缓存？"></a>为什么需要缓存？</h4><p>网络请求相比于 CPU 的计算和页面渲染是非常非常慢的。</p>
 <h4 id="http缓存机制"><a href="#http缓存机制" class="headerlink" title="http缓存机制"></a>http缓存机制</h4><p>http 缓存机制主要在http相应头中设定，响应头中相关字段为 Expires,Cache-Control,Last-Modified,If-Modified-Since,Etag 等</p>
 <ol>
-<li>Expires</li>
-<li>Cache-Control<ol>
+<li>Expires http1.0的规范，值是一个绝对时间的GMT格式，在此时间之前，本地缓存始终有效。有个缺点，服务端和客户端时间偏差较大时会出现缓存混乱的问题</li>
+<li>Cache-Control 是http1.1的规范，一般用max-age表示<ol>
 <li>max-age：用来设置资源（representations）可以被缓存多长时间，单位为秒</li>
 <li>s-maxage：和max-age是一样的，不过它只针对代理服务器缓存而言；</li>
 <li>public：指示响应可被任何缓存区缓存；</li>
@@ -740,12 +748,12 @@
 </ol>
 </li>
 </ol>
-<h4 id="强制缓存"><a href="#强制缓存" class="headerlink" title="强制缓存"></a>强制缓存</h4><p>过程：</p>
+<p>Cache-Control 与 Expires 可以在服务端配置同时启用，同时启用的时候 Cache-Control 优先级高。</p>
+<h4 id="强制缓存"><a href="#强制缓存" class="headerlink" title="强制缓存"></a>强制缓存</h4><p>就是利用上面expires和cache-control中的max-age实现<br>过程：</p>
 <ol>
-<li>初次请求，服务器返回资源和cache-control</li>
+<li>初次请求，服务器返回资源和cache-control/expires</li>
 <li>再次请求，本地缓存直接返回资源</li>
 </ol>
-<p>cache-control</p>
 <h4 id="协商缓存（对比缓存）"><a href="#协商缓存（对比缓存）" class="headerlink" title="协商缓存（对比缓存）"></a>协商缓存（对比缓存）</h4><ul>
 <li>服务端缓存策略。</li>
 <li>服务端判断客户端资源，是否和服务端资源一样。</li>
@@ -884,6 +892,12 @@
 <li>number 自动将用户的输入值转化为数值类型</li>
 <li>trim 自动过滤用户输入的首尾空格</li>
 </ul>
+<h3 id="vue的filter用法"><a href="#vue的filter用法" class="headerlink" title="vue的filter用法"></a>vue的filter用法</h3><h4 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h4><p><code>&#123;&#123; xxx | filter1 | filter2（'arg1',arg1） &#125;&#125; v-bind:attr=&#39;xxx | attr&#39;</code></p>
+<h4 id="定义方式"><a href="#定义方式" class="headerlink" title="定义方式"></a>定义方式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// vue文件中定义</span><br><span class="hljs-attr">filters</span>: &#123;<br>  <span class="hljs-attr">capitalize</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> value + <span class="hljs-string">&#x27;&#x27;</span><br>  &#125;<br>&#125;<br><span class="hljs-comment">// 全局定义 main.js文件中定义</span><br>Vue.filter(<span class="hljs-string">&#x27;capitalize&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p><strong>局部过滤器</strong>优先于全局过滤器被调用<br>实际开发中，可以将所有方法写在一个单独的js文件中，然后再main.js中引入全局注册即可</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> _filters <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./../&quot;</span><br>object.keys(_filters).forEach(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> &#123;<br>  Vue.filter(item,_filters[item])<br>&#125;)<br></code></pre></td></tr></table></figure>
+
 <h3 id="computed和watch区别"><a href="#computed和watch区别" class="headerlink" title="computed和watch区别"></a>computed和watch区别</h3><ol>
 <li>computed 依赖于其他属性值 并且computed的值有<strong>缓存</strong></li>
 <li>watch 监听某些数据的回调</li>
@@ -975,19 +989,23 @@
 <li>当这个 render 函数字符串在第一次 mount、或者绑定的数据更新的时候，都会被调用，生成 Vnode。</li>
 <li>如果是数据的更新，那么 Vnode 会与数据改变之前的 Vnode 做 diff，对内容做改动之后，就会更新到我们真正的 DOM</li>
 </ol>
+<h3 id="vue-router-的原理是什么"><a href="#vue-router-的原理是什么" class="headerlink" title="vue-router 的原理是什么"></a>vue-router 的原理是什么</h3><p>vue-router 的原理就是更新视图而不重新请求页面</p>
+<p>Vue Router 的原理是通过拦截浏览器的默认行为，来实现页面跳转和组件切换的效果。当用户访问应用程序的某个链接时，Vue Router 会拦截这个请求，并根据路由规则，将对应的组件显示在视图中。这样，用户就可以在浏览器中操作应用程序，而无需刷新整个页面。</p>
+<p>hash 模式和 history 模式都是通过 window.addEventListener() 方法监听 hashchange 和 popState 进行相应路由的操作。可以通过 back、foward、go 等方法访问浏览器的历史记录栈 进行各种跳转。</p>
+<p>总的来说，Vue Router 的作用是解决 SPA 应用程序中路由和组件之间的关系，实现页面跳转和组件切换的效果。</p>
 <h3 id="vue-的两种路由模式-hash-和-history"><a href="#vue-的两种路由模式-hash-和-history" class="headerlink" title="vue 的两种路由模式 hash 和 history"></a>vue 的两种路由模式 hash 和 history</h3><h4 id="hash模式"><a href="#hash模式" class="headerlink" title="hash模式"></a>hash模式</h4><ol>
 <li>hash模式是url后面带有#的情况，#后面的值不会包含在http请求，所有改变hash的值不会引起页面的重新加载，不会像服务器重新发起请求</li>
 <li>不利于seo优化</li>
 <li>只能修改#后面的部分，因此只能跳转与当前url同文档的url</li>
 </ol>
-<p>hash原理： onhashchange事件，页面每次hash值得变化都会触发hashchange事件</p>
+<p>hash原理： <strong>onhashchange</strong>事件，页面每次hash值得变化都会触发hashchange事件</p>
 <p>会创建hashHistory对象，会被浏览器记录下来，在访问不同的路由会发生两种事件：hashHistory.push()：将新的路由添加到浏览器访问的历史栈顶，<br>hashHistory.replace()替换到当前栈</p>
 <h4 id="history模式"><a href="#history模式" class="headerlink" title="history模式"></a>history模式</h4><ol>
 <li>url不带#参数，看起来更美观</li>
 <li>history模式依赖于前后端交互，即url修改就会请求后端url，如果后端没配置对应的/user/id的路由处理，就会返回404报错</li>
 <li>history模式不仅可以在url里放参数，还可以将数据存放在一个特定的对象中，可以传递复杂的数据</li>
 <li>可以访问当前url同源的任意url</li>
-<li>history原理：history.pushState事件，当浏览器跳转到新的状态时会触发popstate事件 window.history的相关api</li>
+<li>history原理：使用<strong>window.onpopstate</strong>监听浏览器地址，对浏览器 history api 中的 pushState()，replaceState()进行封装，当方法调用，会对浏览器的历史栈进行修改。从而实现 URL 的跳转而无需加载页面，但是它的问题在于当刷新页面的时候会走后端路由，所以需要服务端的辅助来完成，避免 url 无法匹配到资源时能返回页面。</li>
 </ol>
 <h3 id="route-和-router-的区别"><a href="#route-和-router-的区别" class="headerlink" title="$route 和$router 的区别"></a>$route 和$router 的区别</h3><p>$route 是”路由信息对象”，包括 path，params，hash，query，fullPath，matched，name 等路由信息参数 (信息)<br>$router 是”路由实例(VueRouter)”对象，相当于一个全局的路由器对象,包括了路由的跳转方法，钩子函数等。如history对象，this.$router.push（）返回上一个history也是使用$router.go(-1)  (实例)</p>
 <h3 id="动态路由怎么获取传递的动态参数"><a href="#动态路由怎么获取传递的动态参数" class="headerlink" title="动态路由怎么获取传递的动态参数"></a>动态路由怎么获取传递的动态参数</h3><p>场景：User 组件，对于所有 ID 各不相同的用户，都要使用这个组件来渲染<br>动态路径参数，使用“冒号”开头，一个路径参数，使用冒号标记，当匹配<br>到一个路由时，参数会被设置到 this.$route.params 中，并且可以在每个组件<br>中使用。<br><code>&#123; path: &#39;/user/:id&#39;, component: User &#125;</code><br>在匹配到该路由之后，动态参数会被设置到this.$route.params</p>
@@ -1089,10 +1107,10 @@
 <li>errorHandler main.js中配置 不会向上传播<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> app = createApp(App)<br>app.config.errorHandler = <span class="hljs-function">(<span class="hljs-params">error,vm,info</span>) =&gt;</span> &#123;&#125;<br></code></pre></td></tr></table></figure></li>
 <li>异步错误 errorHandler捕获不到<br>可以用 全局onerror监听 也可以用unhandledrejection监听</li>
 </ol>
-<h3 id="vue的渲染过程"><a href="#vue的渲染过程" class="headerlink" title="vue的渲染过程"></a>vue的渲染过程</h3><ol>
+<h3 id="vue页面的渲染过程"><a href="#vue页面的渲染过程" class="headerlink" title="vue页面的渲染过程"></a>vue页面的渲染过程</h3><ol>
 <li>调用 compile 函数,生成 render 函数字符串 ,编译过程如下:<ol>
 <li>parse 函数解析 template,生成 ast(抽象语法树) </li>
-<li>optimize 函数优化静态节点 (标记不需要每次都更新的内容,diff 算法会直接跳过静态节点,从而减少比较的过程,优化了 patch 的性能)</li>
+<li>optimizer 函数优化静态节点 (标记不需要每次都更新的内容,diff 算法会直接跳过静态节点,从而减少比较的过程,优化了 patch 的性能)</li>
 <li>generate 函数生成 render 函数字符串</li>
 </ol>
 </li>
@@ -1176,19 +1194,22 @@
 <h3 id="ajax、axios、fetch的区别"><a href="#ajax、axios、fetch的区别" class="headerlink" title="ajax、axios、fetch的区别"></a>ajax、axios、fetch的区别</h3><h4 id="ajax"><a href="#ajax" class="headerlink" title="ajax"></a>ajax</h4><p>Ajax 即“AsynchronousJavascriptAndXML”（异步 JavaScript 和 XML），是指一种创建交互式网页应用的网页开发技术。它是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。通过在后台与服务器进行少量数据交换，Ajax 可以使网页实现异步更新。</p>
 <h4 id="Fetch"><a href="#Fetch" class="headerlink" title="Fetch"></a>Fetch</h4><p>fetch号称是AJAX的替代品，是在ES6出现的，使用了ES6中的promise对象。Fetch是基于promise设计的<br>fetch不是ajax的进一步封装，而是原生js，没有使用XMLHttpRequest对象。</p>
 <h4 id="Axios"><a href="#Axios" class="headerlink" title="Axios"></a>Axios</h4><p>Axios 是一种基于Promise封装的HTTP客户端</p>
-<h3 id="web安全及防护"><a href="#web安全及防护" class="headerlink" title="web安全及防护"></a>web安全及防护</h3><h4 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h4><p>通过SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令</p>
+<h3 id="web安全及防护"><a href="#web安全及防护" class="headerlink" title="web安全及防护"></a>web安全及防护</h3><h4 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h4><p>举例：<br>在输入框中输入SQL inject后面输入框填入’ or 1=1 –<br>这样，前半句被单引号结束，后半句1=1恒成立，–将后续判断注释掉，导致不需要输入密码也能登录</p>
+<p>通过SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令</p>
 <p>防范措施：</p>
 <ol>
 <li>密码要加密存储</li>
 <li>使用框架及模板提交前检查代码输入内容</li>
 <li>所有输入的内容都要进行过滤</li>
 </ol>
-<h4 id="xss攻击-跨站脚本攻击"><a href="#xss攻击-跨站脚本攻击" class="headerlink" title="xss攻击 跨站脚本攻击"></a>xss攻击 跨站脚本攻击</h4><p>反射型xss<br>基于dom的xss<br>存储型xss</p>
+<h4 id="xss攻击-跨站脚本攻击"><a href="#xss攻击-跨站脚本攻击" class="headerlink" title="xss攻击 跨站脚本攻击"></a>xss攻击 跨站脚本攻击</h4><p>盗取用户的信息，如 cookie </p>
+<p><strong>反射型xss</strong> 攻击者构造了特殊的 URL，当服务器接收到请求后，从 URL 中获取数据，拼接到 HTML 后返回，从而导致了恶意代码的执行。 举例：在url后面插入’,alert(‘hha’)，可以拿到cookie，在用更复杂的payload将cookie传给自己的服务器<br><strong>基于dom的xss</strong> 攻击者构建了特殊的 URL，用户打开网站后，js 脚本从 URL 中获取数据，从而导致了恶意代码的执行。<br><strong>存储型xss</strong> 恶意代码提交到了网站的数据库中，当用户请求数据的时候，服务器将其拼接为 HTML 后返回给了用户，从而导致了恶意代码的执行。举例：添加标签时插入onerror=alert(document.cookie)</p>
 <p>防范措施：</p>
 <ol>
 <li>输入过滤，前端进行过滤之后后端在写入或访问数据库之前也要进行过滤</li>
 <li>在使用innerHtml和outerHtml和document.write等要特别小心，不可信的数据不能插到页面上 v-html也不推荐使用，js的eval()、setTimeout()、setInterval()等会将字符串转成代码运行也不推荐使用</li>
 <li>启用CSP（Content Security Policy） 内容安全策略</li>
+<li>还可以对一些敏感信息进行保护，比如 cookie 使用 http-only，使得脚本无法获取。</li>
 </ol>
 <h4 id="csrf-跨站请求伪造"><a href="#csrf-跨站请求伪造" class="headerlink" title="csrf 跨站请求伪造"></a>csrf 跨站请求伪造</h4><p>引诱受害者进入第三方网站，在第三方网站中，向被攻击网站发送跨站请求。利用受害者在被攻击网站已经获取的注册凭证，绕过后台的用户验证，达到冒充用户对被攻击的网站执行某项操作的目的。<br>特点：是冒充受害者提交操作<br>防范措施：</p>
 <ol>
@@ -1232,6 +1253,14 @@
 <li><strong>完成编译</strong> 在递归完成后，每个引用模块通过loaders处理完成同时得到模块之间的相互依赖关系</li>
 <li><strong>输出文件</strong> 整理模块依赖关系，同时将处理后的文件输出到ouput的磁盘目录中。</li>
 </ol>
+<h3 id="webpack中的source-map是什么？生产环境怎么用？"><a href="#webpack中的source-map是什么？生产环境怎么用？" class="headerlink" title="webpack中的source map是什么？生产环境怎么用？"></a>webpack中的source map是什么？生产环境怎么用？</h3><p>首先前端项目在投入生产之前，都会对JavaScript源代码进行压缩混淆，从而减小文件的体积，提高文件的加载效率，也因此对压缩混淆之后的代码除错（debug） 是一件极其困难的事情</p>
+<ol>
+<li>变量被替换成没有任何语义的名称</li>
+<li>空行和注释被剔除</li>
+</ol>
+<p>Source Map 就是一个信息文件，里面储存着位置信息。也就是说，Source Map 文件中存储着压缩混淆后的代码，所对应的转换前的位置。<br>出错的时候，除错工具将直接显示原始代码，而不是转换后的代码</p>
+<h4 id="生产环境下"><a href="#生产环境下" class="headerlink" title="生产环境下"></a>生产环境下</h4><p>如果 省略了 devtool 选项 ，则最终生成的文件中 不包含 Source Map 。这能够 防止原始代码 通过 Source Map 的形式 暴露 给别有所图之人。</p>
+<p>在生产环境下，如果 只想定位报错的具体行数 ，且 不想暴露源码 。此时可以将 devtool 的值设置为<br><strong>nosources-source-map</strong>。</p>
 <h2 id="typescript-和-vue3-相关"><a href="#typescript-和-vue3-相关" class="headerlink" title="typescript 和 vue3 相关"></a>typescript 和 vue3 相关</h2><h3 id="ts比js的优势"><a href="#ts比js的优势" class="headerlink" title="ts比js的优势"></a>ts比js的优势</h3><p>ts是js的超集，在js的基础上添加了<strong>类型系统</strong>，用于强大的<strong>静态类型检查</strong>能力，并且继承了js的所有编程类型，js代码在ts环境也可以很好的运行</p>
 <h3 id="vue2-和-vue3-的区别"><a href="#vue2-和-vue3-的区别" class="headerlink" title="vue2 和 vue3 的区别"></a>vue2 和 vue3 的区别</h3><ol>
 <li>双向数据绑定的原理发生了改变 defineProperty和proxy</li>
@@ -1404,7 +1433,13 @@
 <li>路由懒加载 component <code>()=&gt; import(&#39;xxx&#39;)</code></li>
 <li>ssr</li>
 </ol>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="怎么从0到1构建一个vue项目"><a href="#怎么从0到1构建一个vue项目" class="headerlink" title="怎么从0到1构建一个vue项目"></a>怎么从0到1构建一个vue项目</h3><p>从0创建一个项目我大致会做以下事情：项目构建、引入必要插件、代码规范、提交规范、常用库和组件</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="vue组件封装原则"><a href="#vue组件封装原则" class="headerlink" title="vue组件封装原则"></a>vue组件封装原则</h3><ol>
+<li>单一原则</li>
+<li>多重职责</li>
+<li>明确接受参数</li>
+<li>可拓展</li>
+</ol>
+<h3 id="怎么从0到1构建一个vue项目"><a href="#怎么从0到1构建一个vue项目" class="headerlink" title="怎么从0到1构建一个vue项目"></a>怎么从0到1构建一个vue项目</h3><p>从0创建一个项目我大致会做以下事情：项目构建、引入必要插件、代码规范、提交规范、常用库和组件</p>
 <ol>
 <li>目前vue3项目我会用vite或者create-vue创建项目</li>
 <li>接下来引入必要插件：路由插件vue-router、状态管理vuex/pinia、ui库我比较喜欢</li>
@@ -1492,7 +1527,21 @@
 <li>树形结构</li>
 <li>表格行可拖拽</li>
 </ul>
-<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7031322059414175774">参考 1</a></p>
+<h3 id="前端兼容性问题"><a href="#前端兼容性问题" class="headerlink" title="前端兼容性问题"></a>前端兼容性问题</h3><p>回答方式 先描述2-3个兼容问题，最后一个总结</p>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><ul>
+<li>ie6不支持min-height {min-height: 200px; _height: 350px;}</li>
+<li>IE6/7不支持display:inline-block  {display: inline-block; *display: inline;}</li>
+<li>IE9以下opacity不支持   Firefox/Chrome/Safari/Opera浏览器使用opacity；IE浏览器使用filter</li>
+<li>图片加a标签在IE9中会有边框   img{border: none;}</li>
+</ul>
+<ol>
+<li>根据兼容需求选择技术框架/库(如 jquery 1.x.x )</li>
+<li>根据兼容需求选择兼容工具： html5shiv 、 Respond.js 、 CSS Reset 、 normalize.css 、 Modernizr.js 、 postcss</li>
+<li>条件注释、 CSS Hack 、 js 能力检测做一些修补。Hack ： CSS 中， Hack 是指一种兼容 CSS 在不同浏览器中正确显示的技巧方法，修补 bug 的方法Filter<br>：表示过滤器的意思，它是一种对特定的浏览器或浏览器组显示或隐藏规则或声明的方法。本质上讲， Filter 是 hack 方法中的一种。</li>
+<li>渐进增强和优雅降级（1）渐进增强：针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验。（2）优雅降级：一开始就构建完整的功能，然后再针对低版本浏览器进行兼容。</li>
+</ol>
+<h4 id="css-hack"><a href="#css-hack" class="headerlink" title="css hack"></a>css hack</h4><p><code>*background-color:green</code> 在前面加*的只会对IE6，7生效，其他版本ie和现代浏览器会忽略这条指令<br>在前面加-的只会对IE6生效，其他版本ie和现代浏览器会忽略这条指令<br>后面添加“!important”的写法只有IE6不能识别，其它版本IE及现代浏览器都可以识别</p>
+<h3 id="断点续传"><a href="#断点续传" class="headerlink" title="断点续传"></a>断点续传</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7031322059414175774">参考 1</a></p>
 <p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7061588533214969892">参考 2</a></p>
 
             </div>
