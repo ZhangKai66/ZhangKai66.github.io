@@ -1,0 +1,556 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/ultraman.png">
+  <link rel="icon" href="/img/ultraman.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="记录学习前端的历程">
+  <meta name="author" content="Kai Zhang">
+  <meta name="keywords" content="前端,frontend">
+  <meta name="description" content="前端埋点前端埋点是干啥的 数据监控（监控用户行为） 统计页面pv uv 用户在每个页面停留的时间 用户在每个页面触发的行为   性能监控 首屏加载时间 http请求时间 页面渲染时间    埋点方案总结 手动埋点 声明式埋点 可视化埋点 全埋点（无埋点） 事件埋点上报，停留时间上报  事件埋点上报通过给元素绑定自定义指令的方式实现(减少对原有代码的侵入)🍜，将信息存储在缓存池中定时上报，上报之后">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端埋点">
+<meta property="og:url" content="https://zhangkai66.github.io.git/2023/04/19/%E5%89%8D%E7%AB%AF%E5%9F%8B%E7%82%B9/index.html">
+<meta property="og:site_name" content="ZhangKai&#39;s Blog">
+<meta property="og:description" content="前端埋点前端埋点是干啥的 数据监控（监控用户行为） 统计页面pv uv 用户在每个页面停留的时间 用户在每个页面触发的行为   性能监控 首屏加载时间 http请求时间 页面渲染时间    埋点方案总结 手动埋点 声明式埋点 可视化埋点 全埋点（无埋点） 事件埋点上报，停留时间上报  事件埋点上报通过给元素绑定自定义指令的方式实现(减少对原有代码的侵入)🍜，将信息存储在缓存池中定时上报，上报之后">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-04-19T05:10:29.000Z">
+<meta property="article:modified_time" content="2023-04-21T00:45:14.330Z">
+<meta property="article:author" content="Kai Zhang">
+<meta property="article:tag" content="埋点">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>前端埋点 - ZhangKai&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zhangkai66.github.io.git","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Jamarcus</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/beach.jpeg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="前端埋点">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-04-19 13:10" pubdate>
+        April 19, 2023 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">前端埋点</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：19 days ago
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="前端埋点"><a href="#前端埋点" class="headerlink" title="前端埋点"></a>前端埋点</h2><h3 id="前端埋点是干啥的"><a href="#前端埋点是干啥的" class="headerlink" title="前端埋点是干啥的"></a>前端埋点是干啥的</h3><ol>
+<li>数据监控（监控用户行为）<ol>
+<li>统计页面pv uv</li>
+<li>用户在每个页面停留的时间</li>
+<li>用户在每个页面触发的行为</li>
+</ol>
+</li>
+<li>性能监控<ol>
+<li>首屏加载时间</li>
+<li>http请求时间</li>
+<li>页面渲染时间</li>
+</ol>
+</li>
+</ol>
+<h3 id="埋点方案总结"><a href="#埋点方案总结" class="headerlink" title="埋点方案总结"></a>埋点方案总结</h3><ol>
+<li>手动埋点</li>
+<li>声明式埋点</li>
+<li>可视化埋点</li>
+<li>全埋点（无埋点） 事件埋点上报，停留时间上报</li>
+</ol>
+<h3 id="事件埋点上报"><a href="#事件埋点上报" class="headerlink" title="事件埋点上报"></a>事件埋点上报</h3><p>通过给元素绑定自定义指令的方式实现(减少对原有代码的侵入)🍜，将信息存储在缓存池中定时上报，上报之后清空之前的上报信息</p>
+<p>可以写一个自定义指令 uni-app</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;<br><span class="hljs-comment">// 自定义埋点指令</span><br>Vue.directive(<span class="hljs-string">&quot;buried&quot;</span>, &#123;<br>  <span class="hljs-attr">bind</span>: <span class="hljs-function">(<span class="hljs-params">el, binding</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (binding.value) &#123;<br>      <span class="hljs-comment">//这里参数是根据自己业务可以自己定义</span><br>      <span class="hljs-keyword">let</span> params = &#123;<br>        <span class="hljs-attr">currentUrl</span>: binding.value.currentUrl,<br>        <span class="hljs-attr">triggerType</span>: binding.value.triggerType,<br>        <span class="hljs-attr">title</span>: binding.value.title,<br>        <span class="hljs-attr">frontTriggerType</span>: binding.value.triggerType,<br>        <span class="hljs-attr">behavior</span>: binding.value.behavior,<br>      &#125;;<br>      <span class="hljs-comment">//如果是浏览类型，直接保存,目前只考虑点击类型</span><br>      <span class="hljs-keyword">if</span> (binding.value.triggerType == <span class="hljs-string">&quot;browse&quot;</span>) &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;browse&quot;</span>, params);<br>        <span class="hljs-comment">//调用后台接口保存数据</span><br>      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (binding.value.triggerType == <span class="hljs-string">&quot;click&quot;</span>) &#123;<br>        <span class="hljs-comment">//如果是click类型，监听click事件</span><br>        el.addEventListener(<br>          <span class="hljs-string">&quot;click&quot;</span>,<br>          <span class="hljs-function">() =&gt;</span> &#123;<br>            <span class="hljs-comment">// 将操作和内容存储在缓存中定时上报</span><br>            <span class="hljs-keyword">let</span> buriedArray = uni.getStorageSync(<span class="hljs-string">&#x27;buriedArray&#x27;</span>) <span class="hljs-comment">//获取埋点集合</span><br>            buriedArray.push(params)  <span class="hljs-comment">// 将埋点集合存入缓存中</span><br>            uni.setStorageSync(<span class="hljs-string">&#x27;buriedArray&#x27;</span>, buriedArray)<br>          &#125;,<br>          <span class="hljs-literal">false</span><br>        );<br>      &#125;<br>    &#125;<br>  &#125;,<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>使用时</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;!-- <br>triggerType: 事件类型<br>title: 页面标题<br>currentUrl: 页面路由<br>behavior: 操作行为<br>--&gt;<br>&lt;view v-buried=&quot;&#123;<br>triggerType:&#x27;click&#x27;,<br>title:&#x27;我的&#x27;,<br>currentUrl: currentPath,<br>behavior:&#x27;点击我的收藏按钮&#x27;&#125;&quot;&gt;<br>&lt;/view&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="停留时间上报"><a href="#停留时间上报" class="headerlink" title="停留时间上报"></a>停留时间上报</h3><p>需要重新封装路由，创建路由拦截在跳转之前记录来源,以及上一个页面的停留时间，当拦截器捕获成功之后🌯，如果发现停留时间大于xx秒进行上报</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>;<br><span class="hljs-keyword">import</span> v5 <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;uuid/v5&#x27;</span>;<br><span class="hljs-keyword">import</span> UniRouteGuard <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/js_sdk/pocky-route-gurads/lib&#x27;</span>;<br><span class="hljs-keyword">import</span> router <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/router&#x27;</span><br>Vue.use(UniRouteGuard);<br> <br><span class="hljs-keyword">const</span> guard = <span class="hljs-keyword">new</span> UniRouteGuard();<br> <br><span class="hljs-keyword">let</span> startTime = <span class="hljs-built_in">Date</span>.now();<br>guard.beforeEach(<span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span>, next</span>) =&gt;</span> &#123;<br>	<span class="hljs-keyword">let</span> currentTime = <span class="hljs-built_in">Date</span>.now();<br>	<span class="hljs-keyword">if</span> (<span class="hljs-keyword">from</span>.url &amp;&amp; <span class="hljs-keyword">from</span>.url == <span class="hljs-string">&#x27;/pages/first/index&#x27;</span>) &#123;<br>		next()<br>		<span class="hljs-keyword">return</span><br>	&#125;<br>	<span class="hljs-built_in">console</span>.log(router)<br>	<span class="hljs-keyword">if</span> (to.url) &#123;<br>		<span class="hljs-keyword">if</span> (to.url.indexOf(<span class="hljs-string">&#x27;?&#x27;</span>) &gt; -<span class="hljs-number">1</span>) &#123;<br>			to.url = to.url.substr(<span class="hljs-number">0</span>, to.url.indexOf(<span class="hljs-string">&#x27;?&#x27;</span>))<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">let</span> fromName = router.find(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.path == <span class="hljs-keyword">from</span>.url) ? router.find(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.path == <span class="hljs-keyword">from</span>.url).title : <span class="hljs-string">&#x27;未知&#x27;</span><br>	<span class="hljs-keyword">let</span> toName = router.find(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.path == to.url) ? router.find(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.path == to.url).title : <span class="hljs-string">&#x27;未知&#x27;</span><br>  <span class="hljs-keyword">const</span> stayTime=  <span class="hljs-built_in">parseInt</span>((currentTime - startTime) / <span class="hljs-number">1000</span>)<br>	<span class="hljs-keyword">const</span> MY_NAMESPACE = <span class="hljs-string">&#x27;1b671a64-40d5-491e-99b0-da01ff1f3341&#x27;</span>;<br> <br>	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`由<span class="hljs-subst">$&#123;fromName&#125;</span>跳转到<span class="hljs-subst">$&#123;toName&#125;</span>并在<span class="hljs-subst">$&#123;fromName&#125;</span>中停留了<span class="hljs-subst">$&#123;stayTime&#125;</span>秒钟`</span>);<br>	<span class="hljs-keyword">let</span> params = &#123;<br>		<span class="hljs-attr">fromUrl</span>: <span class="hljs-keyword">from</span>.url, <span class="hljs-comment">//来源地址</span><br>		<span class="hljs-attr">toUrl</span>: to.url, <span class="hljs-comment">// 目的地址</span><br>		<span class="hljs-attr">fromName</span>: fromName, <span class="hljs-comment">// 来源名称</span><br>		<span class="hljs-attr">toName</span>: toName, <span class="hljs-comment">// 目的名称</span><br>		<span class="hljs-attr">stayTime</span>: stayTime, <span class="hljs-comment">// 停留时长</span><br>		<span class="hljs-attr">guid</span>: v5(<span class="hljs-keyword">from</span>.url, MY_NAMESPACE), <span class="hljs-comment">//页面uuid</span><br>		<span class="hljs-attr">appUuid</span>: uni.getStorageSync(<span class="hljs-string">&#x27;appUuid&#x27;</span>) ? uni.getStorageSync(<span class="hljs-string">&#x27;appUuid&#x27;</span>) : <span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-comment">// app唯一标识</span><br>		<span class="hljs-attr">model</span>: uni.getStorageSync(<span class="hljs-string">&quot;model&quot;</span>)? uni.getStorageSync(<span class="hljs-string">&#x27;model&#x27;</span>) : <span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-comment">// 手机型号</span><br>	&#125;<br>	<span class="hljs-built_in">console</span>.log(params)<br>  <span class="hljs-keyword">if</span>(stayTime&gt;<span class="hljs-number">10</span>)&#123;<br>   <span class="hljs-comment">// 上报逻辑</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;停留的时间大于10秒钟了，可以进行上报&#x27;</span>)<br>  &#125;<br>  startTime = <span class="hljs-built_in">Date</span>.now();<br>	next();<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hsany330/article/details/125070076">https://blog.csdn.net/hsany330/article/details/125070076</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9F%8B%E7%82%B9/">埋点</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/02/21/2023%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/">
+                        <span class="hidden-mobile">2023面试题整理</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"SENRU08HPXafOGhG2XAwDq4Q-gzGzoHsz","appKey":"SmBXysKuOGYdFfLXpPenWmvh","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/ZhangKai66" target="_blank" rel="nofollow noopener"><span>Github</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        苏ICP备202102904号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

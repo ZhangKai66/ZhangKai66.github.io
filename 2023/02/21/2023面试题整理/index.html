@@ -24,7 +24,7 @@
 <meta property="og:description" content="面试题整理js 手写题手写深拷贝1234567891011121314151617181920212223242526272829303132function deepClone(obj &#x3D; &amp;#123;&amp;#125;) &amp;#123;  &#x2F;&#x2F; 是null或者不是对象和数组 直接返回  if (typeof obj !&#x3D;&#x3D; &quot;object&quot; || obj &#x3D;&#x3D; null) &amp;#12">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-02-21T08:31:32.000Z">
-<meta property="article:modified_time" content="2023-04-08T13:29:41.801Z">
+<meta property="article:modified_time" content="2023-04-25T03:50:02.863Z">
 <meta property="article:author" content="Kai Zhang">
 <meta property="article:tag" content="面试题">
 <meta name="twitter:card" content="summary_large_image">
@@ -196,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      52k 字
+      55k 字
     </span>
   
 
@@ -205,7 +205,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      163 分钟
+      171 分钟
     </span>
   
 
@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：a few seconds ago
+                  本文最后更新于：15 days ago
                 
               </p>
             
@@ -296,6 +296,18 @@
 <li>link是XHTML标签，没有兼容性，@import是在CSS2.1中提出的，低版浏览器不支持</li>
 <li>link支持使用Javascript控制DOM来改变样式；@import不支持。</li>
 </ol>
+<h3 id="伪元素和伪类区别"><a href="#伪元素和伪类区别" class="headerlink" title="伪元素和伪类区别"></a>伪元素和伪类区别</h3><p>伪类其实就是基于普通DOM元素而产生的不同<strong>状态</strong>，他是DOM元素的某一特征。伪类用单冒号:表示</p>
+<p>伪元素能够创建在DOM树中不存在的<strong>抽象对象</strong>，而且这些抽象对象是能够访问到的。伪元素用双冒号::表示</p>
+<h3 id="布局有哪些"><a href="#布局有哪些" class="headerlink" title="布局有哪些"></a>布局有哪些</h3><p>浮动布局（float layout）<br>定位布局（position layout）：<br>弹性布局（flexbox layout）<br>网格布局（grid layout）</p>
+<h3 id="grid布局"><a href="#grid布局" class="headerlink" title="grid布局"></a>grid布局</h3><p><code>display:grid</code></p>
+<ol>
+<li>grid-template-columns: 80px 90px auto 100px;//4列</li>
+<li>grid-template-rows //每一个行高</li>
+<li>justify-content：space-evenly</li>
+<li>grid-column： 1/5 属性 是grid-column-start 和 grid-column-end 属性的简写 </li>
+<li>同理grid-row是行</li>
+<li>grid-area 属性是 grid-row-start, grid-column-start, grid-row-end 以及 grid-column-end 属性的简写。 <code>grid-area: 1 / 2 / 5 / 6;</code></li>
+</ol>
 <h3 id="html5新特性"><a href="#html5新特性" class="headerlink" title="html5新特性"></a>html5新特性</h3><ol>
 <li>语义化标签   header footer nav</li>
 <li>表单新属性  color date datetime number url search</li>
@@ -308,7 +320,7 @@
 <li>webworker Web Worker可以通过加载一个脚本文件，进而创建一个独立工作的线程，在主线程之外运行。</li>
 <li>webstorage localstorage sessionstorage</li>
 </ol>
-<h3 id="html语义化标签怎么理解"><a href="#html语义化标签怎么理解" class="headerlink" title="html语义化标签怎么理解"></a>html语义化标签怎么理解</h3><p>语义化是指根据内容的结构化（<strong>内容</strong>语义化），选择合适的标签（代码语义化）</p>
+<h3 id="html语义化标签怎么理解"><a href="#html语义化标签怎么理解" class="headerlink" title="html语义化标签怎么理解"></a>html语义化标签怎么理解</h3><p>语义化是指根据内容的结构化（<strong>内容</strong>语义化），选择合适的标签（代码语义化），就是html的标签名要有意义</p>
 <ul>
 <li>让人更容易读懂</li>
 <li>让搜索引擎更容易读懂，有利于爬虫爬取更多的有效信息</li>
@@ -332,10 +344,11 @@
 <h3 id="iframe-有那些优点和缺点？"><a href="#iframe-有那些优点和缺点？" class="headerlink" title="iframe 有那些优点和缺点？"></a>iframe 有那些优点和缺点？</h3><p>iframe 元素会创建包含另外一个文档的内联框架（即行内框架）。<br>优点：</p>
 <ul>
 <li>解决加载缓慢的第三方内容如图标和广告等的加载问题</li>
-<li>增加代码的可重用</li>
+<li>绕过cors（跨域）限制，实现跨子域通信</li>
 <li>并行加载脚本<br>缺点：</li>
-<li>iframe 会阻塞主页面的 onload 事件</li>
-<li>无法被一些搜索引擎索识别</li>
+<li>iframe 会阻塞主页面的 onload 事件，减慢页面加载速度</li>
+<li>第三方网站不受控制</li>
+<li>没有语义，无法被一些搜索引擎索识别</li>
 <li>会产生很多页面，不容易管理</li>
 </ul>
 <h3 id="Canvas和SVG的区别"><a href="#Canvas和SVG的区别" class="headerlink" title="Canvas和SVG的区别"></a>Canvas和SVG的区别</h3><p>SVG：可缩放矢量图形<br>特点：</p>
@@ -393,7 +406,7 @@
 <h3 id="对-requestAnimationframe-的理解"><a href="#对-requestAnimationframe-的理解" class="headerlink" title="对 requestAnimationframe 的理解"></a>对 requestAnimationframe 的理解</h3><p>requestAnimationframe： 请求动画帧<br>告诉浏览器——你希望执行一个动画，并且要求浏览器在下次重绘之前调用指定的回调函数更新动画<br><code>window.requestAnimationFrame(callback);</code><br>callback是下一次重绘之前更新动画帧所调用的函数<br>是 宏任务<br>cancelAnimationFrame(id)来取消执行动画，参数是requestAnimationFrame默认返回的id</p>
 <h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><ol>
 <li>CPU节能<ol>
-<li>使用SetTinterval 实现的动画，当页面被隐藏或最小化时，SetTinterval 仍然在后台执行动画任务</li>
+<li>使用SetInterval 实现的动画，当页面被隐藏或最小化时，SetInterval 仍然在后台执行动画任务</li>
 <li>RequestAnimationFrame则完全不同，当页面处理未激活的状态下，该页面的屏幕刷新任务也会被系统暂停，页面被激活时，动画就从上次停留的地方继续执行，有效节省了CPU开销。</li>
 </ol>
 </li>
@@ -402,9 +415,11 @@
 </ol>
 </li>
 <li>减少dom操作<ol>
-<li>requestAnimationFrame 会把每一帧中的所有DOM操作集中起来，在一次重绘或回流中就完成</li>
+<li>requestAnimationFrame 会把每一帧中的所有DOM操作集中起来，在一次重绘或回流中就完成<h5 id="另一种说法"><a href="#另一种说法" class="headerlink" title="另一种说法"></a>另一种说法</h5></li>
 </ol>
 </li>
+<li>requestAnimationFrame 会把每一帧中的所有DOM操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。</li>
+<li>在隐藏或不可见的元素中，requestAnimationFrame将不会进行重绘或回流，这当然就意味着更少的的cpu，gpu和内存使用量。</li>
 </ol>
 <h4 id="setTimeout执行动画的缺点"><a href="#setTimeout执行动画的缺点" class="headerlink" title="setTimeout执行动画的缺点"></a>setTimeout执行动画的缺点</h4><p>它通过设定间隔时间来不断改变图像位置，达到动画效果。但是容易出现卡顿、抖动的现象。</p>
 <ol>
@@ -683,6 +698,7 @@
 <li>forof  数组 支持break等，缺点没有index</li>
 </ol>
 <p>普通for循环才是最优雅的，优化后的for循环最快<br>数组方法无法中途停止循环，所以都不可以使用break和continue；<br>for循环之类的不可以return，但是能正常使用break和continue；</p>
+<h4 id="其他数组方法"><a href="#其他数组方法" class="headerlink" title="其他数组方法"></a>其他数组方法</h4><p>join()<br>push()和pop()<br>shift() 和 unshift()<br>sort()<br>reverse()<br>concat()<br>slice()<br>splice()</p>
 <h3 id="shift-和-unshift-和-push-和-pop的返回值"><a href="#shift-和-unshift-和-push-和-pop的返回值" class="headerlink" title="shift 和 unshift 和 push 和 pop的返回值"></a>shift 和 unshift 和 push 和 pop的返回值</h3><p>shift 和 pop 返回值 被删除的值<br>unshift 和 push 返回添加之后数组的长度</p>
 <h3 id="map-和-set的区别"><a href="#map-和-set的区别" class="headerlink" title="map 和 set的区别"></a>map 和 set的区别</h3><p>map 字典 键值对 set get has size<br>set 值唯一的数组 add delete</p>
 <h3 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h3><p>任务：找到<strong>哪些被分配的内存确实已经不再需要了</strong></p>
@@ -784,24 +800,6 @@
 </ol>
 <h3 id="event-loop"><a href="#event-loop" class="headerlink" title="event loop"></a>event loop</h3><p>异步任务不进入主线程，而是进入<strong>任务队列</strong>，当主线程中的任务执行完毕，就从任务队列中取出任务放进主线程中来进行执行。由于主线程不断重复的获得任务、执行任务、再获取再执行，所以这种机制被叫做事件循环。</p>
 <ol>
-<li>event loop过程1<ol>
-<li>同步代码，一行一行放在call Stack（执行栈）执行</li>
-<li>遇到异步，会先记录下并交给其他线程处理，等待时机（定时，网络请求）</li>
-<li>时机到了，就会移动到callback queue</li>
-</ol>
-</li>
-<li>event loop过程2<ol>
-<li>如果call stack为空（同步代码执行完），event loop开始工作</li>
-<li>轮训查找callback queue，如果有则移动到call stack<ol>
-<li>优先检查微任务队列是否有任务，没有的话再去宏任务队列检查</li>
-</ol>
-</li>
-<li>然后继续轮训查找</li>
-</ol>
-</li>
-</ol>
-<p>另一种说法： *</p>
-<ol>
 <li>执行一个宏任务（栈中没有就从事件队列中获取）</li>
 <li>执行过程中如果遇到微任务，就将它添加到微任务的任务队列中</li>
 <li>宏任务执行完毕后，立即执行当前微任务队列中的所有微任务（依次执行）</li>
@@ -861,6 +859,8 @@
 <li>vue生命周期和method方法不能写成箭头函数的形式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> obj = &#123;<br>    <span class="hljs-attr">a</span>:<span class="hljs-string">&#x27;a&#x27;</span><br>    <span class="hljs-attr">getA</span>: <span class="hljs-function">() =&gt;</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.a<br>    &#125;<br>&#125;<br><span class="hljs-built_in">console</span>.log( obj.getA() ) <span class="hljs-comment">//undefined</span><br></code></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="AMD-和-CommonJS-的理解"><a href="#AMD-和-CommonJS-的理解" class="headerlink" title="AMD 和 CommonJS 的理解"></a>AMD 和 CommonJS 的理解</h3><p>CommonJS是服务器端模块的规范，Node.js采用了这个规范。CommonJS规范加载模块是同步的，也就是说，只有加载完成，才能执行后面的操作。AMD规范则是非同步加载模块，允许指定回调函数<br>AMD推荐的风格通过返回一个对象做为模块对象，CommonJS的风格通过对module.exports或exports的属性赋值来达到暴露模块对象的目的</p>
+<h3 id="animation的用法"><a href="#animation的用法" class="headerlink" title="animation的用法"></a>animation的用法</h3><p>animation的各个属性<br><code>animation: name duration timing-function delay iteration-count direction fill-mode play-state</code></p>
+<p>name 关键帧名称 loop<br>duration 动画完成时间多少秒 3s<br>timing-function 设置如何完成一个周期 linear<br>delay 启动前延迟间隔 0.3s<br>iteration-count 播放次数 infinite<br>direction 是否反向播放动画<br>fill-mode 动画不播放时，要应用的元素样式<br>play-state 是否正在运行或暂停</p>
 <h2 id="vue-相关"><a href="#vue-相关" class="headerlink" title="vue 相关"></a>vue 相关</h2><h3 id="vue-和-react的区别-对比等"><a href="#vue-和-react的区别-对比等" class="headerlink" title="vue 和 react的区别 对比等"></a>vue 和 react的区别 对比等</h3><h4 id="共同点"><a href="#共同点" class="headerlink" title="共同点"></a>共同点</h4><ol>
 <li>都是数据驱动视图</li>
 <li>都是组件化思想</li>
@@ -958,8 +958,7 @@
 <p>beforeDestory注意点<br>自定义的全局事件要在退出该页面钱进行解绑</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">mounted () &#123;<br>  <span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">&#x27;scroll&#x27;</span>, <span class="hljs-built_in">this</span>.handleScroll)<br>&#125;,<br>beforeDestroy () &#123;<br>  <span class="hljs-built_in">window</span>.removeEventListener(<span class="hljs-string">&#x27;scroll&#x27;</span>, <span class="hljs-built_in">this</span>.handleScroll)<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="组件之间的传值"><a href="#组件之间的传值" class="headerlink" title="组件之间的传值"></a>组件之间的传值</h3><p>TODO:待丰富</p>
-<ol>
+<h3 id="组件之间的传值"><a href="#组件之间的传值" class="headerlink" title="组件之间的传值"></a>组件之间的传值</h3><ol>
 <li>父 -&gt; 子  props</li>
 <li>子 -&gt; 父  events($emits)</li>
 <li>$parent / $children 两种都是直接得到组件实例，使用后可以直接调用组件的方法或访问数据。</li>
@@ -1055,7 +1054,8 @@
 </ol>
 <p>实战举例： e-charts的resize.js</p>
 <h3 id="虚拟-dom-的理解及其优点"><a href="#虚拟-dom-的理解及其优点" class="headerlink" title="虚拟 dom 的理解及其优点"></a>虚拟 dom 的理解及其优点</h3><p>虚拟DOM本质上是<strong>JavaScript对象</strong>,是对真实DOM的抽象 状态变更时，用对象记录新树和旧树的差异<br>最后把差异更新到真正的dom中</p>
-<p>多次渲染DOM是很消耗前端性能的，所以减少dom的操作成为了优化前端性能的必要手段</p>
+<p>虚拟 DOM 主要的作用是<strong>优化 DOM 的渲染性能</strong>。在传统的网页开发中，当页面状态改变时，需要重新生成整个 DOM 树，这个过程非常耗时。而虚拟 DOM 把这个过程分为两个步骤：首先生成一颗虚拟 DOM 树，然后用虚拟 DOM 树和上一次生成的虚拟 DOM 树进行比较，找到差异，最后只对这些差异部分进行 DOM 操作。这个过程被称为“DOM Diff 算法”。</p>
+<p>虚拟 DOM 本身是一个 JavaScript 对象，它包含了页面的结构信息和状态信息。通过使用虚拟 DOM，可以避免直接操作真实 DOM 树，从而提高渲染性能和用户体验。同时，虚拟 DOM 也提供了更好的抽象层，使得开发者可以更加方便地管理和维护页面状态。</p>
 <h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ol>
 <li>保证性能下限 大幅度减少了dom的操作，减少了重绘和回流的次数，提高了性能</li>
 <li>无需手动操作DOM virtualDOM的diff和patch都是在一次更新中自动进行的，无需手动操作</li>
@@ -1090,10 +1090,14 @@
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 第二种访问方式</span><br><span class="hljs-attr">methods</span>: &#123;<br>  ...mapActions([<span class="hljs-string">&#x27;actionsName&#x27;</span>]),<br>  ...mapMutations([<span class="hljs-string">&#x27;mutationName&#x27;</span>])<br>&#125;<br><span class="hljs-attr">computed</span>: &#123;<br>  ...mapGetters([<span class="hljs-string">&#x27;xxx&#x27;</span>])<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="vuex-和-本地存储的区别"><a href="#vuex-和-本地存储的区别" class="headerlink" title="vuex 和 本地存储的区别"></a>vuex 和 本地存储的区别</h3><p>vuex存的是状态，存在内存中，localStorage是以文件的形式存储到本地<br>vuex用于组件之间的传值，localStorage则主要用于页面之间的传值<br><strong>当刷新页面时，vuex存储的值会丢失，localStorage不会</strong></p>
-<p>localStorage可以代替vuex，对于不变的数据确实可以，但是当两个组件共同用以数据源，如果其中一个组件中的数据源改变，希望另一个组件响应变化，这时候就要选择用vuex。vuex是vue的状态管理机制，是方便组件之间通信的。一个组件的数据变化是会映射到使用这个数据的其他组件。而localStorage是本地存储，是将数据存储到浏览器的方法，一般在跨页面时使用。</p>
+<h3 id="vuex-和-本地存储的区别"><a href="#vuex-和-本地存储的区别" class="headerlink" title="vuex 和 本地存储的区别"></a>vuex 和 本地存储的区别</h3><ol>
+<li>vuex存的是状态，存在<strong>内存</strong>中，localStorage是以文件的形式存储到<strong>本地</strong></li>
+<li>vuex用于组件之间的传值，localStorage则主要用于页面之间的传值</li>
+<li>vuex可以做到数据的<strong>响应</strong>式，localStorage不行。即当两个组件共同用以数据源，如果其中一个组件中的数据源改变，希望另一个组件响应变化，这时候就要选择用vuex。</li>
+<li><strong>当刷新页面时，vuex存储的值会丢失，localStorage不会</strong></li>
+</ol>
 <h3 id="vue-踩过的坑"><a href="#vue-踩过的坑" class="headerlink" title="vue 踩过的坑"></a>vue 踩过的坑</h3><ol>
-<li>给data中的对象直接添加属性并赋值 无效果 删除属性要用vue.delete<br>解决方法：Vue.set(object, attribute, value)新增的属性也是响应式的</li>
+<li>给data中的对象直接添加属性并赋值 无效果 删除属性要用vue.delete<br>解决方法：Vue.$set(object, attribute, value)新增的属性也是响应式的</li>
 <li>在created中操作dom报错，无法获取到dom<br>解决方法：Vue.nextTick()</li>
 <li>内存泄漏 全局变量 自定义事件定时器等未销毁 </li>
 <li>路由切换时页面scroll到顶部 <ol>
@@ -1130,9 +1134,10 @@
 </ol>
 <h3 id="http工作原理"><a href="#http工作原理" class="headerlink" title="http工作原理"></a>http工作原理</h3><p>HTTP协议工作于客户端-服务端架构上，浏览器作为HTTP客户端通过URL向HTTP服务端发送所有请求。</p>
 <h4 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h4><ol>
-<li>支持客户/服务器模式</li>
+<li>支持客户/服务器模式（请求应答模式）</li>
 <li>应用广泛且跨平台</li>
 <li>简单快速且灵活</li>
+<li>是可靠的传输协议</li>
 </ol>
 <h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ol>
 <li>无状态</li>
@@ -1159,7 +1164,7 @@
 <li>客户端解密信息</li>
 </ol>
 <h3 id="Get-和-Post"><a href="#Get-和-Post" class="headerlink" title="Get 和 Post"></a>Get 和 Post</h3><ol>
-<li>GET是默认的HTTP请求方法 参数以key-value形式存放在url中，get更不安全</li>
+<li>GET是默认的HTTP请求方法 参数以key-value形式存放在url中，get更不安全，post是通过request body携带请求参数</li>
 <li>get提交数据大小有限制，因为浏览器URL的长度有限制，post没有</li>
 <li>get可以被缓存，post不能</li>
 <li>get只允许ascii码，post没有限制</li>
@@ -1211,7 +1216,8 @@
 <li>启用CSP（Content Security Policy） 内容安全策略</li>
 <li>还可以对一些敏感信息进行保护，比如 cookie 使用 http-only，使得脚本无法获取。</li>
 </ol>
-<h4 id="csrf-跨站请求伪造"><a href="#csrf-跨站请求伪造" class="headerlink" title="csrf 跨站请求伪造"></a>csrf 跨站请求伪造</h4><p>引诱受害者进入第三方网站，在第三方网站中，向被攻击网站发送跨站请求。利用受害者在被攻击网站已经获取的注册凭证，绕过后台的用户验证，达到冒充用户对被攻击的网站执行某项操作的目的。<br>特点：是冒充受害者提交操作<br>防范措施：</p>
+<h4 id="csrf-跨站请求伪造"><a href="#csrf-跨站请求伪造" class="headerlink" title="csrf 跨站请求伪造"></a>csrf 跨站请求伪造</h4><p>引诱受害者进入第三方网站，在第三方网站中，向被攻击网站发送跨站请求。利用受害者在被攻击网站已经获取的注册凭证，绕过后台的用户验证，达到冒充用户对被攻击的网站执行某项操作的目的。<br>原理：利用cookie的自动携带特性，在其他的网站想你的网站发送请求，如果你的网站中没有退出登录，那么这次操作请求会被执行，比如银行转账途中点击其他网站。</p>
+<p>特点：是冒充受害者提交操作<br>防范措施：</p>
 <ol>
 <li>同源检测 origin header</li>
 <li>csrf token请求时携带token</li>
@@ -1245,7 +1251,13 @@
 <li>url-loader将文件转换为base64 URI。</li>
 <li>vue-loader处理vue文件</li>
 </ol>
-<h3 id="常见-plugins"><a href="#常见-plugins" class="headerlink" title="常见 plugins"></a>常见 plugins</h3><p>HtmlWbpackPlugin自动在打包结束后生成html文件，并引入bundle.js<br>cleanwebPackPlugin打包自动删除上次打包文件<br>uglifyjs-webpack-plugin（js代码丑化压缩）</p>
+<h3 id="常见-plugins"><a href="#常见-plugins" class="headerlink" title="常见 plugins"></a>常见 plugins</h3><ol>
+<li>HtmlWebpackPlugin自动在打包结束后生成html文件，并引入bundle.js</li>
+<li>cleanwebPackPlugin打包自动删除上次打包文件</li>
+<li>webpack-dev-server，开启开发服务器，监视文件变动</li>
+<li>uglifyjs-webpack-plugin（js代码压缩混淆）</li>
+<li>webpack-parallel-uglify-plugin 多进程执行代码压缩，提升构建速度。</li>
+</ol>
 <h3 id="webpack-打包的流程"><a href="#webpack-打包的流程" class="headerlink" title="webpack 打包的流程"></a>webpack 打包的流程</h3><ol>
 <li><strong>初始化参数</strong>  webpack.config.js中读取到对应的配置参数和shell命令中传入的参数进行合并得到最终打包配置参数</li>
 <li><strong>编译准备</strong> 这一步我们会通过调用webpack()方法返回一个compiler对象，并且注册各个Webpack Plugin。找到配置入口中的entry代码，调用compiler.run()方法进行编译</li>
@@ -1253,12 +1265,29 @@
 <li><strong>完成编译</strong> 在递归完成后，每个引用模块通过loaders处理完成同时得到模块之间的相互依赖关系</li>
 <li><strong>输出文件</strong> 整理模块依赖关系，同时将处理后的文件输出到ouput的磁盘目录中。</li>
 </ol>
+<h3 id="webpack中的dev-server是怎么跑起来的"><a href="#webpack中的dev-server是怎么跑起来的" class="headerlink" title="webpack中的dev-server是怎么跑起来的"></a>webpack中的dev-server是怎么跑起来的</h3><p>dev-server 是一个小型的 Node.js Express 服务器。</p>
+<p>它使用了 <strong>webpack-dev-middleware</strong> 中间件来实现快速打包编译并通过 HTTP 服务提供打包后的文件。</p>
+<p>dev-server 的运行流程如下：</p>
+<ol>
+<li>打包所有文件生成 JavaScript，并将它们存储在内存中;</li>
+<li>启动一个 HTTP 服务器，为应用程序提供服务;</li>
+<li>监听源代码文件的变化，当文件发生变化时重新编译它们;</li>
+<li>将编译后的文件重新加载到浏览器中，以实现实时重新加载和热模块替换。</li>
+</ol>
+<h3 id="实现webpack持久化缓存"><a href="#实现webpack持久化缓存" class="headerlink" title="实现webpack持久化缓存"></a>实现webpack持久化缓存</h3><p>hash 文件名是实现持久化缓存的第一步，目前 webpack 有两种计算 hash 的方式([hash] 和 [chunkhash])</p>
+<ul>
+<li>hash 代表每次 webpack 在编译的过程中会生成唯一的 hash 值，在项目中任何一个文件改动后就会被重新创建，然后 webpack 计算新的 hash 值。</li>
+<li>chunkhash 是根据模块计算出来的 hash 值，所以某个文件的改动只会影响它本身的 hash 值，不会影响其他文件。<br>如果你的项目涉及到拆包，分模块进行加载等等，那么你需要用 chunkhash，来保证每次更新之后只有相关的文件 hash 值发生改变。<br>一份具有持久化缓存的 webpack 配置应该长这样<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">module</span>.exports = &#123;<br> <span class="hljs-attr">entry</span>: __dirname + <span class="hljs-string">&#x27;/src/index.js&#x27;</span>,<br> <span class="hljs-attr">output</span>: &#123;<br> <span class="hljs-attr">path</span>: __dirname + <span class="hljs-string">&#x27;/dist&#x27;</span>,<br> <span class="hljs-attr">filename</span>: <span class="hljs-string">&#x27;[name].[chunkhash:8].js&#x27;</span>,<br> &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>第二种方法：<br>使用 hard-source-webpack-plugin 插件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> HardSourceWebpackPlugin = <span class="hljs-built_in">require</span>(&amp;#<span class="hljs-number">39</span>;hard-source-webpack-plugin&amp;#<span class="hljs-number">39</span>;);<br><br><span class="hljs-built_in">module</span>.exports = &#123;<br>  <span class="hljs-comment">// ...</span><br>  <span class="hljs-attr">plugins</span>: [<br>    <span class="hljs-keyword">new</span> HardSourceWebpackPlugin()<br>  ]<br>&#125;;<br></code></pre></td></tr></table></figure>
+
 <h3 id="webpack中的source-map是什么？生产环境怎么用？"><a href="#webpack中的source-map是什么？生产环境怎么用？" class="headerlink" title="webpack中的source map是什么？生产环境怎么用？"></a>webpack中的source map是什么？生产环境怎么用？</h3><p>首先前端项目在投入生产之前，都会对JavaScript源代码进行压缩混淆，从而减小文件的体积，提高文件的加载效率，也因此对压缩混淆之后的代码除错（debug） 是一件极其困难的事情</p>
 <ol>
 <li>变量被替换成没有任何语义的名称</li>
 <li>空行和注释被剔除</li>
 </ol>
-<p>Source Map 就是一个信息文件，里面储存着位置信息。也就是说，Source Map 文件中存储着压缩混淆后的代码，所对应的转换前的位置。<br>出错的时候，除错工具将直接显示原始代码，而不是转换后的代码</p>
+<p>Source Map就是一个信息文件，里面储存着位置信息。也就是说，Source Map文件中存储着压缩混淆后的代码，所对应的转换前的位置。<br>出错的时候，除错工具将直接显示原始代码，而不是转换后的代码</p>
 <h4 id="生产环境下"><a href="#生产环境下" class="headerlink" title="生产环境下"></a>生产环境下</h4><p>如果 省略了 devtool 选项 ，则最终生成的文件中 不包含 Source Map 。这能够 防止原始代码 通过 Source Map 的形式 暴露 给别有所图之人。</p>
 <p>在生产环境下，如果 只想定位报错的具体行数 ，且 不想暴露源码 。此时可以将 devtool 的值设置为<br><strong>nosources-source-map</strong>。</p>
 <h2 id="typescript-和-vue3-相关"><a href="#typescript-和-vue3-相关" class="headerlink" title="typescript 和 vue3 相关"></a>typescript 和 vue3 相关</h2><h3 id="ts比js的优势"><a href="#ts比js的优势" class="headerlink" title="ts比js的优势"></a>ts比js的优势</h3><p>ts是js的超集，在js的基础上添加了<strong>类型系统</strong>，用于强大的<strong>静态类型检查</strong>能力，并且继承了js的所有编程类型，js代码在ts环境也可以很好的运行</p>
@@ -1541,7 +1570,25 @@
 <li>渐进增强和优雅降级（1）渐进增强：针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验。（2）优雅降级：一开始就构建完整的功能，然后再针对低版本浏览器进行兼容。</li>
 </ol>
 <h4 id="css-hack"><a href="#css-hack" class="headerlink" title="css hack"></a>css hack</h4><p><code>*background-color:green</code> 在前面加*的只会对IE6，7生效，其他版本ie和现代浏览器会忽略这条指令<br>在前面加-的只会对IE6生效，其他版本ie和现代浏览器会忽略这条指令<br>后面添加“!important”的写法只有IE6不能识别，其它版本IE及现代浏览器都可以识别</p>
-<h3 id="断点续传"><a href="#断点续传" class="headerlink" title="断点续传"></a>断点续传</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7031322059414175774">参考 1</a></p>
+<h3 id="移动端适配的问题"><a href="#移动端适配的问题" class="headerlink" title="移动端适配的问题"></a>移动端适配的问题</h3><h4 id="2个概念："><a href="#2个概念：" class="headerlink" title="2个概念："></a>2个概念：</h4><p>自适应：根据不同的设备屏幕大小来自动调整尺寸，大小。<br>响应式：会随着屏幕的实时变动而自动调整，是一种自适应。</p>
+<h4 id="4个方案"><a href="#4个方案" class="headerlink" title="4个方案"></a>4个方案</h4><ol>
+<li>百分比</li>
+<li>rem+动态html的font-size  媒体查询设置不同html的根font-size<ol>
+<li>如果动态改变尺寸，不会实时的进行更新（没有实现响应式 lib-flexible） 可以用js动态获取屏幕宽度</li>
+</ol>
+</li>
+<li>vw单位  <ol>
+<li>postcss-px-to-viewport</li>
+<li>配置一下postcss.config.js即可 如下</li>
+</ol>
+</li>
+<li>flex</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// postcss.config.js</span><br><span class="hljs-built_in">module</span>.exports = &#123;<br>  <span class="hljs-attr">plugins</span>: &#123;<br>    <span class="hljs-string">&#x27;postcss-px-to-viewport&#x27;</span>: &#123;<br>      <span class="hljs-attr">viewportWidth</span>: <span class="hljs-number">375</span>,<br>    &#125;,<br>  &#125;,<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>其中最推荐的就是vw方案<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_57677300/article/details/129164050?csdn_share_tail=%7B%22type%22:%22blog%22,%22rType%22:%22article%22,%22rId%22:%22129164050%22,%22source%22:%22weixin_57677300%22%7D">参考</a></p>
+<h3 id="断点续传"><a href="#断点续传" class="headerlink" title="断点续传"></a>断点续传</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Teemo_shape/article/details/105579955">https://blog.csdn.net/Teemo_shape/article/details/105579955</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7031322059414175774">参考 1</a></p>
 <p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7061588533214969892">参考 2</a></p>
 
             </div>
@@ -1576,6 +1623,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/04/19/%E5%89%8D%E7%AB%AF%E5%9F%8B%E7%82%B9/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">前端埋点</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
