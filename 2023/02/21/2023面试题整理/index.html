@@ -24,7 +24,7 @@
 <meta property="og:description" content="面试题整理js 手写题手写深拷贝1234567891011121314151617181920212223242526272829303132function deepClone(obj &#x3D; &amp;#123;&amp;#125;) &amp;#123;  &#x2F;&#x2F; 是null或者不是对象和数组 直接返回  if (typeof obj !&#x3D;&#x3D; &quot;object&quot; || obj &#x3D;&#x3D; null) &amp;#12">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-02-21T08:31:32.000Z">
-<meta property="article:modified_time" content="2023-04-25T03:50:02.863Z">
+<meta property="article:modified_time" content="2023-11-16T04:53:31.169Z">
 <meta property="article:author" content="Kai Zhang">
 <meta property="article:tag" content="面试题">
 <meta name="twitter:card" content="summary_large_image">
@@ -205,7 +205,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      171 分钟
+      173 分钟
     </span>
   
 
@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：15 days ago
+                  本文最后更新于：7 minutes ago
                 
               </p>
             
@@ -288,7 +288,13 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sortArray</span>(<span class="hljs-params">nums</span>) </span>&#123;<br>  quickSort(<span class="hljs-number">0</span>, nums.length - <span class="hljs-number">1</span>, nums);<br>  <span class="hljs-keyword">return</span> nums;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSort</span>(<span class="hljs-params">start, end, arr</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (start &lt; end) &#123;<br>    <span class="hljs-keyword">const</span> mid = sort(start, end, arr);<br>    quickSort(start, mid - <span class="hljs-number">1</span>, arr);<br>    quickSort(mid + <span class="hljs-number">1</span>, end, arr);<br>  &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sort</span>(<span class="hljs-params">start, end, arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> base = arr[start];<br>  <span class="hljs-keyword">let</span> left = start;<br>  <span class="hljs-keyword">let</span> right = end;<br>  <span class="hljs-keyword">while</span> (left !== right) &#123;<br>    <span class="hljs-keyword">while</span> (arr[right] &gt;= base &amp;&amp; right &gt; left) &#123;<br>      right--;<br>    &#125;<br>    arr[left] = arr[right];<br>    <span class="hljs-keyword">while</span> (arr[left] &lt;= base &amp;&amp; right &gt; left) &#123;<br>      left++;<br>    &#125;<br>    arr[right] = arr[left];<br>  &#125;<br>  arr[left] = base;<br>  <span class="hljs-keyword">return</span> left;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h3 id="获取-url-参数"><a href="#获取-url-参数" class="headerlink" title="获取 url 参数"></a>获取 url 参数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseParam</span>(<span class="hljs-params">url</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> paramsStr = <span class="hljs-regexp">/.+\?(.+)$/</span>.exec(url)[<span class="hljs-number">1</span>]; <span class="hljs-comment">// 将 ? 后面的字符串取出来</span><br>  <span class="hljs-keyword">const</span> paramsArr = paramsStr.split(<span class="hljs-string">&#x27;&amp;&#x27;</span>); <span class="hljs-comment">// 将字符串以 &amp; 分割后存到数组中</span><br>  <span class="hljs-keyword">let</span> paramsObj = &#123;&#125;;<br>  <span class="hljs-comment">// 将 params 存到对象中</span><br>  paramsArr.forEach(<span class="hljs-function"><span class="hljs-params">param</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/=/</span>.test(param)) &#123; <span class="hljs-comment">// 处理有 value 的参数</span><br>      <span class="hljs-keyword">let</span> [key, val] = param.split(<span class="hljs-string">&#x27;=&#x27;</span>); <span class="hljs-comment">// 分割 key 和 value</span><br>      val = <span class="hljs-built_in">decodeURIComponent</span>(val); <span class="hljs-comment">// 解码</span><br>      val = <span class="hljs-regexp">/^\d+$/</span>.test(val) ? <span class="hljs-built_in">parseFloat</span>(val) : val; <span class="hljs-comment">// 判断是否转为数字</span><br>      <span class="hljs-keyword">if</span> (paramsObj.hasOwnProperty(key)) &#123; <span class="hljs-comment">// 如果对象有 key，则添加一个值</span><br>        paramsObj[key] = [].concat(paramsObj[key], val);<br>      &#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">// 如果对象没有这个 key，创建 key 并设置值</span><br>        paramsObj[key] = val;<br>      &#125;<br>    &#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">// 处理没有 value 的参数</span><br>      paramsObj[param] = <span class="hljs-literal">true</span>;<br>    &#125;<br>  &#125;)<br>  <span class="hljs-keyword">return</span> paramsObj;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="html-amp-css-相关"><a href="#html-amp-css-相关" class="headerlink" title="html&amp;css 相关"></a>html&amp;css 相关</h2><h3 id="src和href的区别"><a href="#src和href的区别" class="headerlink" title="src和href的区别"></a>src和href的区别</h3><p>src和href都是用来引用外部的资源<br><code>&lt;a link href=&quot;xxx&quot; /&gt; &lt;script src=&quot;xxx.js /&gt;&quot;</code><br>src用于替换当前元素,href用于在当前文档和引用资源之确立联系</p>
+<h2 id="html-amp-css-相关"><a href="#html-amp-css-相关" class="headerlink" title="html&amp;css 相关"></a>html&amp;css 相关</h2><h3 id="转字符串类型的3种方法"><a href="#转字符串类型的3种方法" class="headerlink" title="转字符串类型的3种方法"></a>转字符串类型的3种方法</h3><ol>
+<li>value.toString() 参数可以控制转成多少进制 默认十进制</li>
+<li>value + “” 加空字符串即可</li>
+<li>String（）将数字转成字符串</li>
+<li>模板字符串</li>
+</ol>
+<h3 id="src和href的区别"><a href="#src和href的区别" class="headerlink" title="src和href的区别"></a>src和href的区别</h3><p>src和href都是用来引用外部的资源<br><code>&lt;a link href=&quot;xxx&quot; /&gt; &lt;script src=&quot;xxx.js /&gt;&quot;</code><br>src用于替换当前元素,href用于在当前文档和引用资源之确立联系</p>
 <p>src在浏览器中被解析到时会暂停其他资源的下载和处理，并且把该资源加载编译完成。<br>href在文档中进行添加时，浏览器会识别到这个文档，并命名为css文件，就会下载合并资源，同时也不会停止对当前文档的处理。</p>
 <h3 id="css中link和-import的区别"><a href="#css中link和-import的区别" class="headerlink" title="css中link和@import的区别"></a>css中link和@import的区别</h3><ol>
 <li>link是XHTML标签，除了加载CSS外，还可以定义RSS等事务。 @import属于CSS范畴，只能加载CSS</li>
@@ -296,8 +302,8 @@
 <li>link是XHTML标签，没有兼容性，@import是在CSS2.1中提出的，低版浏览器不支持</li>
 <li>link支持使用Javascript控制DOM来改变样式；@import不支持。</li>
 </ol>
-<h3 id="伪元素和伪类区别"><a href="#伪元素和伪类区别" class="headerlink" title="伪元素和伪类区别"></a>伪元素和伪类区别</h3><p>伪类其实就是基于普通DOM元素而产生的不同<strong>状态</strong>，他是DOM元素的某一特征。伪类用单冒号:表示</p>
-<p>伪元素能够创建在DOM树中不存在的<strong>抽象对象</strong>，而且这些抽象对象是能够访问到的。伪元素用双冒号::表示</p>
+<h3 id="伪元素和伪类区别"><a href="#伪元素和伪类区别" class="headerlink" title="伪元素和伪类区别"></a>伪元素和伪类区别</h3><p>伪类其实就是基于普通DOM元素而产生的不同<strong>状态</strong>，他是DOM元素的某一特征。伪类用单冒号:表示  :link :hover :visited :first-child</p>
+<p>伪元素能够创建在DOM树中不存在的<strong>抽象对象</strong>，而且这些抽象对象是能够访问到的。伪元素用双冒号::表示 ::before ::first-line</p>
 <h3 id="布局有哪些"><a href="#布局有哪些" class="headerlink" title="布局有哪些"></a>布局有哪些</h3><p>浮动布局（float layout）<br>定位布局（position layout）：<br>弹性布局（flexbox layout）<br>网格布局（grid layout）</p>
 <h3 id="grid布局"><a href="#grid布局" class="headerlink" title="grid布局"></a>grid布局</h3><p><code>display:grid</code></p>
 <ol>
@@ -329,7 +335,7 @@
 <h3 id="script-标签的-defer-和-async-区别"><a href="#script-标签的-defer-和-async-区别" class="headerlink" title="script 标签的 defer 和 async 区别"></a>script 标签的 defer 和 async 区别</h3><p>script: 会阻碍html解析，只有下载好并执行完脚本才会继续解析html<br>async script: 解析html过程中会进行脚本的异步下载，下载成功立马执行。async脚本的 下载 不会阻塞页面的解析渲染。async脚本的<strong>执行</strong>会阻塞页面的解析渲染 <strong>异步下载，立即执行</strong><br>defer script: 完全不阻碍html的解析，解析完成后再按照<strong>顺序</strong>执行脚本 <strong>异步下载，解析完执行</strong></p>
 <p>区别在于：多个脚本异步载入时，defer会按照文档中排列的顺序按序执行，而async是谁先完成载入谁先执行，是无序的</p>
 <h3 id="常⽤的meta标签有哪些"><a href="#常⽤的meta标签有哪些" class="headerlink" title="常⽤的meta标签有哪些"></a>常⽤的meta标签有哪些</h3><h4 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h4><p>meta 标签是由 name 和 content 属性定义，用来描述网页文档的属性，类似给网页添加的标签</p>
-<h4 id="常用的有"><a href="#常用的有" class="headerlink" title="常用的有"></a>常用的有</h4><ol>
+<h4 id="常用的name有"><a href="#常用的name有" class="headerlink" title="常用的name有"></a>常用的name有</h4><ol>
 <li>charset  <code>&lt;meta charset=&quot;UTF-8&quot; &gt;</code></li>
 <li>keywords  <code>&lt;meta name=&quot;keywords&quot; content=&quot;关键词&quot; /&gt;</code></li>
 <li>description  <code>&lt;meta name=&quot;description&quot; content=&quot;页面描述内容&quot; /&gt;</code></li>
@@ -662,6 +668,24 @@
 <li><p>所有的回调函数</p>
 </li>
 </ol>
+<h3 id="哪些操作可能引起内存泄漏"><a href="#哪些操作可能引起内存泄漏" class="headerlink" title="哪些操作可能引起内存泄漏"></a>哪些操作可能引起内存泄漏</h3><ol>
+<li>不需要的全局变量  注册在window对象下的变量 var声明的变量</li>
+<li>计时器和回调函数timers 定时器不被需要时，没有被clear</li>
+<li>DOM泄漏  元素引用没有清理  var a = document.getElementById(‘id’)需要a=null来清理</li>
+<li>js闭包</li>
+<li>console.log</li>
+</ol>
+<h3 id="深浅拷贝的几种实现方式"><a href="#深浅拷贝的几种实现方式" class="headerlink" title="深浅拷贝的几种实现方式"></a>深浅拷贝的几种实现方式</h3><h4 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h4><ol>
+<li>Object.assign() let b = Object.assign({},a)</li>
+<li>扩展运算符 let b = {…a}</li>
+<li>Object.create()  let b = Object.create(a, Object.getOwnPropertyDescriptors(a))</li>
+</ol>
+<h4 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h4><ol>
+<li>JSON.stringify 会忽略value为undefined symbol 和function的属性 还有bigInt值会报错</li>
+<li>deepCopy 递归实现</li>
+<li>lodasg.cloneDeep()</li>
+<li>jquery中的extend()方法  let newObj = $.extend(true,{},obj1)</li>
+</ol>
 <h3 id="require-和-import"><a href="#require-和-import" class="headerlink" title="require 和 import"></a>require 和 import</h3><p>1.import在代码编译时被加载，所以必须放在文件开头，require在代码运行时被加载，所以require理论上可以运用在代码的任何地方，所以import性能更好。<br>2.import引入的对象被修改时，源对象也会被修改，相当于浅拷贝，require引入的对象被修改时，源对象不会被修改，官网称值拷贝，我们可以理解为深拷贝。<br>3.import有利于tree-shaking（移除JavaScript上下文中未引用的代码），require对tree-shaking不友好。<br>4.import会触发代码分割（把代码分离到不同的bundle中，然后可以按需加载或者并行加载这些文件），require不会触发。<br>5.import是es6的一个语法标准，如果要兼容浏览器的话必须转化成es5的语法，require 是 AMD规范引入方式。</p>
 <h3 id="promise理解"><a href="#promise理解" class="headerlink" title="promise理解"></a>promise理解</h3><p>promise是ES6中为了避免回调地狱的一种异步解决方案</p>
 <h4 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h4><ol>
@@ -861,7 +885,10 @@
 <h3 id="AMD-和-CommonJS-的理解"><a href="#AMD-和-CommonJS-的理解" class="headerlink" title="AMD 和 CommonJS 的理解"></a>AMD 和 CommonJS 的理解</h3><p>CommonJS是服务器端模块的规范，Node.js采用了这个规范。CommonJS规范加载模块是同步的，也就是说，只有加载完成，才能执行后面的操作。AMD规范则是非同步加载模块，允许指定回调函数<br>AMD推荐的风格通过返回一个对象做为模块对象，CommonJS的风格通过对module.exports或exports的属性赋值来达到暴露模块对象的目的</p>
 <h3 id="animation的用法"><a href="#animation的用法" class="headerlink" title="animation的用法"></a>animation的用法</h3><p>animation的各个属性<br><code>animation: name duration timing-function delay iteration-count direction fill-mode play-state</code></p>
 <p>name 关键帧名称 loop<br>duration 动画完成时间多少秒 3s<br>timing-function 设置如何完成一个周期 linear<br>delay 启动前延迟间隔 0.3s<br>iteration-count 播放次数 infinite<br>direction 是否反向播放动画<br>fill-mode 动画不播放时，要应用的元素样式<br>play-state 是否正在运行或暂停</p>
-<h2 id="vue-相关"><a href="#vue-相关" class="headerlink" title="vue 相关"></a>vue 相关</h2><h3 id="vue-和-react的区别-对比等"><a href="#vue-和-react的区别-对比等" class="headerlink" title="vue 和 react的区别 对比等"></a>vue 和 react的区别 对比等</h3><h4 id="共同点"><a href="#共同点" class="headerlink" title="共同点"></a>共同点</h4><ol>
+<h2 id="vue-相关"><a href="#vue-相关" class="headerlink" title="vue 相关"></a>vue 相关</h2><h3 id="vue3的生命周期"><a href="#vue3的生命周期" class="headerlink" title="vue3的生命周期"></a>vue3的生命周期</h3><p>onMounted onUpdated onUnmounted compositionAPI中使用方式 引入进来</p>
+<p>beforeCreate created 这是options API中使用方式<br>beforeMount mounted<br>beforeUpdate updated<br>beforeUnmount unmounted  就这边变了</p>
+<h3 id="为啥vue3没有this"><a href="#为啥vue3没有this" class="headerlink" title="为啥vue3没有this"></a>为啥vue3没有this</h3><p>我们在options api中对其中的一些属性进行绑定,但是在composition api中的setup函数的执行并没有绑定实例对象</p>
+<h3 id="vue-和-react的区别-对比等"><a href="#vue-和-react的区别-对比等" class="headerlink" title="vue 和 react的区别 对比等"></a>vue 和 react的区别 对比等</h3><h4 id="共同点"><a href="#共同点" class="headerlink" title="共同点"></a>共同点</h4><ol>
 <li>都是数据驱动视图</li>
 <li>都是组件化思想</li>
 <li>都有虚拟dom</li>
