@@ -24,7 +24,7 @@
 <meta property="og:description" content="面试题整理js 手写题手写深拷贝1234567891011121314151617181920212223242526272829303132function deepClone(obj &#x3D; &amp;#123;&amp;#125;) &amp;#123;  &#x2F;&#x2F; 是null或者不是对象和数组 直接返回  if (typeof obj !&#x3D;&#x3D; &quot;object&quot; || obj &#x3D;&#x3D; null) &amp;#12">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-02-21T08:31:32.000Z">
-<meta property="article:modified_time" content="2023-11-16T04:53:31.169Z">
+<meta property="article:modified_time" content="2024-01-02T13:51:23.546Z">
 <meta property="article:author" content="Kai Zhang">
 <meta property="article:tag" content="面试题">
 <meta name="twitter:card" content="summary_large_image">
@@ -196,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      55k 字
+      59k 字
     </span>
   
 
@@ -205,7 +205,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      173 分钟
+      185 分钟
     </span>
   
 
@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 minutes ago
+                  本文最后更新于：29 minutes ago
                 
               </p>
             
@@ -296,6 +296,7 @@
 </ol>
 <h3 id="src和href的区别"><a href="#src和href的区别" class="headerlink" title="src和href的区别"></a>src和href的区别</h3><p>src和href都是用来引用外部的资源<br><code>&lt;a link href=&quot;xxx&quot; /&gt; &lt;script src=&quot;xxx.js /&gt;&quot;</code><br>src用于替换当前元素,href用于在当前文档和引用资源之确立联系</p>
 <p>src在浏览器中被解析到时会暂停其他资源的下载和处理，并且把该资源加载编译完成。<br>href在文档中进行添加时，浏览器会识别到这个文档，并命名为css文件，就会下载合并资源，同时也不会停止对当前文档的处理。</p>
+<h3 id="rem-em"><a href="#rem-em" class="headerlink" title="rem em"></a>rem em</h3><p>都是相对设置的大小，rem相对于根节点html的字体大小，em是相对于父元素的字体大小</p>
 <h3 id="css中link和-import的区别"><a href="#css中link和-import的区别" class="headerlink" title="css中link和@import的区别"></a>css中link和@import的区别</h3><ol>
 <li>link是XHTML标签，除了加载CSS外，还可以定义RSS等事务。 @import属于CSS范畴，只能加载CSS</li>
 <li>link引用CSS在页面加载时同时加载，@import会阻塞后续css的加载。</li>
@@ -325,6 +326,17 @@
 <li>websocket 全双工通信机制 实时聊天</li>
 <li>webworker Web Worker可以通过加载一个脚本文件，进而创建一个独立工作的线程，在主线程之外运行。</li>
 <li>webstorage localstorage sessionstorage</li>
+</ol>
+<h3 id="全屏滚动的实现"><a href="#全屏滚动的实现" class="headerlink" title="全屏滚动的实现"></a>全屏滚动的实现</h3><ol>
+<li>首先 将主容器设置为占满整个屏幕，并禁止页面滚动</li>
+<li>将每个section元素设置为占满整个屏幕，并使用绝对定位将它们垂直堆叠在一起</li>
+<li>监听wheel事件 计算滚动的位置 然后window.scrollTo跳转过去<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">&#x27;wheel&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;<br>  event.preventDefault(); <span class="hljs-comment">// 阻止默认滚动行为</span><br>  <br>  <span class="hljs-keyword">var</span> delta = event.deltaY;<br>  <span class="hljs-keyword">var</span> scrollSpeed = <span class="hljs-number">1000</span>; <span class="hljs-comment">// 滚动速度，可根据需求调整</span><br>  <br>  <span class="hljs-comment">// 计算下一个要滚动到的位置</span><br>  <span class="hljs-keyword">var</span> scrollPosition = <span class="hljs-built_in">window</span>.pageYOffset + delta * scrollSpeed;<br>  <br>  <span class="hljs-comment">// 滚动动画</span><br>  <span class="hljs-built_in">window</span>.scrollTo(&#123;<br>    <span class="hljs-attr">top</span>: scrollPosition,<br>    <span class="hljs-attr">behavior</span>: <span class="hljs-string">&#x27;smooth&#x27;</span><br>  &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="什么是响应式布局"><a href="#什么是响应式布局" class="headerlink" title="什么是响应式布局"></a>什么是响应式布局</h3><p>就是利用css的媒体查询功能根据不同屏幕大小 ，向下兼容设备</p>
+<h3 id="无样式内容闪烁怎么处理"><a href="#无样式内容闪烁怎么处理" class="headerlink" title="无样式内容闪烁怎么处理"></a>无样式内容闪烁怎么处理</h3><p>一般是因为css文件的@import导致的</p>
+<ol>
+<li>预加载CSS和JavaScript 页面闪烁的原因往往是由于CSS和JavaScript文件的加载较慢导致页面元素的布局错乱。因此,预加载CSS和JavaScript文件成为解决页面闪烁问题的一种有效手段。可以通过将CSS文件放在<head>标签中的<link>元素中,同时将JavaScript文件放在<body>标签底部的<script>元素中,使得CSS和JavaScript文件能够优先加载</li>
+<li>使用缓存和压缩 可以减少页面加载时间,并降低页面闪烁的风险</li>
 </ol>
 <h3 id="html语义化标签怎么理解"><a href="#html语义化标签怎么理解" class="headerlink" title="html语义化标签怎么理解"></a>html语义化标签怎么理解</h3><p>语义化是指根据内容的结构化（<strong>内容</strong>语义化），选择合适的标签（代码语义化），就是html的标签名要有意义</p>
 <ul>
@@ -357,6 +369,7 @@
 <li>没有语义，无法被一些搜索引擎索识别</li>
 <li>会产生很多页面，不容易管理</li>
 </ul>
+<p>如果需要使用iframe，最好是通过javascript动态给iframe添加src属性值</p>
 <h3 id="Canvas和SVG的区别"><a href="#Canvas和SVG的区别" class="headerlink" title="Canvas和SVG的区别"></a>Canvas和SVG的区别</h3><p>SVG：可缩放矢量图形<br>特点：</p>
 <ol>
 <li>不依赖分辨率</li>
@@ -378,7 +391,8 @@
 <li>transform:scale()  推荐这种</li>
 <li>zoom：50% css缩小到原来的一半 有兼容问题，会触发重排</li>
 </ol>
-<h3 id="relative和absolute区别"><a href="#relative和absolute区别" class="headerlink" title="relative和absolute区别"></a>relative和absolute区别</h3><ol>
+<h3 id="relative和absolute区别"><a href="#relative和absolute区别" class="headerlink" title="relative和absolute区别"></a>relative和absolute区别</h3><p>position的值<br>absolute fixed relative static inherit</p>
+<ol>
 <li>定位为relative的元素脱离正常的文本流中，但其在文本流中的位置依然存在，而定位为absolute的层脱离正常文本流，但与relative的区别是其在正常流中的位置不在存在（不占位置了）。</li>
 <li>absolute不受父元素里的其他元素影响，而relative会受到父元素里的其他元素影响</li>
 <li>relative相对的总是<strong>自身原来的位置</strong>，无论其父元素是何种定位方式，而absolute总是相对于最近<strong>定义为absolute或relative的父层元素</strong></li>
@@ -431,6 +445,24 @@
 <ol>
 <li>settimeout任务被放入异步队列，只有当主线程任务执行完后才会执行队列中的任务，因此实际执行时间总是比设定时间要晚。</li>
 <li>settimeout的固定时间间隔不一定与屏幕刷新间隔时间相同，会引起丢帧。</li>
+</ol>
+<h3 id="css和js实现动画分别有哪些优缺点"><a href="#css和js实现动画分别有哪些优缺点" class="headerlink" title="css和js实现动画分别有哪些优缺点"></a>css和js实现动画分别有哪些优缺点</h3><ol>
+<li>css优点<ol>
+<li>硬件加速  会用gpu进行硬件加速，，更加流畅和高效运行</li>
+<li>简单易用  通常几行代码就可实现</li>
+<li>低资源占用  使用更少的cpu和内存资源</li>
+</ol>
+</li>
+<li>css缺点<ol>
+<li>限制较大 不能自由控制动画的速度和方向</li>
+<li>兼容性问题 不同浏览器对css动画支持程度不同，要考虑兼容性</li>
+<li>可维护性差 当效果复杂时，css代码会变的冗长和难以维护</li>
+</ol>
+</li>
+</ol>
+<h3 id="js中阻止事件冒泡和默认行为"><a href="#js中阻止事件冒泡和默认行为" class="headerlink" title="js中阻止事件冒泡和默认行为"></a>js中阻止事件冒泡和默认行为</h3><ol>
+<li>事件冒泡  event.stopPropagation()</li>
+<li>事件默认行为 event.preventDefault()</li>
 </ol>
 <h3 id="reflow（重排-回流）和-repaint（重绘）理解"><a href="#reflow（重排-回流）和-repaint（重绘）理解" class="headerlink" title="reflow（重排/回流）和 repaint（重绘）理解"></a>reflow（重排/回流）和 repaint（重绘）理解</h3><h4 id="重排-回流："><a href="#重排-回流：" class="headerlink" title="重排/回流："></a>重排/回流：</h4><p><strong>第一次确定节点的大小和位置，称为布局，之后针对节点大小，位置改变重新计算称之为回流</strong><br>元素的<strong>几何信息</strong>被影响导致浏览器需要<strong>重新计算</strong>元素在视口内的几何属性（位置和尺寸）</p>
 <h4 id="引发回流的几种情况"><a href="#引发回流的几种情况" class="headerlink" title="引发回流的几种情况"></a>引发回流的几种情况</h4><ol>
@@ -513,7 +545,17 @@
 <li>使用图片预加载技术，将当前展示图片的前一张和后一张优先下载</li>
 <li>csssprite和svgsprite</li>
 </ol>
-<h2 id="js-相关"><a href="#js-相关" class="headerlink" title="js 相关"></a>js 相关</h2><h3 id="同源和跨域"><a href="#同源和跨域" class="headerlink" title="同源和跨域"></a>同源和跨域</h3><h4 id="同源"><a href="#同源" class="headerlink" title="同源"></a>同源</h4><p>指：域名www、协议http、端口8080相同。</p>
+<h2 id="js-相关"><a href="#js-相关" class="headerlink" title="js 相关"></a>js 相关</h2><h3 id="“1”-”2”-”3”-map-parseInt-值是啥"><a href="#“1”-”2”-”3”-map-parseInt-值是啥" class="headerlink" title="[“1”,”2”,”3”].map(parseInt)值是啥"></a>[“1”,”2”,”3”].map(parseInt)值是啥</h3><p>[1,NaN,NaN] 因为parseInt需要两个参数val,radix<br>map传了3个(element,index,array) 对应的radix不合法导致解析失败</p>
+<p>callback函数的执行规则<br>参数：自动传入三个参数<br>currentValue（当前被传递的元素）；<br>index（当前被传递的元素的索引）；<br>array（调用map方法的数组）</p>
+<p>[“1”,”2”,”3”].map(v =&gt; parseInt(v)) 可以解析成功</p>
+<h3 id="js的基本数据类型"><a href="#js的基本数据类型" class="headerlink" title="js的基本数据类型"></a>js的基本数据类型</h3><p>undefined null boolean number string </p>
+<h3 id="js-的内置对象"><a href="#js-的内置对象" class="headerlink" title="js 的内置对象"></a>js 的内置对象</h3><p>数据封装类对象： Object Array Boolean Number String<br>其他对象： Function Arguments Math Date RegExp Error</p>
+<h3 id="js的延迟加载方式有哪些"><a href="#js的延迟加载方式有哪些" class="headerlink" title="js的延迟加载方式有哪些"></a>js的延迟加载方式有哪些</h3><ol>
+<li>动态创建script元素 并将其添加到DOM中 <code>var sc = document.createElement(&#39;script&#39;) script.src = &#39;a.js&#39; document.body.appendChild(sc)</code></li>
+<li>使用defer属性，将脚本执行推迟到文档解析完成后再执行  async也可以</li>
+<li>动态加载模块 import和export 可以使用动态import方法来延迟加载<br><code>import(&quot;path/module.js&quot;).then(res =&gt; &#123;&#125;).catch(err =&gt; err)</code></li>
+</ol>
+<h3 id="同源和跨域"><a href="#同源和跨域" class="headerlink" title="同源和跨域"></a>同源和跨域</h3><h4 id="同源"><a href="#同源" class="headerlink" title="同源"></a>同源</h4><p>指：域名www、协议http、端口8080相同。</p>
 <p>同源策略是浏览器的行为，是为了保护本地数据不被JavaScript代码获取回来的数据污染，因此拦截的是客户端发出的请求回来的数据接收。即请求发送了，服务器响应了，但是无法被浏览器接收</p>
 <h4 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h4><p>若干标签可以允许跨域</p>
 <ol>
@@ -625,6 +667,13 @@
 <li>寄生式组合继承</li>
 </ul>
 <p>优点：集合了【原型式继承】和【盗用构造函数继承】的优点，效率比【组合继承】更高。</p>
+<h3 id="js创建对象的几种方式"><a href="#js创建对象的几种方式" class="headerlink" title="js创建对象的几种方式"></a>js创建对象的几种方式</h3><ol>
+<li>工厂模式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createPerson</span>(<span class="hljs-params">name,age</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();<br>  a.name = name;<br>  a.age = age;<br>  <span class="hljs-keyword">return</span> a<br>&#125;<br><span class="hljs-keyword">let</span> p1 = createPerson(<span class="hljs-string">&quot;mike&quot;</span>,<span class="hljs-number">12</span>)<br></code></pre></td></tr></table></figure></li>
+<li>对象字面量 <code>let person = &#123; name: &#39;mike&#39; &#125;</code></li>
+<li>构造函数 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name,age</span>) </span>&#123;<br>  <span class="hljs-built_in">this</span>.name = name;<br>  <span class="hljs-built_in">this</span>.age = age;<br>&#125;<br><span class="hljs-keyword">let</span> p1 = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">&quot;mike&quot;</span>,<span class="hljs-number">12</span>)<br></code></pre></td></tr></table></figure></li>
+<li>原型模式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Dog</span>(<span class="hljs-params"></span>) </span>&#123;&#125;<br>Dog.prototype.name = <span class="hljs-string">&quot;dog1&quot;</span><br><span class="hljs-keyword">let</span> newDog = <span class="hljs-keyword">new</span> Dog()<br></code></pre></td></tr></table></figure></li>
+<li>混合模式  即构造函数+原型</li>
+</ol>
 <h3 id="作用域和作用域链"><a href="#作用域和作用域链" class="headerlink" title="作用域和作用域链"></a>作用域和作用域链</h3><p>作用域（scope） ：作用域就是一个独立的地盘，让变量不会外泄、暴露出去。作用域最大的用处就是<strong>隔离变量</strong>，不同作用域下的同名变量不会有冲突。</p>
 <ul>
 <li>全局作用域 （最外层定义的变量和函数，未定义并直接赋值的变量-变量提升，window对象的属性）</li>
@@ -725,6 +774,11 @@
 <h4 id="其他数组方法"><a href="#其他数组方法" class="headerlink" title="其他数组方法"></a>其他数组方法</h4><p>join()<br>push()和pop()<br>shift() 和 unshift()<br>sort()<br>reverse()<br>concat()<br>slice()<br>splice()</p>
 <h3 id="shift-和-unshift-和-push-和-pop的返回值"><a href="#shift-和-unshift-和-push-和-pop的返回值" class="headerlink" title="shift 和 unshift 和 push 和 pop的返回值"></a>shift 和 unshift 和 push 和 pop的返回值</h3><p>shift 和 pop 返回值 被删除的值<br>unshift 和 push 返回添加之后数组的长度</p>
 <h3 id="map-和-set的区别"><a href="#map-和-set的区别" class="headerlink" title="map 和 set的区别"></a>map 和 set的区别</h3><p>map 字典 键值对 set get has size<br>set 值唯一的数组 add delete</p>
+<h3 id="map和weakMap的区别"><a href="#map和weakMap的区别" class="headerlink" title="map和weakMap的区别"></a>map和weakMap的区别</h3><ol>
+<li>键类型： Map对象的键可以使任何类型，包括基本数据类型和对象类型，WeakMap对象的键必须是对象类型</li>
+<li>垃圾回收：Map对象中的键和值都会被常规垃圾回收机制回收，而weakMap中的键是弱引用，即在对象被垃圾回收时，weakmap中对应的键值对也会被自动删除，这使得weakmap通常用于缓存，当对象不被使用时，weakmap可以自动清除对应的数据</li>
+<li>map对象内部有内置的迭代器，可以通过for of循环来遍历，而weakmap没有内置的迭代器，不能直接遍历</li>
+</ol>
 <h3 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h3><p>任务：找到<strong>哪些被分配的内存确实已经不再需要了</strong></p>
 <ol>
 <li><p>引用计数垃圾收集<br>理解为 对象有没有其他对象引用它，如果没有就标记为<strong>零引用</strong>，对象将被垃圾回收机制回收<br>限制：循环引用的风险</p>
@@ -732,7 +786,7 @@
 <li><p>标记-清除算法<br>理解为 对象是否可以获得 假定设置一个root对象，垃圾回收器会定期从根开始找所有从它开始引用的对象，如果从全局对象无法获取的对象则会被垃圾回收器回收<br>限制: 那些无法从根对象查询到的对象都将被清除（一般没问题）</p>
 </li>
 </ol>
-<h3 id="this-的用法及含义"><a href="#this-的用法及含义" class="headerlink" title="this 的用法及含义"></a>this 的用法及含义</h3><p><strong>this取什么值是在函数被执行的时候确定的，不是在定义的时候</strong></p>
+<h3 id="this-的用法及含义"><a href="#this-的用法及含义" class="headerlink" title="this 的用法及含义"></a>this 的用法及含义</h3><p><strong>this取什么值是在函数被执行的时候确定的，不是在定义的时候。this总是指向函数的直接调用者</strong></p>
 <p>this的指向问题</p>
 <ol>
 <li>作为普通函数 window</li>
@@ -885,6 +939,19 @@
 <h3 id="AMD-和-CommonJS-的理解"><a href="#AMD-和-CommonJS-的理解" class="headerlink" title="AMD 和 CommonJS 的理解"></a>AMD 和 CommonJS 的理解</h3><p>CommonJS是服务器端模块的规范，Node.js采用了这个规范。CommonJS规范加载模块是同步的，也就是说，只有加载完成，才能执行后面的操作。AMD规范则是非同步加载模块，允许指定回调函数<br>AMD推荐的风格通过返回一个对象做为模块对象，CommonJS的风格通过对module.exports或exports的属性赋值来达到暴露模块对象的目的</p>
 <h3 id="animation的用法"><a href="#animation的用法" class="headerlink" title="animation的用法"></a>animation的用法</h3><p>animation的各个属性<br><code>animation: name duration timing-function delay iteration-count direction fill-mode play-state</code></p>
 <p>name 关键帧名称 loop<br>duration 动画完成时间多少秒 3s<br>timing-function 设置如何完成一个周期 linear<br>delay 启动前延迟间隔 0.3s<br>iteration-count 播放次数 infinite<br>direction 是否反向播放动画<br>fill-mode 动画不播放时，要应用的元素样式<br>play-state 是否正在运行或暂停</p>
+<h3 id="如何使⽤-JavaScript-来判断⽤户设备类型，pc端还是移动端？"><a href="#如何使⽤-JavaScript-来判断⽤户设备类型，pc端还是移动端？" class="headerlink" title="如何使⽤ JavaScript 来判断⽤户设备类型，pc端还是移动端？"></a>如何使⽤ JavaScript 来判断⽤户设备类型，pc端还是移动端？</h3><ol>
+<li>利⽤ navigator.userAgent 属性来获取⽤户代理信息<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isMobile</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-regexp">/Androd|webOS|iphone|iPad|iPad|BlackBerry|Mini/i</span>.test(navigator.userAgent)<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>window.matchMedia(‘(max-midth:768px)’).matches;</li>
+<li>第三方库 isMobile mobile-detect detect.js等</li>
+</ol>
+<h3 id="web开发中会话跟踪的方法有哪些"><a href="#web开发中会话跟踪的方法有哪些" class="headerlink" title="web开发中会话跟踪的方法有哪些"></a>web开发中会话跟踪的方法有哪些</h3><p>1：Cookie：<br>通过在用户浏览器中存储小型文本文件来跟踪会话状态信息。每次用户请求时，浏览器将Cookie数据包含在请求头中发送到服务器。<br>2：URL 重写：<br>将会话标识符添加到URL中作为查询参数的一部分。服务器通过解析URL中的会话标识符来跟踪会话状态。<br>3：隐藏表单字段（隐藏input）：<br>在HTML表单中添加一个隐藏字段，用于存储会话标识符。每次用户提交表单时，会话标识符将与请求一起发送到服务器。<br>4：会话存储（Session）：<br>在服务器端存储会话状态信息，并为每个会话分配一个唯一的标识符。服务器使用该标识符跟踪用户的会话状态。<br>5：HTML5 Web存储：<br>使用HTML5中的Web存储机制（如localStorage或sessionStorage）来存储会话状态信息。这些存储在客户端浏览器中，可以在整个会话期间保持不变</p>
+<h2 id="jquery"><a href="#jquery" class="headerlink" title="jquery"></a>jquery</h2><h3 id="extend-用法"><a href="#extend-用法" class="headerlink" title="$.extend()用法"></a>$.extend()用法</h3><ol>
+<li>浅拷贝  $.extend(a,b)  b拷贝a的内容</li>
+<li>深拷贝  $.extend(true,a,b)</li>
+<li>jQuery.fn.extend()  这边的jQuery.fn是jquery原型  是为jquery类添加 成员函数，相当于扩展jquery对象方法</li>
+</ol>
+<h3 id="jQuery队列是如何实现的，可以用在哪些地方"><a href="#jQuery队列是如何实现的，可以用在哪些地方" class="headerlink" title="jQuery队列是如何实现的，可以用在哪些地方"></a>jQuery队列是如何实现的，可以用在哪些地方</h3><p>主要是用queue() dequeue() clearQueue() 主要用于animate ajax等需要按时间顺序执行的事件中</p>
+<h3 id="jquery中bind-live-delagate-on的区别"><a href="#jquery中bind-live-delagate-on的区别" class="headerlink" title="jquery中bind live delagate on的区别"></a>jquery中bind live delagate on的区别</h3><p>链接(<a target="_blank" rel="noopener" href="https://www.cnblogs.com/gobiggirl/p/4498038.html">https://www.cnblogs.com/gobiggirl/p/4498038.html</a>)</p>
 <h2 id="vue-相关"><a href="#vue-相关" class="headerlink" title="vue 相关"></a>vue 相关</h2><h3 id="vue3的生命周期"><a href="#vue3的生命周期" class="headerlink" title="vue3的生命周期"></a>vue3的生命周期</h3><p>onMounted onUpdated onUnmounted compositionAPI中使用方式 引入进来</p>
 <p>beforeCreate created 这是options API中使用方式<br>beforeMount mounted<br>beforeUpdate updated<br>beforeUnmount unmounted  就这边变了</p>
 <h3 id="为啥vue3没有this"><a href="#为啥vue3没有this" class="headerlink" title="为啥vue3没有this"></a>为啥vue3没有this</h3><p>我们在options api中对其中的一些属性进行绑定,但是在composition api中的setup函数的执行并没有绑定实例对象</p>
@@ -1406,7 +1473,8 @@
 </ol>
 </li>
 </ol>
-<h2 id="性能优化相关"><a href="#性能优化相关" class="headerlink" title="性能优化相关"></a>性能优化相关</h2><h3 id="前端性能优化的措施-整理"><a href="#前端性能优化的措施-整理" class="headerlink" title="前端性能优化的措施 整理"></a>前端性能优化的措施 整理</h3><ul>
+<h2 id="性能优化相关"><a href="#性能优化相关" class="headerlink" title="性能优化相关"></a>性能优化相关</h2><h3 id="前端性能优化的措施-整理"><a href="#前端性能优化的措施-整理" class="headerlink" title="前端性能优化的措施 整理"></a>前端性能优化的措施 整理</h3><p>前端面试题 第34题 可以参考</p>
+<ul>
 <li>html css js<ul>
 <li><strong>雪碧图 base64等减少请求数量</strong></li>
 <li><strong>图片懒加载</strong></li>
@@ -1488,6 +1556,14 @@
 <li>把异步组件拆包出来 需要时异步加载 不需要的时候不加载 加快首页的加载 defineAsyncComponent</li>
 <li>路由懒加载 component <code>()=&gt; import(&#39;xxx&#39;)</code></li>
 <li>ssr</li>
+</ol>
+<h3 id="前端seo优化有哪些"><a href="#前端seo优化有哪些" class="headerlink" title="前端seo优化有哪些"></a>前端seo优化有哪些</h3><ol>
+<li>title description keywords权重逐渐减小，均要合理</li>
+<li>多用语义化标签</li>
+<li>重要html代码放前面</li>
+<li>少用iframe</li>
+<li>重要图片要加alt</li>
+<li>提高网站速度</li>
 </ol>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="vue组件封装原则"><a href="#vue组件封装原则" class="headerlink" title="vue组件封装原则"></a>vue组件封装原则</h3><ol>
 <li>单一原则</li>
@@ -1596,7 +1672,9 @@
 <li>条件注释、 CSS Hack 、 js 能力检测做一些修补。Hack ： CSS 中， Hack 是指一种兼容 CSS 在不同浏览器中正确显示的技巧方法，修补 bug 的方法Filter<br>：表示过滤器的意思，它是一种对特定的浏览器或浏览器组显示或隐藏规则或声明的方法。本质上讲， Filter 是 hack 方法中的一种。</li>
 <li>渐进增强和优雅降级（1）渐进增强：针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验。（2）优雅降级：一开始就构建完整的功能，然后再针对低版本浏览器进行兼容。</li>
 </ol>
-<h4 id="css-hack"><a href="#css-hack" class="headerlink" title="css hack"></a>css hack</h4><p><code>*background-color:green</code> 在前面加*的只会对IE6，7生效，其他版本ie和现代浏览器会忽略这条指令<br>在前面加-的只会对IE6生效，其他版本ie和现代浏览器会忽略这条指令<br>后面添加“!important”的写法只有IE6不能识别，其它版本IE及现代浏览器都可以识别</p>
+<h4 id="css-hack"><a href="#css-hack" class="headerlink" title="css hack"></a>css hack</h4><p><code>*background-color:green</code> 在前面加*的只会对IE6，7生效，其他版本ie和现代浏览器会忽略这条指令<br><code>-background-color:green</code>在前面加-的只会对IE6生效，其他版本ie和现代浏览器会忽略这条指令<br>后面添加“!important”的写法只有IE6不能识别，其它版本IE及现代浏览器都可以识别<br>区别IE 6.7.8</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.bb</span> &#123;<br>  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#fff</span>;<br>  <span class="hljs-selector-class">.background-color</span>: <span class="hljs-number">#fff</span>; //ie6.<span class="hljs-number">7.8</span>识别<br>  +<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#fff</span>; //ie6.<span class="hljs-number">7</span>识别<br>  _background-<span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>; //ie6识别<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <h3 id="移动端适配的问题"><a href="#移动端适配的问题" class="headerlink" title="移动端适配的问题"></a>移动端适配的问题</h3><h4 id="2个概念："><a href="#2个概念：" class="headerlink" title="2个概念："></a>2个概念：</h4><p>自适应：根据不同的设备屏幕大小来自动调整尺寸，大小。<br>响应式：会随着屏幕的实时变动而自动调整，是一种自适应。</p>
 <h4 id="4个方案"><a href="#4个方案" class="headerlink" title="4个方案"></a>4个方案</h4><ol>
 <li>百分比</li>
