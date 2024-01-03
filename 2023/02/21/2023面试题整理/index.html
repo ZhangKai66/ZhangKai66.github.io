@@ -24,7 +24,7 @@
 <meta property="og:description" content="面试题整理js 手写题手写深拷贝1234567891011121314151617181920212223242526272829303132function deepClone(obj &#x3D; &amp;#123;&amp;#125;) &amp;#123;  &#x2F;&#x2F; 是null或者不是对象和数组 直接返回  if (typeof obj !&#x3D;&#x3D; &quot;object&quot; || obj &#x3D;&#x3D; null) &amp;#12">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-02-21T08:31:32.000Z">
-<meta property="article:modified_time" content="2024-01-02T13:51:23.546Z">
+<meta property="article:modified_time" content="2024-01-03T10:22:18.701Z">
 <meta property="article:author" content="Kai Zhang">
 <meta property="article:tag" content="面试题">
 <meta name="twitter:card" content="summary_large_image">
@@ -196,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      59k 字
+      60k 字
     </span>
   
 
@@ -205,7 +205,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      185 分钟
+      187 分钟
     </span>
   
 
@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：29 minutes ago
+                  本文最后更新于：3 hours ago
                 
               </p>
             
@@ -361,12 +361,13 @@
 
 <h3 id="iframe-有那些优点和缺点？"><a href="#iframe-有那些优点和缺点？" class="headerlink" title="iframe 有那些优点和缺点？"></a>iframe 有那些优点和缺点？</h3><p>iframe 元素会创建包含另外一个文档的内联框架（即行内框架）。<br>优点：</p>
 <ul>
+<li>可以嵌入其他网站或文档，扩展页面的功能</li>
 <li>解决加载缓慢的第三方内容如图标和广告等的加载问题</li>
 <li>绕过cors（跨域）限制，实现跨子域通信</li>
 <li>并行加载脚本<br>缺点：</li>
 <li>iframe 会阻塞主页面的 onload 事件，减慢页面加载速度</li>
 <li>第三方网站不受控制</li>
-<li>没有语义，无法被一些搜索引擎索识别</li>
+<li>没有语义，无法被一些搜索引擎索识别 不利于seo</li>
 <li>会产生很多页面，不容易管理</li>
 </ul>
 <p>如果需要使用iframe，最好是通过javascript动态给iframe添加src属性值</p>
@@ -409,15 +410,16 @@
 <li><code>transform:scale(0,0)</code></li>
 </ol>
 <h3 id="CSS3中有哪些新特性"><a href="#CSS3中有哪些新特性" class="headerlink" title="CSS3中有哪些新特性"></a>CSS3中有哪些新特性</h3><ol>
-<li>新增各种CSS选择器 （: not(.input)：所有 class 不是“input”的节点）</li>
+<li>新增各种CSS选择器 （: not(.input)：所有 class 不是“input”的节点） :nth-child  :nth-of-type</li>
 <li>圆角 （border-radius:8px）</li>
-<li>多列布局 （multi-column layout）</li>
-<li>阴影和反射 （Shadoweflect）</li>
+<li>多列布局 （multi-column layout） flex布局</li>
+<li>阴影和反射 （Shadoweflect） box-shadow</li>
 <li>文字特效 （text-shadow）</li>
 <li>文字渲染 （Text-decoration）</li>
-<li>线性渐变 （gradient）</li>
+<li>线性渐变 （gradient） linear-gradient  radial-gradient</li>
 <li>旋转 （transform）</li>
-<li>增加了旋转,缩放,定位,倾斜,动画,多背景</li>
+<li>增加了旋转,缩放,定位,倾斜,多背景 transition</li>
+<li>animation</li>
 </ol>
 <h3 id="display-none-与-visibility-hidden-的区别"><a href="#display-none-与-visibility-hidden-的区别" class="headerlink" title="display:none 与 visibility:hidden 的区别"></a>display:none 与 visibility:hidden 的区别</h3><ul>
 <li>在渲染树中<br><code>display:none</code>会让元素完全从渲染树中消失，渲染时不会占据任何空间；<br><code>visibility:hidden</code>不会让元素从渲染树中消失，渲染的元素还会占据相应的空间，只是内容不可见。</li>
@@ -732,7 +734,7 @@
 <h4 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h4><ol>
 <li>JSON.stringify 会忽略value为undefined symbol 和function的属性 还有bigInt值会报错</li>
 <li>deepCopy 递归实现</li>
-<li>lodasg.cloneDeep()</li>
+<li>lodash.cloneDeep()</li>
 <li>jquery中的extend()方法  let newObj = $.extend(true,{},obj1)</li>
 </ol>
 <h3 id="require-和-import"><a href="#require-和-import" class="headerlink" title="require 和 import"></a>require 和 import</h3><p>1.import在代码编译时被加载，所以必须放在文件开头，require在代码运行时被加载，所以require理论上可以运用在代码的任何地方，所以import性能更好。<br>2.import引入的对象被修改时，源对象也会被修改，相当于浅拷贝，require引入的对象被修改时，源对象不会被修改，官网称值拷贝，我们可以理解为深拷贝。<br>3.import有利于tree-shaking（移除JavaScript上下文中未引用的代码），require对tree-shaking不友好。<br>4.import会触发代码分割（把代码分离到不同的bundle中，然后可以按需加载或者并行加载这些文件），require不会触发。<br>5.import是es6的一个语法标准，如果要兼容浏览器的话必须转化成es5的语法，require 是 AMD规范引入方式。</p>
@@ -772,6 +774,24 @@
 </ol>
 <p>普通for循环才是最优雅的，优化后的for循环最快<br>数组方法无法中途停止循环，所以都不可以使用break和continue；<br>for循环之类的不可以return，但是能正常使用break和continue；</p>
 <h4 id="其他数组方法"><a href="#其他数组方法" class="headerlink" title="其他数组方法"></a>其他数组方法</h4><p>join()<br>push()和pop()<br>shift() 和 unshift()<br>sort()<br>reverse()<br>concat()<br>slice()<br>splice()</p>
+<h3 id="slice和splice区别"><a href="#slice和splice区别" class="headerlink" title="slice和splice区别"></a>slice和splice区别</h3><ol>
+<li><p>slice(start,end)</p>
+<ol>
+<li>从start截取到end 但是不包括end</li>
+<li>返回值为截取出来的元素的集合</li>
+<li>原始数组不会发生变化</li>
+</ol>
+</li>
+<li><p>splice(start,deleteCount,items)</p>
+<ol>
+<li>start参数 开始的位置 </li>
+<li>deleteCount要截取的个数</li>
+<li>items要添加的元素</li>
+<li>返回值是被删除的元素组成的一个数组，如果没删除元素就返回空数组</li>
+<li>会改变原数组，数组长度会发生变化</li>
+</ol>
+</li>
+</ol>
 <h3 id="shift-和-unshift-和-push-和-pop的返回值"><a href="#shift-和-unshift-和-push-和-pop的返回值" class="headerlink" title="shift 和 unshift 和 push 和 pop的返回值"></a>shift 和 unshift 和 push 和 pop的返回值</h3><p>shift 和 pop 返回值 被删除的值<br>unshift 和 push 返回添加之后数组的长度</p>
 <h3 id="map-和-set的区别"><a href="#map-和-set的区别" class="headerlink" title="map 和 set的区别"></a>map 和 set的区别</h3><p>map 字典 键值对 set get has size<br>set 值唯一的数组 add delete</p>
 <h3 id="map和weakMap的区别"><a href="#map和weakMap的区别" class="headerlink" title="map和weakMap的区别"></a>map和weakMap的区别</h3><ol>
@@ -944,6 +964,7 @@
 <li>window.matchMedia(‘(max-midth:768px)’).matches;</li>
 <li>第三方库 isMobile mobile-detect detect.js等</li>
 </ol>
+<h3 id="sort的实现原理"><a href="#sort的实现原理" class="headerlink" title="sort的实现原理"></a>sort的实现原理</h3><p>此时排序的方式是按照ascii码进行排序，它会先将数组里的元素全部转为字符串(不影响原值)，方便比较。</p>
 <h3 id="web开发中会话跟踪的方法有哪些"><a href="#web开发中会话跟踪的方法有哪些" class="headerlink" title="web开发中会话跟踪的方法有哪些"></a>web开发中会话跟踪的方法有哪些</h3><p>1：Cookie：<br>通过在用户浏览器中存储小型文本文件来跟踪会话状态信息。每次用户请求时，浏览器将Cookie数据包含在请求头中发送到服务器。<br>2：URL 重写：<br>将会话标识符添加到URL中作为查询参数的一部分。服务器通过解析URL中的会话标识符来跟踪会话状态。<br>3：隐藏表单字段（隐藏input）：<br>在HTML表单中添加一个隐藏字段，用于存储会话标识符。每次用户提交表单时，会话标识符将与请求一起发送到服务器。<br>4：会话存储（Session）：<br>在服务器端存储会话状态信息，并为每个会话分配一个唯一的标识符。服务器使用该标识符跟踪用户的会话状态。<br>5：HTML5 Web存储：<br>使用HTML5中的Web存储机制（如localStorage或sessionStorage）来存储会话状态信息。这些存储在客户端浏览器中，可以在整个会话期间保持不变</p>
 <h2 id="jquery"><a href="#jquery" class="headerlink" title="jquery"></a>jquery</h2><h3 id="extend-用法"><a href="#extend-用法" class="headerlink" title="$.extend()用法"></a>$.extend()用法</h3><ol>
 <li>浅拷贝  $.extend(a,b)  b拷贝a的内容</li>
@@ -952,8 +973,9 @@
 </ol>
 <h3 id="jQuery队列是如何实现的，可以用在哪些地方"><a href="#jQuery队列是如何实现的，可以用在哪些地方" class="headerlink" title="jQuery队列是如何实现的，可以用在哪些地方"></a>jQuery队列是如何实现的，可以用在哪些地方</h3><p>主要是用queue() dequeue() clearQueue() 主要用于animate ajax等需要按时间顺序执行的事件中</p>
 <h3 id="jquery中bind-live-delagate-on的区别"><a href="#jquery中bind-live-delagate-on的区别" class="headerlink" title="jquery中bind live delagate on的区别"></a>jquery中bind live delagate on的区别</h3><p>链接(<a target="_blank" rel="noopener" href="https://www.cnblogs.com/gobiggirl/p/4498038.html">https://www.cnblogs.com/gobiggirl/p/4498038.html</a>)</p>
-<h2 id="vue-相关"><a href="#vue-相关" class="headerlink" title="vue 相关"></a>vue 相关</h2><h3 id="vue3的生命周期"><a href="#vue3的生命周期" class="headerlink" title="vue3的生命周期"></a>vue3的生命周期</h3><p>onMounted onUpdated onUnmounted compositionAPI中使用方式 引入进来</p>
+<h2 id="vue-相关"><a href="#vue-相关" class="headerlink" title="vue 相关"></a>vue 相关</h2><h3 id="vue3相关-https-juejin-cn-post-7139921537896808479"><a href="#vue3相关-https-juejin-cn-post-7139921537896808479" class="headerlink" title="vue3相关(https://juejin.cn/post/7139921537896808479)"></a>vue3相关(<a target="_blank" rel="noopener" href="https://juejin.cn/post/7139921537896808479">https://juejin.cn/post/7139921537896808479</a>)</h3><h3 id="vue3的生命周期"><a href="#vue3的生命周期" class="headerlink" title="vue3的生命周期"></a>vue3的生命周期</h3><p>onMounted onUpdated onUnmounted compositionAPI中使用方式 引入进来</p>
 <p>beforeCreate created 这是options API中使用方式<br>beforeMount mounted<br>beforeUpdate updated<br>beforeUnmount unmounted  就这边变了</p>
+<p>setup函数是在beforeCreate和created之间运行的，所以可以用它来代替这两个钩子函数<br>当然 也可以在setup之外写vue2的生命周期函数</p>
 <h3 id="为啥vue3没有this"><a href="#为啥vue3没有this" class="headerlink" title="为啥vue3没有this"></a>为啥vue3没有this</h3><p>我们在options api中对其中的一些属性进行绑定,但是在composition api中的setup函数的执行并没有绑定实例对象</p>
 <h3 id="vue-和-react的区别-对比等"><a href="#vue-和-react的区别-对比等" class="headerlink" title="vue 和 react的区别 对比等"></a>vue 和 react的区别 对比等</h3><h4 id="共同点"><a href="#共同点" class="headerlink" title="共同点"></a>共同点</h4><ol>
 <li>都是数据驱动视图</li>
@@ -988,6 +1010,9 @@
 </ul>
 <h3 id="vue的filter用法"><a href="#vue的filter用法" class="headerlink" title="vue的filter用法"></a>vue的filter用法</h3><h4 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h4><p><code>&#123;&#123; xxx | filter1 | filter2（'arg1',arg1） &#125;&#125; v-bind:attr=&#39;xxx | attr&#39;</code></p>
 <h4 id="定义方式"><a href="#定义方式" class="headerlink" title="定义方式"></a>定义方式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// vue文件中定义</span><br><span class="hljs-attr">filters</span>: &#123;<br>  <span class="hljs-attr">capitalize</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> value + <span class="hljs-string">&#x27;&#x27;</span><br>  &#125;<br>&#125;<br><span class="hljs-comment">// 全局定义 main.js文件中定义</span><br>Vue.filter(<span class="hljs-string">&#x27;capitalize&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+
+
 
 <p><strong>局部过滤器</strong>优先于全局过滤器被调用<br>实际开发中，可以将所有方法写在一个单独的js文件中，然后再main.js中引入全局注册即可</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> _filters <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./../&quot;</span><br>object.keys(_filters).forEach(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> &#123;<br>  Vue.filter(item,_filters[item])<br>&#125;)<br></code></pre></td></tr></table></figure>
@@ -1061,6 +1086,12 @@
 <li>$attrs  / $listeners  两个对象 $attrs是非props属性 $listeners是非原生事件 <code>v-bind=&quot;$attrs&quot;</code></li>
 <li>祖 -&gt; 孙 provide / inject</li>
 </ol>
+<h3 id="keep-alive的属性"><a href="#keep-alive的属性" class="headerlink" title="keep-alive的属性"></a>keep-alive的属性</h3><ul>
+<li>include 名称匹配的会被缓存</li>
+<li>exclude 名称匹配的都并不缓存 类型为字符串或正则表达式</li>
+<li>max 最多可以缓存的组件实例数量限制，超过时，会从最早缓存的组件开始销毁</li>
+</ul>
+<p>钩子函数执行顺序:<br>当使用keep-alive时，如果组件页面首次进入则钩子的触发顺序为 created -&gt; mounted -&gt; activated，组件切换时，触发 deactivated，再次切换进入时，只会触发activated</p>
 <h3 id="vue-循环为啥要加-key"><a href="#vue-循环为啥要加-key" class="headerlink" title="vue 循环为啥要加 key"></a>vue 循环为啥要加 key</h3><p>类似唯一身份标志，主要用来做dom diff算法用的</p>
 <p>diff算法是同级比较，比较当前标签上的key还有它当前的标签名，如果key和标签名都一样时只是做了一个移动的操作，不会重新创建元素和删除元素</p>
 <p>默认使用 就地复用的策略，</p>
