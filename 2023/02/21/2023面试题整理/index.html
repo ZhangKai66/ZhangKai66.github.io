@@ -24,7 +24,7 @@
 <meta property="og:description" content="面试题整理js 手写题手写深拷贝1234567891011121314151617181920212223242526272829303132function deepClone(obj &#x3D; &amp;#123;&amp;#125;) &amp;#123;  &#x2F;&#x2F; 是null或者不是对象和数组 直接返回  if (typeof obj !&#x3D;&#x3D; &quot;object&quot; || obj &#x3D;&#x3D; null) &amp;#12">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-02-21T08:31:32.000Z">
-<meta property="article:modified_time" content="2024-01-03T10:22:18.701Z">
+<meta property="article:modified_time" content="2024-01-08T08:44:51.005Z">
 <meta property="article:author" content="Kai Zhang">
 <meta property="article:tag" content="面试题">
 <meta name="twitter:card" content="summary_large_image">
@@ -205,7 +205,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      187 分钟
+      188 分钟
     </span>
   
 
@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：3 hours ago
+                  本文最后更新于：a few seconds ago
                 
               </p>
             
@@ -361,7 +361,7 @@
 
 <h3 id="iframe-有那些优点和缺点？"><a href="#iframe-有那些优点和缺点？" class="headerlink" title="iframe 有那些优点和缺点？"></a>iframe 有那些优点和缺点？</h3><p>iframe 元素会创建包含另外一个文档的内联框架（即行内框架）。<br>优点：</p>
 <ul>
-<li>可以嵌入其他网站或文档，扩展页面的功能</li>
+<li>可以直接嵌入其他网站或文档，扩展页面的功能</li>
 <li>解决加载缓慢的第三方内容如图标和广告等的加载问题</li>
 <li>绕过cors（跨域）限制，实现跨子域通信</li>
 <li>并行加载脚本<br>缺点：</li>
@@ -793,7 +793,7 @@
 </li>
 </ol>
 <h3 id="shift-和-unshift-和-push-和-pop的返回值"><a href="#shift-和-unshift-和-push-和-pop的返回值" class="headerlink" title="shift 和 unshift 和 push 和 pop的返回值"></a>shift 和 unshift 和 push 和 pop的返回值</h3><p>shift 和 pop 返回值 被删除的值<br>unshift 和 push 返回添加之后数组的长度</p>
-<h3 id="map-和-set的区别"><a href="#map-和-set的区别" class="headerlink" title="map 和 set的区别"></a>map 和 set的区别</h3><p>map 字典 键值对 set get has size<br>set 值唯一的数组 add delete</p>
+<h3 id="map-和-set的区别"><a href="#map-和-set的区别" class="headerlink" title="map 和 set的区别"></a>map 和 set的区别</h3><p>map 字典 键值对 set get has size<br>set 值唯一的数组 add delete has clear size  set.delete(3)删除元素不需要知道索引</p>
 <h3 id="map和weakMap的区别"><a href="#map和weakMap的区别" class="headerlink" title="map和weakMap的区别"></a>map和weakMap的区别</h3><ol>
 <li>键类型： Map对象的键可以使任何类型，包括基本数据类型和对象类型，WeakMap对象的键必须是对象类型</li>
 <li>垃圾回收：Map对象中的键和值都会被常规垃圾回收机制回收，而weakMap中的键是弱引用，即在对象被垃圾回收时，weakmap中对应的键值对也会被自动删除，这使得weakmap通常用于缓存，当对象不被使用时，weakmap可以自动清除对应的数据</li>
@@ -809,10 +809,10 @@
 <h3 id="this-的用法及含义"><a href="#this-的用法及含义" class="headerlink" title="this 的用法及含义"></a>this 的用法及含义</h3><p><strong>this取什么值是在函数被执行的时候确定的，不是在定义的时候。this总是指向函数的直接调用者</strong></p>
 <p>this的指向问题</p>
 <ol>
-<li>作为普通函数 window</li>
+<li>作为普通函数 window  setTimeout注意（也是指向window，可以用箭头函数修改指向为外部调用者）</li>
 <li>使用call bind apply （call可直接换this指向 bind是有返回值 返回值再调用）</li>
 <li>作为对象方法被调用 指代的就是这个对象本身</li>
-<li>在class方法中调用 当前实例本身 setTimeout注意</li>
+<li>在class方法中调用 当前实例本身 </li>
 <li>箭头函数  <code>()=&gt;&#123;this&#125;</code> 和上级作用域的值一致</li>
 </ol>
 <h3 id="web-存储"><a href="#web-存储" class="headerlink" title="web 存储"></a>web 存储</h3><ol>
@@ -966,6 +966,9 @@
 </ol>
 <h3 id="sort的实现原理"><a href="#sort的实现原理" class="headerlink" title="sort的实现原理"></a>sort的实现原理</h3><p>此时排序的方式是按照ascii码进行排序，它会先将数组里的元素全部转为字符串(不影响原值)，方便比较。</p>
 <h3 id="web开发中会话跟踪的方法有哪些"><a href="#web开发中会话跟踪的方法有哪些" class="headerlink" title="web开发中会话跟踪的方法有哪些"></a>web开发中会话跟踪的方法有哪些</h3><p>1：Cookie：<br>通过在用户浏览器中存储小型文本文件来跟踪会话状态信息。每次用户请求时，浏览器将Cookie数据包含在请求头中发送到服务器。<br>2：URL 重写：<br>将会话标识符添加到URL中作为查询参数的一部分。服务器通过解析URL中的会话标识符来跟踪会话状态。<br>3：隐藏表单字段（隐藏input）：<br>在HTML表单中添加一个隐藏字段，用于存储会话标识符。每次用户提交表单时，会话标识符将与请求一起发送到服务器。<br>4：会话存储（Session）：<br>在服务器端存储会话状态信息，并为每个会话分配一个唯一的标识符。服务器使用该标识符跟踪用户的会话状态。<br>5：HTML5 Web存储：<br>使用HTML5中的Web存储机制（如localStorage或sessionStorage）来存储会话状态信息。这些存储在客户端浏览器中，可以在整个会话期间保持不变</p>
+<h3 id="setTimeout和setInterval都可以实现周期性调度（每隔几秒发送个请求）"><a href="#setTimeout和setInterval都可以实现周期性调度（每隔几秒发送个请求）" class="headerlink" title="setTimeout和setInterval都可以实现周期性调度（每隔几秒发送个请求）"></a>setTimeout和setInterval都可以实现周期性调度（每隔几秒发送个请求）</h3><p>例如，我们要实现一个服务（server），每间隔 5 秒向服务器发送一个数据请求，但如果服务器过载了，那么就要降低请求频率，比如将间隔增加到 10、20、40 秒等。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> delay = <span class="hljs-number">5000</span>;<br><span class="hljs-keyword">let</span> timerId = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">request</span>(<span class="hljs-params"></span>) </span>&#123;<br>  ...发送请求...<br>  <span class="hljs-keyword">if</span> (request failed due to server overload) &#123;<br>    <span class="hljs-comment">// 下一次执行的间隔是当前的 2 倍</span><br>    delay *= <span class="hljs-number">2</span>;<br>  &#125;<br>  timerId = <span class="hljs-built_in">setTimeout</span>(request, delay);<br>&#125;, delay);<br></code></pre></td></tr></table></figure>
+
 <h2 id="jquery"><a href="#jquery" class="headerlink" title="jquery"></a>jquery</h2><h3 id="extend-用法"><a href="#extend-用法" class="headerlink" title="$.extend()用法"></a>$.extend()用法</h3><ol>
 <li>浅拷贝  $.extend(a,b)  b拷贝a的内容</li>
 <li>深拷贝  $.extend(true,a,b)</li>
@@ -1010,9 +1013,6 @@
 </ul>
 <h3 id="vue的filter用法"><a href="#vue的filter用法" class="headerlink" title="vue的filter用法"></a>vue的filter用法</h3><h4 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h4><p><code>&#123;&#123; xxx | filter1 | filter2（'arg1',arg1） &#125;&#125; v-bind:attr=&#39;xxx | attr&#39;</code></p>
 <h4 id="定义方式"><a href="#定义方式" class="headerlink" title="定义方式"></a>定义方式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// vue文件中定义</span><br><span class="hljs-attr">filters</span>: &#123;<br>  <span class="hljs-attr">capitalize</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> value + <span class="hljs-string">&#x27;&#x27;</span><br>  &#125;<br>&#125;<br><span class="hljs-comment">// 全局定义 main.js文件中定义</span><br>Vue.filter(<span class="hljs-string">&#x27;capitalize&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span><br>&#125;)<br></code></pre></td></tr></table></figure>
-
-
-
 
 <p><strong>局部过滤器</strong>优先于全局过滤器被调用<br>实际开发中，可以将所有方法写在一个单独的js文件中，然后再main.js中引入全局注册即可</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> _filters <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./../&quot;</span><br>object.keys(_filters).forEach(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> &#123;<br>  Vue.filter(item,_filters[item])<br>&#125;)<br></code></pre></td></tr></table></figure>
