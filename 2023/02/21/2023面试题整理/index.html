@@ -24,7 +24,7 @@
 <meta property="og:description" content="面试题整理js 手写题手写深拷贝1234567891011121314151617181920212223242526272829303132function deepClone(obj &#x3D; &amp;#123;&amp;#125;) &amp;#123;  &#x2F;&#x2F; 是null或者不是对象和数组 直接返回  if (typeof obj !&#x3D;&#x3D; &quot;object&quot; || obj &#x3D;&#x3D; null) &amp;#12">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-02-21T08:31:32.000Z">
-<meta property="article:modified_time" content="2024-01-10T02:21:38.040Z">
+<meta property="article:modified_time" content="2024-01-12T06:06:10.942Z">
 <meta property="article:author" content="Kai Zhang">
 <meta property="article:tag" content="面试题">
 <meta name="twitter:card" content="summary_large_image">
@@ -196,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      60k 字
+      61k 字
     </span>
   
 
@@ -205,7 +205,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      188 分钟
+      189 分钟
     </span>
   
 
@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：a few seconds ago
+                  本文最后更新于：2 months ago
                 
               </p>
             
@@ -408,6 +408,11 @@
 <li><code>z-index: -100</code></li>
 <li><code>clip-path: circle(0)</code></li>
 <li><code>transform:scale(0,0)</code></li>
+</ol>
+<h3 id="CSS-如何实现自适应正方形"><a href="#CSS-如何实现自适应正方形" class="headerlink" title="CSS 如何实现自适应正方形"></a>CSS 如何实现自适应正方形</h3><ol>
+<li>vw单位    <code> height:50vw</code></li>
+<li>设置垂直方向的 padding 撑开容器 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.square</span> &#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">50%</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;  <span class="hljs-comment">/* 防止因为添加内容导致的高度溢出 */</span><br>    <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">50%</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>利用伪元素的 margin(padding)-top 撑开容器<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.square</span> &#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">50%</span>;<br>    <span class="hljs-attribute">overflow</span>: hidden; <span class="hljs-comment">/* BFC 划重点，防止容器与伪元素在垂直方向发生了外边距折叠 */</span><br>&#125;<br><br><span class="hljs-selector-class">.square</span><span class="hljs-selector-pseudo">::after</span> &#123;<br>    <span class="hljs-attribute">content</span>: <span class="hljs-string">&#x27;&#x27;</span>;<br>    <span class="hljs-attribute">display</span>: block;<br>    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">100%</span>; <span class="hljs-comment">/* margin 百分比相对父元素宽度计算 */</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="CSS3中有哪些新特性"><a href="#CSS3中有哪些新特性" class="headerlink" title="CSS3中有哪些新特性"></a>CSS3中有哪些新特性</h3><ol>
 <li>新增各种CSS选择器 （: not(.input)：所有 class 不是“input”的节点） :nth-child  :nth-of-type</li>
